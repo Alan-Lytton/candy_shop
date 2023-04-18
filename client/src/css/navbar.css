@@ -1,32 +1,92 @@
 
+
+
+:root {
+    --spacer-1: .25rem;
+    --spacer-2: .5rem;
+    --spacer-3: .75rem;
+    --spacer-4: 1rem;
+    --spacer-5: 1.5rem;
+    --spacer-6: 2rem;
+    --spacer-7: 3rem;
+    --spacer-8: 4rem;
+    --border-radius-1: .25rem;
+    --border-radius-2: .875rem;
+    --border-radius-3: 10rem;
+    --box-shadow-1: .25rem .25rem 0rem var(--primary);
+    --box-shadow-2: .5rem .5rem 0rem var(--primary);
+    --z-index-base: 0;
+    --z-index-overlay: 1;
+    --z-index-above-overlay: 2;
+    --z-index-header: 3;
+    --z-index-menubar: 10;
+    --z-index-modal: 20;
+    --z-index-tooltip: 30;
+    --success: #23a094;
+    --danger: #e2442f;
+    --warning: #ffc900;
+    --info: #90a8ed;
+    --pink: #ff90e8;
+    --purple: #90a8ed;
+    --green: #23a094;
+    --orange: #e2442f;
+    --red: #98282a;
+    --yellow-dark: #ffc900;
+    --yellow: #f1f333;
+    --black: #000000;
+    --gray-500: #78716c;
+    --gray-400: #a8a29e;
+    --gray-300: #d6d3d1;
+    --gray-200: #e7e5e4;
+    --gray-100: #f4f4f0;
+    --gray-050: #fbfbf9;
+    --white: #ffffff;
+    --primary: #000000;
+    --contrast-primary: #ffffff;
+    --accent: #ff90e8;
+    --contrast-accent: #000000;
+    --background: #ffffff;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 1024px;
+    --font-family: Mabry Pro, sans-serif;
+    --border: solid .0625rem currentColor;
+    --border-width: .0625rem;
+    --outline: .125rem solid #ff90e8;
+    --big-icon-size: 1.5em;
+    --grid-wrap-breakpoint: 31.25rem;
+    --active-bg: #ffffff;
+    --main-stack-width: 28rem;
+    --dynamic-grid: min(100%, calc((31.25rem - 100%) * 1000));
+    --disabled-opacity: .3;
+    --form-element-height: 3.125rem;
+    --faded-text-color: rgba(0, 0, 0, .8)
+}
+
+@font-face {
+    font-family: Mabry Pro;
+    src: url(../assets/fonts/19db990205089207b039.woff2);
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: Mabry Pro;
 }
 
-.logo__img {
-    width: 10.5rem;
-    margin-right: 0.75rem;
-}
 
 nav {
     position: sticky;
     top: 0;
-    padding: 0 18px;
-    border-bottom: 1px solid rgb(237, 237, 237); 
-    background-color: rgb(255, 255, 255);
-     box-shadow: rgba(23, 48, 73, 0.12) 0px 4px 24px;
+    padding: 12px 24px;
 
 }
 
 .logo__mask {
-    display: flex;
-    align-items: center;
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: rgb(24, 9, 84);
+
+}
+.logo_img{
+    width: 240px;
 }
 
 .navbar {
@@ -58,12 +118,14 @@ nav {
     margin-top: 0px;
     margin-bottom: 0px;
     font-weight: bold;
+    transition: all 200ms ease-in-out;
 
 }
 .dropbtn:hover{
     padding-bottom: 8px;
     border-bottom: 2px solid black;
     width: 100%;
+    font-size: 1rem;
 }
 
 .navbar a:hover,
@@ -74,8 +136,13 @@ nav {
     display: none;
     position: absolute;
     min-width: 290px;
-    background-color: #ddd;
     margin-top: 24px;
+    background-color: rgb(255, 255, 255, .9) ;
+    box-shadow: 0px 10px 30px rgb(172, 156, 166);
+    
+    border-radius: 12px;
+    /* border-bottom-left-radius: 12px; */
+    /* border-bottom-right-radius: 12px; */
 
     z-index: 1;
 }
@@ -90,7 +157,8 @@ nav {
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #a1f1ad;
+    border-radius: 6px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -109,7 +177,9 @@ li {
 .header {
     margin: 0;
 }
-
+.nav__links{
+    margin-right: 7%;
+}
 
 
 .row {
@@ -224,21 +294,14 @@ a {
     z-index: 10;
     position: fixed;
     top: 0px;
-    left: 0px;
+    left: 600px;
     right: 0px;
     margin: 1.5rem 2.0rem;
     padding: 2rem;
     border: 1px solid gray;
     text-align: center;
     border-radius: 0.5rem;
-    --tw-text-opacity: 1;
-    color: rgba(26, 32, 44, var(--tw-text-opacity));
-    --tw-bg-opacity: 1;
-    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
-    display: flex;
-    z-index: 10;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
     transition: all 300ms ease;
     visibility: hidden;
     display: none;
@@ -298,16 +361,20 @@ a {
 .menu__link {
     color: rgb(0, 0, 0);
     font-size: 20px;
+    height: 40px;
+    /* background-color: #90a8ed; */
+    padding: 4px;
+}
+
+.menu__link-primary{
+
+}
+
+.menu__link:hover{
+    border-bottom: 1px solid black;
 }
 
 .menu__link-primary {
-    border: 2px solid rgb(98, 50, 230);
-    background-color: rgb(98, 50, 230);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 50px;
-    font-weight: bold;
-    opacity: 0.95;
     transition: all 300ms ease;
 
 }
@@ -318,14 +385,27 @@ a {
     opacity: 1;
 }
 
-@media(max-width: 1000px) {
 
+
+@media(max-width: 1000px) {
+    .logo_img{
+        width: 200px;
+
+    }
     .nav__links {
         display: none;
     }
 
+    .second{
+        display: none;
+    }
     .btn__menu {
         display: block;
     }
 
+}
+@media(max-width:650px){
+    .logo_img{
+        width: 170px;
+    }
 }

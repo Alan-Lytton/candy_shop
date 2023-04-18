@@ -1,0 +1,26 @@
+body {
+    background-image: url(../assets/images/snakeBackground.jpeg);
+    background-repeat: no-repeat;
+    background-position:center ;
+    background-size: cover;
+    height: 110vh;
+}
+.containerLink{
+    position: relative;
+    width: 400px;
+    left: 20%;
+}
+@media(max-width: 1000px){
+    body{
+    background-image: url(../assets/images/snakeBackground1200.jpeg);
+    background-repeat: no-repeat;
+    background-position:center ;
+    background-size: cover;
+    height: 110vh;
+    }
+    
+}
+@font-face {
+    font-family: Mabry Pro;
+    src: url(../assets/fonts/19db990205089207b039.woff2);
+}
