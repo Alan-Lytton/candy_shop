@@ -25,8 +25,8 @@ module.exports.updateCandy = (req,res) =>{
         .catch(err => res.status(400).json(err))
 }
 
-module.exports.deleteCandy = (req,res) =>{
-    Candy.deleteOne({_id:req.params.id})
-        .then(deleteConfirm => res.json(deleteConfirm))
-        .catch(err => res.status(400).json(err))
-}
+// module.exports.deleteCandy = (req,res) =>{
+//     Candy.deleteOne({_id:req.params.id})
+//         .then(deleteConfirm => res.json(deleteConfirm))
+//         .catch(err => res.status(400).json(err))
+// }
