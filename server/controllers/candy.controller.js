@@ -1,5 +1,4 @@
 const Candy = require('../models/candy.model');
-const {response} = require("express");
 
 module.exports.createCandy = (req, res) =>{
     Candy.create(req.body)
