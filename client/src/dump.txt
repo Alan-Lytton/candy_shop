@@ -1,0 +1,419 @@
+import React from 'react'
+import '../css/AboutUs.css'
+
+import JangPic from '../assets/images/Jangimage.PNG';
+const AboutUs = () => {
+    return (
+        <div>
+            <div class="about wf-section">
+                <div class="my-container">
+                    <h1>
+                        <span class="white-text">meet the </span>
+                        <span class="light-green-text">team</span>
+                    </h1>
+                    <div class="w-layout-grid about-grid-nikolai">
+                        <div class="about-card">
+                            <h1 class="h1-left">jang singh</h1>
+                            <div class="_1rem-divider"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae omnis aliquid ea voluptates suscipit sint odit quia, magni ducimus atque sit esse adipisci eos mollitia libero distinctio officia labore porro?</p>
+                            <img src="" loading="lazy" srcset="" class="image-15--mobile" />  {/* Mobile view picture link*/}
+                        </div>
+                        <div id="about_me_pic" class="about-pfp">
+                            <img loading="lazy" require src="" class=" jang-pic" /> {/* Desktop view picture link*/}
+                        </div>
+                    </div>
+                    <div class="w-layout-grid about-grid-jason">
+                        <div class="about-pfp">
+                            <img loading="lazy" srcset="" class="about-pic" />{/* Desktop view picture link*/}
+                        </div>
+                        <div class="about-card">
+                            <h1 class="h1-left">chris meehan</h1>
+                            <div class="_1rem-divider"></div>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae minima iste obcaecati facilis labore! Quisquam odio pariatur vel, porro sunt rem sed, eligendi perspiciatis adipisci fugit consequuntur eaque in ullam.</p>
+                            <img  loading="lazy"  class="image-14-mobile" /> {/* Mobile view picture link*/}
+                        </div>
+                    </div>
+
+                    <div class="w-layout-grid about-grid-nikolai">
+                        <div class="about-card">
+                            <h1 class="h1-left">alan</h1>
+                            <div class="_1rem-divider"></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae omnis aliquid ea voluptates suscipit sint odit quia, magni ducimus atque sit esse adipisci eos mollitia libero distinctio officia labore porro? lorem*1</p>
+                            <img loading="lazy" class="image-15--mobile" />  {/* Mobile view picture link*/}
+                        </div>
+                        <div id="about_me_pic" class="about-pfp">
+                            <img loading="lazy"  class=" jang-pic" /> {/* Desktop view picture link*/}
+                        </div>
+                    </div>
+
+                    <div class="w-layout-grid about-grid-jason">
+                        <div class="about-pfp">
+                            <img loading="lazy" class="about-pic" />{/* Desktop view picture link*/}
+                        </div>
+                        <div class="about-card">
+                            <h1 class="h1-left">chris B</h1>
+                            <div class="_1rem-divider"></div>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae minima iste obcaecati facilis labore! Quisquam odio pariatur vel, porro sunt rem sed, eligendi perspiciatis adipisci fugit consequuntur eaque in ullam.</p>
+                            <img loading="lazy" class="image-14-mobile" /> {/* Mobile view picture link*/}
+                        </div>
+                    </div>
+
+                    <div class="w-layout-grid about-grid-nikolai">
+                    <div class="about-card">
+                        <h1 class="h1-left">Pablo</h1>
+                        <div class="_1rem-divider"></div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae omnis aliquid ea voluptates suscipit sint odit quia, magni ducimus atque sit esse adipisci eos mollitia libero distinctio officia labore porro?</p>
+                        <img loading="lazy" class="image-15--mobile" />  {/* Mobile view picture link*/}
+                    </div>
+                    <div id="about_me_pic" class="about-pfp">
+                        <img loading="lazy"  class=" jang-pic" /> {/* Desktop view picture link*/}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default AboutUs
+
+
+
+
+@media screen and (max-width: 991px) {
+    .w-col-medium-12 {
+      width: 100%;
+    }
+  
+  }
+  
+  @media screen and (max-width: 767px) {
+    .w-col-small-12 {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 479px) {
+  
+    .w-col-tiny-12 {
+      width: 100%;
+    }
+  }
+  
+  
+  .w-layout-grid {
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
+  }
+  
+  body {
+    color: #000;
+    background-color: #f2e8cf;
+    font-family: Cabinetgrotesk, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  
+  h1 {
+    z-index: 10;
+    color: #43a363;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Milligram, sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 100%;
+    position: relative;
+  }
+  
+  
+  
+  
+  .my-container {
+    z-index: 20;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    position: relative;
+  }
+  
+  .light-green-text {
+    color: #a5dd73;
+  }
+  
+  .white-text {
+    color: #fff;
+  }
+  
+  
+  
+  .about {
+    background-color: #43a363;
+    background-image: none;
+    border-top: 2px solid #000;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  
+  .about-grid-nikolai {
+    z-index: 10;
+    grid-template-rows: auto;
+    grid-template-columns: 1.25fr 1fr;
+    align-items: center;
+    margin-top: 3rem;
+    position: relative;
+  }
+  
+  .about-card {
+    background-color: #f2e8cf;
+    border: 2px solid #000;
+    border-radius: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    display: flex;
+    box-shadow: 4px 4px #000;
+  }
+  
+  .h1-left {
+    text-align: left;
+    font-size: 3rem;
+  }
+  
+  .about-grid-jason {
+    z-index: 10;
+    grid-template-rows: auto;
+    grid-template-columns: .75fr 1fr;
+    align-items: center;
+    margin-top: 6rem;
+    position: relative;
+  }
+  
+  .jang-pic{
+    width: 400px;
+  }
+  
+  ._2rem-divider-width {
+    width: 2rem;
+  }
+  
+  .image-11 {
+    opacity: .2;
+    display: none;
+    position: absolute;
+    top: 130px;
+    bottom: auto;
+    left: 0%;
+    right: auto;
+  }
+  
+  .image-12 {
+    opacity: .2;
+    display: none;
+    position: absolute;
+    top: auto;
+    bottom: 0%;
+    left: auto;
+    right: 400px;
+  }
+  
+  
+  .image-14-mobile {
+    display: none;
+    transform: rotate(2deg);
+  }
+  
+  .html-embed {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+  
+  .image-17 {
+    position: absolute;
+    top: 3rem;
+    bottom: auto;
+    left: auto;
+    right: 0%;
+  }
+  
+  
+  
+  
+  .grid-3 {
+    z-index: 10;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  .image-15--mobile {
+    display: none;
+    transform: rotate(-2deg);
+  }
+  
+  .about-pic {
+    width: 380px;
+    height: 380px;
+  }
+  .about-pfp {
+    position: relative;
+  }
+  @media screen and (max-width: 991px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 2.5rem;
+    }
+  
+    p {
+      font-size: 1.125rem;
+    }
+  
+    .about-grid-nikolai {
+      grid-template-rows: auto auto;
+      grid-template-columns: 1fr;
+    }
+  
+    .h1-left {
+      font-size: 3rem;
+    }
+  
+    .about-grid-jason {
+      grid-template-rows: auto auto;
+      grid-template-columns: 1fr;
+    }
+  
+  
+  
+  }
+  
+  @media screen and (max-width: 767px) {
+  
+  
+    .about-card {
+      flex-direction: column;
+      align-items: center;
+      padding-top: 8rem;
+      display: flex;
+      position: relative;
+    }
+  
+  
+  
+    .image-14-mobile {
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      position: absolute;
+      top: -60px;
+      bottom: auto;
+      left: 0%;
+      right: 0%;
+    }
+  
+  
+    .image-15--mobile {
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      position: absolute;
+      top: -75px;
+      bottom: auto;
+      left: 0%;
+      right: 0%;
+    }
+    .about-pfp {
+      display: none;
+    }
+    .badge-image {
+      max-width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 479px) {
+  
+    .about {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  
+    .about-grid-nikolai {
+      grid-template-rows: auto;
+      margin-top: 6rem;
+    }
+  
+    .about-card {
+      padding-top: 10rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+      box-shadow: 4px 4px #000;
+    }
+  
+    .h1-left {
+      text-align: center;
+      font-size: 2.25rem;
+    }
+  
+    .about-grid-jason {
+      grid-template-rows: auto;
+    }
+  }
+  
+  #about_me_pic {
+    grid-area: span 1 / span 1 / span 1 / span 1;
+    align-self: center;
+    justify-self: end;
+  }
+  
+  @media screen and (max-width: 991px) {
+  
+    #w-node-_783bc760-ae1f-87dd-9921-637d378bf0e2-61e34ed2,
+    #w-node-a0d145a0-1bb7-27ca-81a1-ab212b167f6f-61e34ed2,
+    #w-node-_90c4a924-a375-d430-9622-ccb1c15cf32d-61e34ed2 {
+      justify-self: center;
+    }
+  
+  }
+  
+  @font-face {
+    font-family: 'Milligram';
+    src: url('https://uploads-ssl.webflow.com/643c1db56d1a08a9e1e34ed7/643c1db56d1a087dd9e34eee_Milligram-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Cabinetgrotesk';
+    src: url('https://uploads-ssl.webflow.com/643c1db56d1a08a9e1e34ed7/643c1db56d1a08ef56e34f06_CabinetGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Cabinetgrotesk';
+    src: url('https://uploads-ssl.webflow.com/643c1db56d1a08a9e1e34ed7/643c1db56d1a08e9f3e34eed_CabinetGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }

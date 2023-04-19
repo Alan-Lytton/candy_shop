@@ -1,7 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../css/navbar.css';
 import CompanyLogo from '../assets/images/gplogoshop.jpg';
 
@@ -36,7 +34,7 @@ const Navbar = () => {
                         <a className="dropbtn">Deals</a>
                     </div>
                     <div className="dropdown">
-                        <a className="dropbtn">About Us</a>
+                    <Link className='dropbtn' to="/about/us">About Us</Link>
                     </div>
 
                 </ul>
