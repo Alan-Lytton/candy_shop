@@ -26,7 +26,7 @@
 }
 
 @media(max-width: 1000px) {
-    body {
+    .body {
         background-image: url(../assets/images/snakeBackground1200.jpeg);
         background-repeat: no-repeat;
         background-position: center;
