@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-// import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 
 const UserLogin= () => {
@@ -20,11 +20,12 @@ const UserLogin= () => {
     const createUserLogin = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/user/login", userLogin)
+        axios.post("http://localhost:8000/api/login", userLogin)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
                 setUserLogin(res.data);
+                navigate('/admin/candy/create')
             })
             .catch(err => {
                 console.log(err);
@@ -35,7 +36,7 @@ const UserLogin= () => {
     }
 
     const logout = () => {
-        axios.get('http://localhost:8000/api/user/logout', {withCredentials: true})
+        axios.get('http://localhost:8000/api/logout', {withCredentials: true})
             .then(res => {
                 console.log(res);
                 navigate("/")
@@ -51,14 +52,14 @@ const UserLogin= () => {
             <form className="col-md-6 mx-auto" onSubmit={createUserLogin}>
                 {/*EMAIL INPUT*/}
                 <div className="form-group">
-                    {error.email ? <p className='text-danger'>{error.email.message}</p> : "Invalid email"}
+                    {error.email ? <p className='text-danger'>{error.email.message}</p> : null}
                     <label>Email: </label>
                     <input className="form-control border-success text-capitalize" type="email" name="email" value={userLogin.email} onChange={onChangeHandler} />
                 </div>
 
                 {/*PASSWORD INPUT*/}
                 <div className="form-group">
-                    {error.password ? <p className='text-danger'>{error.password.message}</p> : ""}
+                    {error.password ? <p className='text-danger'>{error.password.message}</p> : null}
                     <label>Password: </label>
                     <input className="form-control border-success text-capitalize" type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
                 </div>

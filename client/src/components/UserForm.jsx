@@ -8,7 +8,7 @@ const UserForm = () => {
     const [user, setUser] = useState({
         email: "",
         password: "",
-        confirmPass: "",
+        confirmPassword: "",
 
     })
     const [error, setError] = useState({});
@@ -21,7 +21,7 @@ const UserForm = () => {
     const createUser = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/user/create", user)
+        axios.post("http://localhost:8000/api/register", user)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -36,7 +36,7 @@ const UserForm = () => {
     }
 
     const logout = () => {
-        axios.get('http://localhost:8000/api/user/logout', {withCredentials: true})
+        axios.get('http://localhost:8000/api/logout', {withCredentials: true})
             .then(res => {
                 console.log(res);
                 navigate("/")
@@ -52,23 +52,23 @@ const UserForm = () => {
             <form className="col-md-6 mx-auto" onSubmit={createUser}>
                 {/*EMAIL INPUT*/}
                 <div className="form-group">
-                    {error.email ? <p className='text-danger'>{error.email.message}</p> : "Invalid email"}
+                    {error.email ? <p className='text-danger'>{error.email.message}</p> : null}
                     <label>Email: </label>
                     <input className="form-control border-success text-capitalize" type="email" name="email" value={user.email} onChange={onChangeHandler} />
                 </div>
 
                 {/*PASSWORD INPUT*/}
                 <div className="form-group">
-                    {error.password ? <p className='text-danger'>{error.password.message}</p> : ""}
+                    {error.password ? <p className='text-danger'>{error.password.message}</p> : null}
                     <label>Password: </label>
                     <input className="form-control border-success text-capitalize" type="password" name="password" value={user.password} onChange={onChangeHandler} />
                 </div>
 
                 {/* CONFIRM PASSWORD INPUT*/}
                 <div className="form-group">
-                    {error.confirmPass? <p className='text-danger'>{error.confirmPass.message}</p> : ""}
+                    {error.confirmPassword? <p className='text-danger'>{error.confirmPassword.message}</p> : null}
                     <label>Confirm Password: </label>
-                    <input className="form-control border-success text-capitalize" type="password" name="confirmPassword" value={user.confirmPass} onChange={onChangeHandler} />
+                    <input className="form-control border-success text-capitalize" type="password" name="confirmPassword" value={user.confirmPassword} onChange={onChangeHandler} />
                 </div>
 
                 <input className="btn btn-primary m-2" type="submit" value="Submit"/>

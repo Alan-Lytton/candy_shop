@@ -2,6 +2,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import CreateCandy from './components/CreateCandy';
+import UserForm from "./components/UserForm";
+import UserLogin from "./components/UserLogin";
 
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage/>}/>
           <Route path='/admin/candy/create' element={<CreateCandy/>}/>
+          <Route path='/admin/register' element={<UserForm/>}/>
+          <Route path='/admin/login' element={<UserLogin/>}/>
         </Routes>
       </BrowserRouter>
     </div>
