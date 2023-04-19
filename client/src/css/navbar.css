@@ -79,6 +79,8 @@ nav {
     position: sticky;
     top: 0;
     padding: 12px 24px;
+    background-color: #E8C3C2;
+    box-shadow: 0 12px 20px #E8C3C2;
 
 }
 

@@ -1,17 +1,19 @@
-body {
+.body {
     background-image: url(../assets/images/snakeBackground.jpeg);
+    /* background-attachment: fixed; */
     background-repeat: no-repeat;
-    background-position:center ;
+    background-position: center;
     background-size: cover;
     height: 100vh;
+    /* position: sticky; */
 }
 
-.title-link{
+.title-link {
     font-size: 1.5rem;
     margin-top: 1rem;
 }
 
-.containerLink{
+.containerLink {
     width: 50%;
     margin-top: 10%;
     margin-left: 10%;
@@ -22,22 +24,24 @@ body {
     font-size: 1rem;
     font-weight: 900;
 }
-@media(max-width: 1000px){
-    body{
-    background-image: url(../assets/images/snakeBackground1200.jpeg);
-    background-repeat: no-repeat;
-    background-position:center ;
-    background-size: cover;
-    height: 100vh;
+
+@media(max-width: 1000px) {
+    body {
+        background-image: url(../assets/images/snakeBackground1200.jpeg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
     }
-    
+
 }
+
 @font-face {
     font-family: Mabry Pro;
     src: url(../assets/fonts/19db990205089207b039.woff2);
 }
 
-.all_item-container{
+.all_item-container {
     margin-top: 15%;
 }
 
@@ -66,3 +70,66 @@ button:active {
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }
+
+.section-one {
+    height: 100vh;
+}
+
+.section-one_title {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffa9a6;
+}
+
+.gallery {
+    background: #EEE;
+}
+
+.gallery-cell {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: #8C8;
+    counter-increment: gallery-cell;
+}
+
+/* cell number */
+.gallery-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
+
+.carousel-pic {
+    width: 20%;
+    margin: 0.5rem;
+  }
+  
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12%;
+    width: 90%;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    overflow-x: hidden; /* hide overflowing images */
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.1s ease-in-out; /* add transition effect */
+  }
+  
+  .arrows {
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+    z-index: 999;
+  }
+  
