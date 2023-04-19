@@ -1,0 +1,76 @@
+.admin__body {
+    /* background-image: url(../assets/images/Sprinkles-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh; */
+}
+
+@font-face {
+    font-family: Mabry Pro;
+    src: url(../assets/fonts/19db990205089207b039.woff2);
+}
+
+.create__candy__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../assets/images/Sprinkles-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.create__candy__container h1 {
+    margin: 10px;
+    font-size: 3rem;
+    color: #FE1B86;
+}
+
+.create__candy__form {
+    min-width: 500px;
+    margin-top: 20px;
+    background-color: #E9C1C1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 3px dashed yellow;
+}
+
+.create__candy__label {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+.create__candy__input {
+    height: 30px;
+    min-width: 120px;
+}
+
+.create__candy__error__message {
+    color: red;
+}
+
+.create__candy__submit__btn {
+    margin-top: 10px;
+    width: 80%;
+    height: 40px;
+    font-size: 1.4rem;
+    background-color: black;
+    color: white;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out
+}
+
+.create__candy__submit__btn:hover {
+    transform: translate(-.25rem, -.25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #8EDECD;
+}
+
+.create__candy__submit__btn:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
