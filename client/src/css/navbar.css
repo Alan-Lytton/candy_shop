@@ -119,6 +119,7 @@ nav {
     margin-bottom: 0px;
     font-weight: bold;
     transition: all 200ms ease-in-out;
+    text-transform: uppercase;
 
 }
 .dropbtn:hover{
@@ -362,8 +363,8 @@ a {
     color: rgb(0, 0, 0);
     font-size: 20px;
     height: 40px;
-    /* background-color: #90a8ed; */
     padding: 4px;
+    text-transform: uppercase;
 }
 
 .menu__link-primary{
