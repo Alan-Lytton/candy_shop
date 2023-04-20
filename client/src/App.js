@@ -8,6 +8,7 @@ import UserLogin from "./components/UserLogin";
 import UserForm from "./components/UserForm";
 import CreateCandy from './components/CreateCandy';
 import EditCandy from './components/EditCandy';
+import AdminLanding from './components/AdminLanding';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/all/candies' element={<AllCandies/>}/>
           <Route path='/admin/login' element={<UserLogin/>}/>
           <Route path='/admin/register' element={<UserForm/>}/>
+          <Route path='/admin/dashboard' element={<AdminLanding/>}/>
           <Route path='/admin/candy/create' element={<CreateCandy/>}/>
           <Route path='/admin/candy/edit/:id' element={<EditCandy/>}/>
         </Routes>

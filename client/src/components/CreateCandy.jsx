@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import '../css/createCandy.css'
 
 const CreateCandy = () => {
@@ -28,7 +28,7 @@ const CreateCandy = () => {
                 console.log(res);
                 console.log(res.data);
                 setCandy(res.data);
-                setError({});
+                navigate('/admin/dashboard')
             })
             .catch(err => {
                 console.log(err);
@@ -51,6 +51,7 @@ const CreateCandy = () => {
 
     return (
         <div className="create__candy__container">
+            <button className="landingPage__route__btn create__dashboard__button"><Link className="landingPage__route__btn__font" to={'/admin/dashboard'}>Dashboard</Link></button>
             <button className='admin__logout__button' onClick={logout}>Logout</button>
             <h1>Create Candy</h1>
             <form className="create__candy__form" onSubmit={createCandy}>

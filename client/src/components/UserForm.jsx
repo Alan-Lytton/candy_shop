@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-
+import '../css/createCandy.css'
 
 const UserForm = () => {
 
@@ -26,6 +26,7 @@ const UserForm = () => {
                 console.log(res);
                 console.log(res.data);
                 setUser(res.data);
+                navigate('/admin/dashboard')
             })
             .catch(err => {
                 console.log(err);
@@ -35,43 +36,43 @@ const UserForm = () => {
             })
     }
 
-    const logout = () => {
-        axios.get('http://localhost:8000/api/logout', {withCredentials: true})
-            .then(res => {
-                console.log(res);
-                navigate("/")
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+    // const logout = () => {
+    //     axios.get('http://localhost:8000/api/logout', {withCredentials: true})
+    //         .then(res => {
+    //             console.log(res);
+    //             navigate("/")
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // }
     return (
-        <div className="create__candy col-md-6 mx-auto border border-dark p-2">
+        <div className="create__candy__container">
+            <br />
             <h1> ADMIN SIGN UP  </h1>
-
-            <form className="col-md-6 mx-auto" onSubmit={createUser}>
+            <form className={"create__candy__form"} onSubmit={createUser}>
                 {/*EMAIL INPUT*/}
                 <div className="form-group">
-                    {error.email ? <p className='text-danger'>{error.email.message}</p> : null}
-                    <label>Email: </label>
-                    <input className="form-control border-success text-capitalize" type="email" name="email" value={user.email} onChange={onChangeHandler} />
+                    {error.email ? <p className="create__candy__error__message">{error.email.message}</p> : null}
+                    <label className={"create__candy__label"}>Email: </label>
+                    <input className="create__candy__input" type="email" name="email" value={user.email} onChange={onChangeHandler} />
                 </div>
 
                 {/*PASSWORD INPUT*/}
                 <div className="form-group">
-                    {error.password ? <p className='text-danger'>{error.password.message}</p> : null}
-                    <label>Password: </label>
-                    <input className="form-control border-success text-capitalize" type="password" name="password" value={user.password} onChange={onChangeHandler} />
+                    {error.password ? <p className="create__candy__error__message">{error.password.message}</p> : null}
+                    <label className={"create__candy__label"}>Password: </label>
+                    <input className="create__candy__input" type="password" name="password" value={user.password} onChange={onChangeHandler} />
                 </div>
 
                 {/* CONFIRM PASSWORD INPUT*/}
                 <div className="form-group">
-                    {error.confirmPassword? <p className='text-danger'>{error.confirmPassword.message}</p> : null}
-                    <label>Confirm Password: </label>
-                    <input className="form-control border-success text-capitalize" type="password" name="confirmPassword" value={user.confirmPassword} onChange={onChangeHandler} />
+                    {error.confirmPassword? <p className="create__candy__error__message">{error.confirmPassword.message}</p> : null}
+                    <label className={"create__candy__label"}>Confirm Password: </label>
+                    <input className="create__candy__input" type="password" name="confirmPassword" value={user.confirmPassword} onChange={onChangeHandler} />
                 </div>
 
-                <input className="btn btn-primary m-2" type="submit" value="Submit"/>
+                <input className={"create__candy__submit__btn"} type="submit" value="Submit"/>
             </form>
         </div>
     )

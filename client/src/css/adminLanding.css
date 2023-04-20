@@ -1,0 +1,80 @@
+@font-face {
+    font-family: Mabry Pro;
+    src: url(../assets/fonts/19db990205089207b039.woff2);
+}
+
+.admin__landing__container{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../assets/images/Sprinkles-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.admin__landing__container h1 {
+    margin: 10px;
+    font-size: 3rem;
+    color: #FE1B86;
+}
+
+.admin__table {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 70%;
+    background-color: #E9C1C1;
+    
+}
+
+.admin__table, .admin__table__th, .admin__table__td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.table__candyName {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.table__candyName:hover {
+    color: #8F7EDE;
+}
+
+.admin__landing__buttons{
+    display: flex;
+}
+
+.admin__landing__create {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-left: 5%;
+    padding: 10px;
+    width: fit-content;
+    font-size: 1.4rem;
+    background-color: #8F7EDE;
+    color: black;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    text-align: center;
+}
+
+.admin__landing__create__font {
+    font-weight: normal;
+}
+
+.admin__landing__create:hover {
+    transform: translate(-.25rem, -.25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #E9C1C1;
+}
+
+.admin__landing__create:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
