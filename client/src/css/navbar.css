@@ -419,4 +419,12 @@ transform: rotate(10deg);
     .logo_img{
         width: 170px;
     }
+    .menu__backdrop{
+            height: 200px;
+        }
+        .menu__list{
+            padding: 0;
+        }
 }
+
+
