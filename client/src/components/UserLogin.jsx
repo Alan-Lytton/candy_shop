@@ -20,7 +20,7 @@ const UserLogin= () => {
     const createUserLogin = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/login", userLogin)
+        axios.post("http://localhost:8000/api/login", userLogin, {withCredentials: true})
             .then(res => {
                 console.log(res);
                 console.log(res.data);

@@ -21,7 +21,7 @@ const UserForm = () => {
     const createUser = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/register", user)
+        axios.post("http://localhost:8000/api/register", user, {withCredentials: true})
             .then(res => {
                 console.log(res);
                 console.log(res.data);
