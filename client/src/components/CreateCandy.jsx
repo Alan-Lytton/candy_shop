@@ -65,7 +65,7 @@ const CreateCandy = () => {
                 </div>
                 <div className="form-group">
                     {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
-                    <label className="create__candy__label">Candy Description: </label>
+                    <label className="create__candy__label">Description: </label>
                     <input className="create__candy__input" type="textarea" name="candyDescription" value={candy.candyDescription} onChange={onChangeHandler} />
                 </div>
                 <div className="form-group">
