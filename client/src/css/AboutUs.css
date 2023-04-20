@@ -176,7 +176,7 @@ p {
 .c-card._5 {
   position: -webkit-sticky;
   position: sticky;
-  top: 124px;
+  top: 144px !important;
 }
 
 .c-card-details {
