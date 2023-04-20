@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /* height: 100vh; */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     padding-bottom: 10%;
@@ -166,7 +166,7 @@ img {
     text-transform: uppercase;
     color: rgb(0, 0, 0);
     font-family: Mabry Pro;
-    font-weight: bold;
+    font-weight: 900;
 
 
 }

@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage/>}/>
           <Route path='/about/us' element={<AboutUs/>}/>
-          <Route path='/one/candy' element={<OneCandy/>}/>
+          <Route path='/one/candy/:id' element={<OneCandy/>}/>
           <Route path='/all/candies' element={<AllCandies/>}/>
           <Route path='/admin/login' element={<UserLogin/>}/>
           <Route path='/admin/register' element={<UserForm/>}/>

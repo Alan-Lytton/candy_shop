@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ScrollTrigger from 'react-scroll-trigger';
-import Footer from './Footer';
 import candy_bowl from '../assets/images/candy_bowl.webp'
 
 const LandingPage = () => {
@@ -98,7 +97,6 @@ const LandingPage = () => {
       <img className='landing_page_confident__image' src={candy_bowl} alt="" />
       </div>
       </section>
-    <Footer/>
     </div>
   )
   }
