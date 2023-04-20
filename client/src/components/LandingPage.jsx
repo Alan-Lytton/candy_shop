@@ -24,9 +24,9 @@ const LandingPage = () => {
         <Navbar />
         <div className="all_item-container">
           <div className='containerLink'>
-            <h1 className='title-link'> I'll take you to the candy shop.</h1>
-            <h1 className='title-link'> One taste of what we got.</h1>
-            <h1 className='title-link'> We'll have you spending all you got.</h1>
+            <h6 className='title-link'> I'll take you to the candy shop.</h6>
+            <h6 className='title-link'> One taste of what we got.</h6>
+            <h6 className='title-link'> We'll have you spending all you got.</h6>
           </div>
           <div className="action-button">
             <button className="submit button">Shop Candies</button>

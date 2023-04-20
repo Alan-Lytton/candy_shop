@@ -12,12 +12,13 @@
 }
 .title-link {
     font-size: 1.5rem;
-    color: #ffffff !important;
+    color: #000000 !important;
     text-transform: uppercase;
     font-family: Mabry Pro;
     text-align: start;
     margin-top: 2rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    -webkit-text-stroke: 1px solid white;
     font-weight: 900;
 }
 

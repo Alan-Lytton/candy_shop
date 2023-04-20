@@ -20,7 +20,7 @@ const Navbar = () => {
                 </div>
                 <ul className="nav__links">
                     <div className="dropdown">
-                        <a className="dropbtn">Shop</a>
+                        <a href='/all/candies' className="dropbtn">Shop</a>
                         <div className="dropdown-content">
                             <a href="#">Best sellers</a>
                             <a href="#">Sweet</a>
@@ -51,14 +51,16 @@ const Navbar = () => {
                         <i className="fas fa-times"></i>
                     </button>
                     <ul class="menu__links">
+
                     <li className="menu__list"><a className="menu__link" href="/register"><i
                     className="fa-solid fa-cart-shopping closedCart"></i></a></li>
+
 
                         <li class="menu__list"><a href="#" class="menu__link">Shop</a>
                         </li>
                         <li class="menu__list"><a href="/show/feed" class="menu__link" >Deals</a>
                         </li>
-                        <li class="menu__list"><a href="/logout" class="menu__link" >About Us</a>
+                        <li class="menu__list"><a href="/about/us" class="menu__link" >About Us</a>
                         </li>
                     </ul>
                 </div>

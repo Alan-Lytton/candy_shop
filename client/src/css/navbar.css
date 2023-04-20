@@ -254,6 +254,10 @@ a {
 
 .fa-cart-shopping {
     color: black;
+    content: "1";
+}
+.fa-cart-shopping:hover{
+transform: rotate(10deg);
 }
 
 .a__primary {
@@ -296,7 +300,7 @@ a {
     z-index: 10;
     position: fixed;
     top: 0px;
-    left: 600px;
+    left: 400px;
     right: 0px;
     margin: 1.5rem 2.0rem;
     padding: 2rem;
@@ -309,6 +313,11 @@ a {
     display: none;
     display: block;
     transform: translateX(150%) translateZ(0px);
+}
+@media(max-width:709px){
+    .menu__backdrop{
+        left: 0px;
+    }
 }
 
 .menu__backdrop,
