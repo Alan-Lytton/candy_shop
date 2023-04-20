@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
+import '../css/createCandy.css'
 
 
 const UserLogin= () => {
@@ -46,30 +47,30 @@ const UserLogin= () => {
     //         })
     // }
 
-    //ADD NAVIGATE BUTTON TO CLIENT LANDINGPAGE
+
     return (
-        <div className="create__candy col-md-6 mx-auto border border-dark p-2">
-            <h1> ADMIN LOGIN  </h1>
-            <button className="landingPage__route__btn"><Link to={'/'}>Client LandingPage</Link></button>
+            <div className={"create__candy__container"}>
+                <br />
+                <h1> ADMIN LOGIN  </h1>
+                <form className="create__candy__form" onSubmit={createUserLogin}>
+                    {/*EMAIL INPUT*/}
+                    <div className="form-group">
+                        {error.email ? <p className='create__candy__error__message'>{error.email.message}</p> : null}
 
-            <form className="col-md-6 mx-auto" onSubmit={createUserLogin}>
-                {/*EMAIL INPUT*/}
-                <div className="form-group">
-                    {error.email ? <p className='text-danger'>{error.email.message}</p> : null}
-                    <label>Email: </label>
-                    <input className="form-control border-success text-capitalize" type="email" name="email" value={userLogin.email} onChange={onChangeHandler} />
-                </div>
+                        <label className={"create__candy__label"}>Email: </label>
+                        <input className={"create__candy__input"} type="email" name="email" value={userLogin.email} onChange={onChangeHandler} />
+                    </div>
+                    {/*PASSWORD INPUT*/}
+                    <div className="form-group">
+                        {error.password ? <p className='create__candy__error__message'>{error.password.message}</p> : null}
 
-                {/*PASSWORD INPUT*/}
-                <div className="form-group">
-                    {error.password ? <p className='text-danger'>{error.password.message}</p> : null}
-                    <label>Password: </label>
-                    <input className="form-control border-success text-capitalize" type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
-                </div>
+                        <label className={"create__candy__label"}>Password: </label>
+                        <input className={"create__candy__input"} type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
+                    </div>
 
-                <input className="btn btn-primary m-2" type="submit" value="Submit"/>
-            </form>
+                    <input className="create__candy__submit__btn" type="submit" value="Submit"/>
+                </form>
         </div>
     )
 }
-export default UserLogin
+export default UserLogin;
