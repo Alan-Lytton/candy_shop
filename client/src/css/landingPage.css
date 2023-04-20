@@ -4,7 +4,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10%;
     /* position: sticky; */
 }
 .slick-dots{
@@ -23,8 +26,8 @@
 }
 
 .containerLink {
-    width: 50%;
-    margin-top: 10%;
+    width: 30%;
+    margin-top: 7%;
     margin-left: 10%;
     z-index: 10;
     color: #ffffff;
@@ -34,15 +37,6 @@
     font-weight: 900;
 }
 
-@media(max-width: 1000px) {
-    .body {
-        background-image: url(../assets/images/snakeBackground1200.jpeg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        height: 100vh;
-    }
-}
 
 
 @font-face {
@@ -79,9 +73,33 @@
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }
+.carasoul-button{
+    width: 150px;
+    height: 40px;
+    font-size: 1rem;
+    border: solid .0625rem black;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    margin-top: 50px;
+    margin-bottom: 24px;
+}
+.carasoul-button:hover{
+    transform: translate(-.25rem, -.25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #ff90e8;
+}
+.carasoul-button:active{
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
 
 .section-one {
-    height: 90vh;
+    height: 100vh;
+    height: fit-content;
 }
 
 .section-one_title {
@@ -111,12 +129,14 @@ img {
     max-width: 250px;
     margin: 0 auto;
     border-radius: 12px;
+    height: auto;
 }
 .carasoul_container {
     width: 60%;
     margin: 0 auto;
     text-align: center;
     margin-top: 7rem;
+
 }
 
 .slick-prev:before{
@@ -130,4 +150,204 @@ img {
     color: black !important;
     font-size: 26px !important;
     opacity: 100% !important;
+}
+.landing_page_confident{
+    border-top: 2px solid black;
+    height: fit-content;
+    background-color: #ffd6d6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 6% 12%;
+}
+.landing_page_confident__title{
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    font-family: Mabry Pro;
+    font-weight: bold;
+
+
+}
+.breaker_box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0;
+}
+.landing_page_confident__text{
+    font-size: 1.5rem;
+    width:60%;    
+    line-height: 240% !important;
+
+}
+.landing_page_confident__image{
+    width: 28%;
+    border-radius: 12px;
+}
+
+@media(max-width: 1000px) {
+    .body {
+        background-image: url(../assets/images/snakeBackground1200.jpeg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+    }
+}
+@media(max-height: 400px){
+    .containerLink {
+        width: 30%;
+        margin-left: 10%;
+        z-index: 10;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-family: Mabry Pro;
+        font-size: 0.4rem;
+        font-weight: 900;
+    }
+    .title-link{
+        font-size: 0.6rem;
+        margin-top: 1rem;
+    }
+
+    .all_item-container{
+        padding-bottom: 10% !important;
+        margin-top: 10% !important;
+    }
+    .button{
+        width: 12% !important;
+        height: 20px !important;
+        font-size: 0.5rem !important;
+    }
+ 
+}
+@media(max-width: 1000px){
+    .landing_page_confident__text{
+        line-height: 150% !important;
+        font-size: 1.2rem !important;
+    }
+    .containerLink {
+        width: 30%;
+        margin-left: 10%;
+        z-index: 10;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-family: Mabry Pro;
+        font-size: 0.6rem;
+        font-weight: 900;
+    }
+    .title-link{
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+    }
+
+    .all_item-container{
+        padding-bottom: 10% !important;
+    }
+    .button{
+        width: 20% !important;
+        height: 40px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media(max-width: 800px){
+    .containerLink{
+        width: 70%;
+
+    }
+    .landing_page_confident__text{
+        line-height: 100% !important;
+        font-size: 1rem !important;
+    }
+.landing_page_confident__title{
+    font-size: 2rem;
+}
+.section-one_title{
+    font-size: 2rem;
+}
+.landing_page_confident__image{
+    width: 25%;
+    height: auto;
+    /* padding-right: 5%; */
+    border-radius: 12px;
+}
+.carasoul_container{
+    margin-top: 5%;
+}
+.carasoul-button{
+    margin-bottom: 24px;
+    margin-top: 50px;
+    width: 150px;
+    height: 40px;
+}
+@media (max-width: 700px) and (max-height: 700px) {
+
+   .all_item-container{
+    margin-top: 25%;
+   }
+  }
+
+  @media(max-width: 540px) {
+    .landing_page_confident{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .breaker_box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .landing_page_confident__image{
+        display: none;
+    }
+    .landing_page_confident__text{
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 550px){
+    .all_item-container{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 45%;
+    }
+    .button{
+        width: 100% !important;
+        padding: 2px 12px;
+        text-align: center;
+        margin: 0;
+    }
+    .containerLink{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left:0;
+    }
+    .title-link{
+        text-align: center;
+    }
+.menu__backdrop{
+        height: 300px;
+    }
+
+  }
+  .section-one_title{
+    font-size: 1.4rem;
+    padding: 0 12px;
+  }
 }
