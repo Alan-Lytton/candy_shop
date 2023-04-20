@@ -1,11 +1,3 @@
-.admin__body {
-    /* background-image: url(../assets/images/Sprinkles-2.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100vh; */
-}
-
 @font-face {
     font-family: Mabry Pro;
     src: url(../assets/fonts/19db990205089207b039.woff2);
@@ -86,6 +78,8 @@
     color: red;
 }
 
+
+/*------ CREATE CANDY SUBMIT BUTTON------ */
 .create__candy__submit__btn {
     margin: 0 auto;
     margin-top: 10px;
@@ -113,6 +107,37 @@
     box-shadow: 0rem 0rem #000;
 }
 
+/*-----TOP BUTTONS ON CREATE/EDIT PAGE------*/
+.edit__candy__top__buttons {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit__candy__top__buttons__left {
+    display: flex;
+    margin-left: 5%;
+}
+
+@media(max-width: 460px) {
+    .admin__logout__button {
+        font-size: .8rem !important;
+    }
+
+    .landingPage__route__btn {
+        font-size: .8rem !important;
+    }
+
+    .admin__delete__candy {
+        font-size: .8rem !important;
+    }
+
+    .admin__landing__create {
+        font-size: .8rem !important;
+    }
+}
+
+/*------ Logout BUTTON------ */
 .admin__logout__button {
     margin: 0 auto;
     margin-top: 10px;
@@ -136,6 +161,71 @@
 }
 
 .admin__logout__button:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
+
+
+/*------ Dashboard Button------ */
+.landingPage__route__btn {
+    margin: 0 auto;
+    margin-top: 10px;
+    /* margin-left: 5%; */
+    padding: 10px;
+    width: fit-content;
+    font-size: 1.4rem;
+    background-color: #8F7EDE;
+    color: black;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    text-align: center;
+}
+
+.landingPage__route__btn__font {
+    font-weight: normal;
+}
+
+.landingPage__route__btn:hover {
+    transform: translate(-.25rem, -.25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #E9C1C1;
+}
+
+.landingPage__route__btn:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
+
+.create__dashboard__button {
+    margin-left: 5%;
+}
+
+
+/*------ DELETE BUTTON------ */
+.admin__delete__candy {
+    margin-top: 10px;
+    margin-right: 5%;
+    padding: 10px;
+    width: fit-content;
+    font-size: 1.4rem;
+    background-color: #E9C1C1;
+    color: black;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    text-align: center;
+}
+
+.admin__delete__candy:hover {
+    transform: translate(-.25rem, -.25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #8F7EDE;
+}
+
+.admin__delete__candy:active {
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }

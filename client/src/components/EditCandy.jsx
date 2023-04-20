@@ -68,9 +68,13 @@ const EditCandy = () => {
 
     return (
         <div className="create__candy__container">
-            <button className="landingPage__route__btn"><Link to={'/admin/dashboard'}>Dashboard</Link></button>
-            <button className='admin__logout__button' onClick={logout}>Logout</button>
-            <button className='admin__logout__button' onClick={() => deleteCandy(id)}>Delete Candy</button>
+            <div className="edit__candy__top__buttons">
+                <div className="edit__candy__top__buttons__left">
+                    <button className="landingPage__route__btn"><Link className="landingPage__route__btn__font"to={'/admin/dashboard'}>Dashboard</Link></button>
+                    <button className='admin__logout__button' onClick={logout}>Logout</button>
+                </div>
+                <button className='admin__delete__candy' onClick={() => deleteCandy(id)}>Delete Candy</button>
+            </div>
             <h1>Edit {candy?.candyName}</h1>
             <form className="create__candy__form" onSubmit={updateCandy}>
                     {error.candyName ? <p className='create__candy__error__message'>{error.candyName.message}</p> : ""}
