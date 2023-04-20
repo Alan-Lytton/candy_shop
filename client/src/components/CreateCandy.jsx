@@ -42,7 +42,7 @@ const CreateCandy = () => {
         axios.get('http://localhost:8000/api/logout', {withCredentials: true})
             .then(res => {
                 console.log(res);
-                navigate("/")
+                navigate("/admin/login")
             })
             .catch(err => {
                 console.log(err);
@@ -54,33 +54,33 @@ const CreateCandy = () => {
             <button className='admin__logout__button' onClick={logout}>Logout</button>
             <h1>Create Candy</h1>
             <form className="create__candy__form" onSubmit={createCandy}>
-                <div className="form-group">
                     {error.candyName ? <p className='create__candy__error__message'>{error.candyName.message}</p> : ""}
+                <div className="form-group">
                     <label className="create__candy__label">Name: </label>
                     <input className="create__candy__input" type="text" name="candyName" value={candy.candyName} onChange={onChangeHandler} />
                 </div>
-                <div className="form-group">
                     {error.candyCategory ? <p className='create__candy__error__message'>{error.candyCategory.message}</p> : ""}
+                <div className="form-group">
                     <label className="create__candy__label">Category: </label>
                     <input className="create__candy__input" type="text" name="candyCategory" value={candy.candyCategory} onChange={onChangeHandler} />
                 </div>
-                <div className="form-group">
                     {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
-                    <label className="create__candy__label">Description: </label>
-                    <input className="create__candy__input" type="textarea" name="candyDescription" value={candy.candyDescription} onChange={onChangeHandler} />
-                </div>
                 <div className="form-group">
+                    <label className="create__candy__label">Description: </label>
+                    <input className="create__candy__input" type="text" name="candyDescription" value={candy.candyDescription} onChange={onChangeHandler} />
+                </div>
                     {error.candyPrice ? <p className='create__candy__error__message'>{error.candyPrice.message}</p> : ""}
+                <div className="form-group">
                     <label className="create__candy__label">Price: </label>
                     <input className="create__candy__input" type="number" name="candyPrice" value={candy.candyPrice} onChange={onChangeHandler} />
                 </div>
-                <div className="form-group">
                     {error.candyStock ? <p className='create__candy__error__message'>{error.candyStock.message}</p> : ""}
+                <div className="form-group">
                     <label className="create__candy__label">Stock: </label>
                     <input className="create__candy__input" type="number" name="candyStock" value={candy.candyStock} onChange={onChangeHandler} />
                 </div>
-                <div className="form-group">
                     {error.candyImage ? <p className='create__candy__error__message'>{error.candyImage.message}</p> : ""}
+                <div className="form-group">
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy.candyImage} onChange={onChangeHandler} />
                 </div>

@@ -19,6 +19,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -108,6 +109,33 @@
 }
 
 .create__candy__submit__btn:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
+
+.admin__logout__button {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-left: 5%;
+    padding: 10px;
+    width: fit-content;
+    font-size: 1.4rem;
+    background-color: #8F7EDE;
+    color: black;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    text-align: center;
+}
+
+.admin__logout__button:hover {
+    transform: translate(-.25rem, -.25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #E9C1C1;
+}
+
+.admin__logout__button:active {
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }
