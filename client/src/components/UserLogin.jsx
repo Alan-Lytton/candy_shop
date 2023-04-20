@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 
 const UserLogin= () => {
@@ -25,7 +25,7 @@ const UserLogin= () => {
                 console.log(res);
                 console.log(res.data);
                 setUserLogin(res.data);
-                navigate('/admin/candy/create')
+                navigate('/admin/dashboard')
             })
             .catch(err => {
                 console.log(err);
@@ -35,19 +35,22 @@ const UserLogin= () => {
             })
     }
 
-    const logout = () => {
-        axios.get('http://localhost:8000/api/logout', {withCredentials: true})
-            .then(res => {
-                console.log(res);
-                navigate("/")
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+    // const logout = () => {
+    //     axios.get('http://localhost:8000/api/logout', {withCredentials: true})
+    //         .then(res => {
+    //             console.log(res);
+    //             navigate("/")
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // }
+
+    //ADD NAVIGATE BUTTON TO CLIENT LANDINGPAGE
     return (
         <div className="create__candy col-md-6 mx-auto border border-dark p-2">
             <h1> ADMIN LOGIN  </h1>
+            <button className="landingPage__route__btn"><Link to={'/'}>Client LandingPage</Link></button>
 
             <form className="col-md-6 mx-auto" onSubmit={createUserLogin}>
                 {/*EMAIL INPUT*/}

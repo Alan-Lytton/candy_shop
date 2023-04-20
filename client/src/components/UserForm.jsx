@@ -26,6 +26,7 @@ const UserForm = () => {
                 console.log(res);
                 console.log(res.data);
                 setUser(res.data);
+                navigate('/admin/dashboard')
             })
             .catch(err => {
                 console.log(err);
@@ -35,16 +36,16 @@ const UserForm = () => {
             })
     }
 
-    const logout = () => {
-        axios.get('http://localhost:8000/api/logout', {withCredentials: true})
-            .then(res => {
-                console.log(res);
-                navigate("/")
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+    // const logout = () => {
+    //     axios.get('http://localhost:8000/api/logout', {withCredentials: true})
+    //         .then(res => {
+    //             console.log(res);
+    //             navigate("/")
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // }
     return (
         <div className="create__candy col-md-6 mx-auto border border-dark p-2">
             <h1> ADMIN SIGN UP  </h1>

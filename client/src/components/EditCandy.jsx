@@ -37,13 +37,22 @@ const EditCandy = () => {
         axios.put('http://localhost:8000/api/candy/edit/' + id, candy)
             .then(res => {
                 setCandy(res.data.oneCandy);
-                navigate('/')
+                navigate('/admin/dashboard')
             })
             .catch(err => {
                 console.log(err);
                 console.log(err.response.data.errors)
                 setError(err.response.data.errors);
             })
+    }
+
+    const deleteCandy = (id) => {
+        axios.delete("http://localhost:8000/api/candy/delete/" + id)
+            .then(res => {
+                console.log("Successful Delete",res)
+                navigate('/admin/dashboard')
+            })
+            .catch(err => console.log(err))
     }
 
     const logout = () => {
@@ -59,7 +68,9 @@ const EditCandy = () => {
 
     return (
         <div className="create__candy__container">
+            <button className="landingPage__route__btn"><Link to={'/admin/dashboard'}>Dashboard</Link></button>
             <button className='admin__logout__button' onClick={logout}>Logout</button>
+            <button className='admin__logout__button' onClick={() => deleteCandy(id)}>Delete Candy</button>
             <h1>Edit {candy?.candyName}</h1>
             <form className="create__candy__form" onSubmit={updateCandy}>
                     {error.candyName ? <p className='create__candy__error__message'>{error.candyName.message}</p> : ""}
