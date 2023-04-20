@@ -12,9 +12,9 @@
 }
 
 .create__candy__container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
     background-image: url(../assets/images/Sprinkles-2.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -29,22 +29,56 @@
 }
 
 .create__candy__form {
-    min-width: 500px;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
     background-color: #E9C1C1;
-    padding: 20px;
+    padding: 50px 40px;
     border-radius: 8px;
     border: 3px dashed yellow;
 }
 
+@media(max-width: 1040px){
+    .create__candy__form{
+        width: 50%;
+    }
+}
+
+@media(max-width: 830px){
+    .create__candy__form{
+        width: 70%
+    }
+    .create__candy__label{
+        font-size: 1rem;
+    }
+}
+
+@media(max-width: 600px){
+    .create__candy__form{
+        width: 85%;
+    }
+    .create__candy__label{
+        font-size: .8rem !important;
+    }
+    .create__candy__input{
+        width: 30%;
+    }
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+}
+
 .create__candy__label {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 10px;
 }
 
 .create__candy__input {
     height: 30px;
-    min-width: 120px;
+    width: 60%;
 }
 
 .create__candy__error__message {
@@ -52,22 +86,25 @@
 }
 
 .create__candy__submit__btn {
+    margin: 0 auto;
     margin-top: 10px;
     width: 80%;
     height: 40px;
     font-size: 1.4rem;
-    background-color: black;
-    color: white;
+    background-color: #8F7EDE;
+    color: black;
     border-radius: .25rem;
     font-family: Mabry Pro;
     cursor: pointer;
-    transition: all .14s ease-out
+    transition: all .14s ease-out;
+    text-align: center;
 }
 
 .create__candy__submit__btn:hover {
     transform: translate(-.25rem, -.25rem);
     box-shadow: .25rem .25rem #000;
     background-color: #8EDECD;
+    
 }
 
 .create__candy__submit__btn:active {
