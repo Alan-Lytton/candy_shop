@@ -16,19 +16,12 @@ const Navbar = () => {
         <nav className="treact__nav">
             <div className="row">
                 <div className="logo__mask">
-                    <img className='logo_img' require src={CompanyLogo} alt="" />
+                <a href="/"> <img className='logo_img' require src={CompanyLogo} alt="" /></a>
+
                 </div>
                 <ul className="nav__links">
                     <div className="dropdown">
                         <a href='/all/candies' className="dropbtn">Shop</a>
-                        <div className="dropdown-content">
-                            <a href="#">Best sellers</a>
-                            <a href="#">Sweet</a>
-                            <a href="#">Sour</a>
-                            <a href="#">Spicy</a>
-                            <a href="#">Chocolate</a>
-                            <a href="#">Regional</a>
-                        </div>
                     </div>
                     <div className="dropdown">
                         <a className="dropbtn">Deals</a>

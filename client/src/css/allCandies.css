@@ -1,11 +1,10 @@
 .all_candies_container{
 background-color: #E8C2C2;
+height: fit-content;
 }
 .main__title__allCandies{
-    color: #000000;
     text-align: center;
     text-transform: uppercase;
-    margin-top: 2rem;
     margin-bottom: 0;
     font-family: Milligram, sans-serif;
     font-size: 3rem;
@@ -57,7 +56,7 @@ font-size: 1.2rem;
 
 .each__candy__addToCart{
     margin-top: 0.5rem;
-padding: 6px 20px;
+padding: 12px 30px;
 border-radius: 8px;
 font-size: 0.8rem;
 cursor: pointer;
@@ -89,4 +88,72 @@ transition: all .14s ease-out;
   
   .slide-in {
     transform: translateX(-100%);
-  }    
+  }
+  .select-container {
+    width: 200px; 
+    margin-left: auto; 
+  }
+  
+  .select-container .react-select__control {
+    min-height: 32px;
+  }
+  .all__candies__h1andfilter{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .select-container .react-select__value-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  @media(max-width: 900px){
+    .cadies_container{
+        width: 95%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    
+    }
+    
+    .each_candy{
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    .main__title__allCandies{
+        font-size: 1.8rem;
+    }
+  }
+
+  @media(max-width: 500px){
+    .cadies_container{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    
+    }
+    
+    .each_candy{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    .main__title__allCandies{
+        font-size: 1.8rem;
+    }
+  }
