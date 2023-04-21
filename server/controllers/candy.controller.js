@@ -1,6 +1,10 @@
 const Candy = require('../models/candy.model');
+const {capitalize} = require("../utilities/candyShop.utilities");
+
 
 module.exports.createCandy = (req, res) =>{
+    const temp = req.body.candyName;
+    req.body = {...req.body,candyName:capitalize(temp)}
     Candy.create(req.body)
         .then(newCandy => res.json({candy:newCandy}))
         .catch(err => res.status(400).json(err))
@@ -19,6 +23,8 @@ module.exports.getOneCandy = (req,res) =>{
 }
 
 module.exports.updateCandy = (req,res) =>{
+    const temp = req.body.candyName;
+    req.body = {...req.body,candyName:capitalize(temp)}
     Candy.findOneAndUpdate({_id:req.params.id},req.body,{new:true,runValidators:true})
         .then(updatedCandy => res.json({oneCandy:updatedCandy}))
         .catch(err => res.status(400).json(err))

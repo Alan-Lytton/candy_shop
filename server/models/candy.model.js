@@ -6,7 +6,7 @@ const CandySchema = new mongoose.Schema({
         type:String,
         required: [true,"Product name is required!"],
         minlength: [3,"Product name must be at least 3 characters long!"],
-        maxLength: [20,"Product name can not be more than 20 characters!"]
+        maxLength: [50,"Product name can not be more than 50 characters!"]
     },
     candyPrice:{
         type:Number,
@@ -16,7 +16,7 @@ const CandySchema = new mongoose.Schema({
     candyDescription:{
         type:String,
         required:[true,"Product description is required!"],
-        maxLength: [250,"Product description can not exceed 250 characters!"]
+        maxLength: [300,"Product description can not exceed 300 characters!"]
     },
     candyImage:{
         type:String,
