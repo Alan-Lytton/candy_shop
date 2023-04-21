@@ -258,10 +258,21 @@ a {
 .fa-cart-shopping {
     color: black;
     content: "1";
-}
-.fa-cart-shopping:hover{
-transform: rotate(10deg);
-}
+    transition: transform 0.2s;
+  }
+  
+  .fa-cart-shopping:hover {
+    animation: rotate-cart 0.3s infinite alternate;
+  }
+  
+  @keyframes rotate-cart {
+    from {
+      transform: rotate(-10deg);
+    }
+    to {
+      transform: rotate(10deg);
+    }
+  }
 
 .a__primary {
     color: white;
@@ -398,7 +409,9 @@ transform: rotate(10deg);
     text-decoration: none;
     opacity: 1;
 }
+.new_cart_count{
 
+}
 
 
 @media(max-width: 1000px) {
@@ -415,6 +428,9 @@ transform: rotate(10deg);
     }
     .btn__menu {
         display: block;
+    }
+    .cart-count{
+        display: none;
     }
 
 }

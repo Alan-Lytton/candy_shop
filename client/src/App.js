@@ -1,36 +1,46 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import AboutUs from './components/AboutUs';
-import OneCandy from './components/OneCandy';
-import AllCandies from './components/AllCandies';
-import UserLogin from "./components/UserLogin";
-import UserForm from "./components/UserForm";
-import CreateCandy from './components/CreateCandy';
-import EditCandy from './components/EditCandy';
-import AdminLanding from './components/AdminLanding';
-import Filtered from './components/Filtered'
-
-
+import React, { useContext } from 'react';
+import { AboutUs, Filtered, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding } from './components/index';
+import { CartContext } from './contexts/CartContext';
+import Cart from './components/Cart'
 function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<LandingPage/>}/>
-          <Route path='/about/us' element={<AboutUs/>}/>
-          <Route path='/one/candy/:id' element={<OneCandy/>}/>
-          <Route path='/all/candies' element={<AllCandies/>}/>
-          <Route path='/admin/login' element={<UserLogin/>}/>
-          <Route path='/admin/register' element={<UserForm/>}/>
-          <Route path='/admin/dashboard' element={<AdminLanding/>}/>
-          <Route path='/admin/candy/create' element={<CreateCandy/>}/>
-          <Route path='/admin/candy/edit/:id' element={<EditCandy/>}/>
-          <Route path="/filtered/candy/:id" element={<Filtered />} />
+  const { cartCount, setCartCount, cartItems, setCartItems } = useContext(CartContext);
 
-        </Routes>
-      </BrowserRouter>
-    </div>
+  const handleAddToCart = (addedCandy)=> {
+    setCartCount(cartCount + 1);
+    setCartItems([...cartItems, addedCandy]);
+  }
+
+
+  return (
+
+    <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage/>} />
+            <Route
+              path="/shop"
+              element={<AllCandies onAddToCart={handleAddToCart} />}
+            />
+            <Route path="/about/us" element={<AboutUs />} />
+            <Route path="/admin/login" element={<UserLogin />} />
+            <Route
+              path="/one/candy/:id"
+              element={<OneCandy cartCount={cartCount} onAddToCart={handleAddToCart} />}
+            />
+            <Route path="/admin/register" element={<UserForm />} />
+            <Route path="/admin/dashboard" element={<AdminLanding />} />
+            <Route path="/admin/candy/create" element={<CreateCandy />} />
+            <Route
+              path="/filtered/candy/:id"
+              element={<Filtered cartCount={cartCount} onAddToCart={handleAddToCart} />}
+            />
+            <Route path="/admin/candy/edit/:id" element={<EditCandy />} />
+            <Route path="/candy/cart" element={<Cart cartItems = {cartItems}/>}/>
+          </Routes>
+        </BrowserRouter>
+        </div>
+
   );
 }
 

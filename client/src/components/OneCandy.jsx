@@ -8,16 +8,22 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const OneCandy = () => {
+const OneCandy = ({onAddToCart, cartCount}) => {
+
     const { id } = useParams();
     const [candy, setCandy] = useState({});
+
+
+    const addToCart = () => {
+        onAddToCart();
+      };
 
     const settings = {
         className: "center",
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         // autoplay: true,    
         responsive: [
@@ -59,7 +65,7 @@ const OneCandy = () => {
 
     return (
         <section className='one_candy_container'>
-            <Navbar />
+            <Navbar cartCount={cartCount}/>
             <section className="main_container_one_candy">
                 <div className="candy_image_container">
                     <img className='one_candy_image' require src={candy.candyImage} alt="this is the iamge" />
@@ -71,7 +77,7 @@ const OneCandy = () => {
                     <h6 className='candy__category__one'>Category: {candy.candyCategory}</h6>
                     <h6 className="candy__stock__one">In Stock: {candy.candyStock}</h6>
                     <div className="container_button_badges">
-                        <button className='add_to_cart_one'>Add to Cart</button>
+                        <button className='add_to_cart_one' onClick={addToCart}>Add to Cart</button>
                         <img className="imageBagePayment" src={PaymentBadge} alt="" />
                     </div>
                 </div>
@@ -89,7 +95,7 @@ const OneCandy = () => {
                                         <Link to={`/one/candy/${candi._id}`}>{candi.candyName}</Link>
                                     </h6>
                                     <h6 className='candy__price'>${candi.candyPrice}</h6>
-                                    <button className='each__candy__addToCart'>Add to Cart!</button>
+                                    <button className='each__candy__addToCart' onClick={addToCart}>Add to Cart!</button>
                                 </div>
                             </div>
                         ))}

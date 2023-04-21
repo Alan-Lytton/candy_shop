@@ -5,7 +5,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ScrollTrigger from 'react-scroll-trigger';
+import { useNavigate } from 'react-router-dom';
 import candy_bowl from '../assets/images/candy_bowl.webp'
+import { CartContext,CartProvider } from '../contexts/CartContext';
 
 const LandingPage = () => {
   const settings = {
@@ -32,7 +34,16 @@ const LandingPage = () => {
         },
       },
     ],
-  };
+  };  
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/shop');
+  }
+
+  function handleClickToDeals() {
+    navigate('/deals');
+  }
   
   const [animate, setAnimate] = useState(false);
 
@@ -43,10 +54,12 @@ const LandingPage = () => {
   const onExitViewport = () => {
     setAnimate(false);
   };
+
+
   return (
     <div className="main-body">
       <div className='body'>
-        <Navbar />
+      <Navbar />
         <div className="all_item-container">
           <div className='containerLink'>
             <h6 className='title-link'> I'll take you to the candy shop.</h6>
@@ -54,13 +67,13 @@ const LandingPage = () => {
             <h6 className='title-link'> We'll have you spending all you got.</h6>
           </div>
           <div className="action-button">
-            <button className="submit button">Shop Candies</button>
+            <button className="submit button" onClick={handleClick}>Shop Candies</button>
           </div>
         </div>
       </div>
       <ScrollTrigger onEnter={onEnterViewport} onExit={onExitViewport}>
         <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
-        <h1 className='section-one_title'>Shop now for discounted products!</h1>
+        <h1 className='section-one_title final_title__'>Shop now for discounted products!</h1>
         <div className="carasoul_container">
 
           <Slider {...settings}>
@@ -86,11 +99,12 @@ const LandingPage = () => {
             </div>
           </Slider>
 
-          <button className='carasoul-button'>Buy</button>
+          <button className='carasoul-button' onClick={handleClickToDeals}>Find Deals</button>
         </div>
         </section>
       </ScrollTrigger>
       <section className="landing_page_confident">
+      
       <h1 className="section-one_title total_titel">What we offer</h1>
       <div className="breaker_box">
       <h6 className='landing_page_confident__text'>Satisfy your cravings with delicious candy shipped right to your door. Whether you’re in the mood for sugar-free candy classics or bulk gummies, holiday assortments like Easter and Halloween candy, or old-time candy favorites like Necco Wafers and Gobstoppers, we have the sweets for you.</h6>

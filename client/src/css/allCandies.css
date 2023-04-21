@@ -3,13 +3,13 @@ background-color: #E8C2C2;
 height: fit-content;
 }
 .main__title__allCandies{
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 0;
-    font-family: Milligram, sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-family: Milligram, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 100%;
 
 }
 .cadies_container{
@@ -20,6 +20,9 @@ height: fit-content;
 
 }
 
+.select-tag__control:hover {
+  cursor: pointer;
+}
 .each_candy{
     width: 33%;
     margin: 0 auto;
@@ -44,7 +47,22 @@ cursor: pointer;
     cursor: pointer;
 }
 
+.candy__image {
+  transition: transform 0.2s;
+}
 
+.candy__image:hover {
+  animation: rotate-cart 0.6s infinite alternate;
+}
+
+@keyframes rotate-cart {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
 
 .candy__title{
     font-size: 1.4rem;
@@ -104,6 +122,7 @@ transition: all .14s ease-out;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: -1000;
   }
   .css-qr46ko{
     color: black;

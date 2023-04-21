@@ -43,7 +43,6 @@ body {
 }
 
 h1 {
-  z-index: 10;
   color: #43a363;
   text-align: center;
   text-transform: uppercase;
@@ -53,7 +52,6 @@ h1 {
   font-size: 4rem;
   font-weight: 700;
   line-height: 100%;
-  position: relative;
 }
 
 h2 {
@@ -139,6 +137,11 @@ p {
   font-size: 3em;
   line-height: 1em;
 }
+.c-card._5 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 64px !important;
+}
 
 .c-card {
   width: 100%;
@@ -173,11 +176,6 @@ p {
   top: 84px;
 }
 
-.c-card._5 {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 144px !important;
-}
 
 .c-card-details {
   margin-bottom: 20px;

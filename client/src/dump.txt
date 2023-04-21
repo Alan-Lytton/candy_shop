@@ -423,3 +423,21 @@ export default AboutUs
 
 
   style.moduels.css // look into it
+
+
+
+
+
+
+
+
+
+
+
+{_id: '6441533e2ed4bdfc2dba3281', candyName: 'Skittles Original', candyPrice: 1.89, candyDescription: 'Every pack of SKITTLES Original Fruity Candy gives…strawberry, green apple, grape, lemon and orange.', candyImage: 'https://www.skittles.com/cdn-cgi/image/width=600,h…es/migrate-product-files/bam8afcev37jvz2mfpnk.png', …},
+{_id: '644161fcda0e742d53db8579', candyName: 'Kit-Kat', candyPrice: 1.79, candyDescription: "We're all about those breaks. And the best breaks …of crispy wafers coated in smooth milk chocolate.", candyImage: 'https://s7d2.scene7.com/is/image/hersheysassets/0_…7_701_24600_070_Item_Front?fmt=png-alpha&hei=2250', …},
+{_id: '644161fcda0e742d53db8579', candyName: 'Kit-Kat', candyPrice: 1.79, candyDescription: "We're all about those breaks. And the best breaks …of crispy wafers coated in smooth milk chocolate.", candyImage: 'https://s7d2.scene7.com/is/image/hersheysassets/0_…7_701_24600_070_Item_Front?fmt=png-alpha&hei=2250', …},
+{_id: '644161fcda0e742d53db8579', candyName: 'Kit-Kat', candyPrice: 1.79, candyDescription: "We're all about those breaks. And the best breaks …of crispy wafers coated in smooth milk chocolate.", candyImage: 'https://s7d2.scene7.com/is/image/hersheysassets/0_…7_701_24600_070_Item_Front?fmt=png-alpha&hei=2250', …},
+{_id: '644161fcda0e742d53db8579', candyName: 'Kit-Kat', candyPrice: 1.79, candyDescription: "We're all about those breaks. And the best breaks …of crispy wafers coated in smooth milk chocolate.", candyImage: 'https://s7d2.scene7.com/is/image/hersheysassets/0_…7_701_24600_070_Item_Front?fmt=png-alpha&hei=2250', …},
+{_id: '644161fcda0e742d53db8579', candyName: 'Kit-Kat', candyPrice: 1.79, candyDescription: "We're all about those breaks. And the best breaks …of crispy wafers coated in smooth milk chocolate.", candyImage: 'https://s7d2.scene7.com/is/image/hersheysassets/0_…7_701_24600_070_Item_Front?fmt=png-alpha&hei=2250', …}
+
