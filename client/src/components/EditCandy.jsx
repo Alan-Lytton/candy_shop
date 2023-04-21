@@ -14,6 +14,7 @@ const EditCandy = () => {
         candyCategory: "",
         candyStock: 0
     })
+    const [allCategories, setAllCategories] = useState([])
     const [error, setError] = useState({})
     const navigate = useNavigate();
 
@@ -26,6 +27,15 @@ const EditCandy = () => {
             })
             .catch(err => console.log(err))
     }, [])
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/category")
+        .then(res => {
+            console.log(res.data.categories)
+            setAllCategories(res.data.categories)
+        })
+        .catch(err => console.log(err))
+    }, [candy])
 
     const onChangeHandler = (e) => {
         setCandy({...candy, [e.target.name]: e.target.value})
@@ -85,7 +95,15 @@ const EditCandy = () => {
                     {error.candyCategory ? <p className='create__candy__error__message'>{error.candyCategory.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Category: </label>
-                    <input className="create__candy__input" type="text" name="candyCategory" value={candy?.candyCategory} onChange={onChangeHandler} />
+                    <select className="create__candy__input" name="candyCategory" defaultValue={candy.candyCategory} onChange={onChangeHandler}>
+                        {
+                            allCategories.map(category => {
+                                return (
+                                    <option value={category.categoryName} selected={candy && candy.candyCategory == category.categoryName}>{category.categoryName}</option>
+                                )
+                            })
+                        }
+                    </select>
                 </div>
                     {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
                 <div className="form-group">

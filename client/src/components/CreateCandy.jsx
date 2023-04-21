@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
 import '../css/createCandy.css'
 
 const CreateCandy = () => {
 
+    const [allCategories, setAllCategories] = useState([])
     const [candy, setCandy] = useState({
         candyName: "",
         candyPrice: 0,
@@ -19,6 +20,15 @@ const CreateCandy = () => {
     const onChangeHandler = (e) => {
         setCandy({...candy, [e.target.name]: e.target.value})
     }
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/category")
+        .then(res => {
+            console.log(res.data.categories)
+            setAllCategories(res.data.categories)
+        })
+        .catch(err => console.log(err))
+    }, [])
 
     const createCandy = (e) => {
         e.preventDefault();
@@ -63,7 +73,17 @@ const CreateCandy = () => {
                     {error.candyCategory ? <p className='create__candy__error__message'>{error.candyCategory.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Category: </label>
-                    <input className="create__candy__input" type="text" name="candyCategory" value={candy.candyCategory} onChange={onChangeHandler} />
+                    <select className="create__candy__input" name="candyCategory" onChange={onChangeHandler}>
+                        <option value="none" selected disabled>Select Category</option>
+                        {
+                            allCategories.map(category => {
+                                return (
+                                    <option value={category.categoryName}>{category.categoryName}</option>
+                                )
+                            })
+                        }
+                    </select>
+                    {/* <input className="create__candy__input" type="text" name="candyCategory" value={candy.candyCategory} onChange={onChangeHandler} /> */}
                 </div>
                     {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
                 <div className="form-group">
