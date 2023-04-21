@@ -6,16 +6,15 @@ import Navbar from './Navbar';
 import '../css/allCandies.css';
 
 const AllCandies = () => {
-  const options = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-    { value: 'option3', label: 'Option 3' },
-    { value: 'option3', label: 'Option 3' },
-    { value: 'option3', label: 'Option 3' },
-  ];
+
   const navigate = useNavigate();
   const [candies, setCandies] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const options = categories.map((category) => ({
+    value: category._id,
+    label: category.categoryName,
+  }));
 
   useEffect(() => {
     axios.get("http://localhost:8000/api/candy")
@@ -23,13 +22,30 @@ const AllCandies = () => {
       .catch(err => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/category")
+      .then(res => setCategories(res.data.categories))
+      .catch(err => console.log(err));
+  }, []);
+
+  const handleCategoryChange = (selectedCategory) => {
+    if (selectedCategory) {
+      navigate(`/filtered/candy/${selectedCategory.value}`);
+    }
+  };
+
   return (
     <section className='all_candies_container'>
       <Navbar />
       <div className="all__candies__h1andfilter">
         <h1 className='main__title__allCandies'>Find your favorite candies </h1>
         <div className="select-container">
-          <Select options={options} placeholder="Categories" />
+          <Select
+            options={options}
+            placeholder="Categories"
+            className="selecttagall"
+            onChange={handleCategoryChange}
+          />
         </div>
       </div>
       <section className="cadies_container">
@@ -50,4 +66,4 @@ const AllCandies = () => {
   )
 }
 
-export default AllCandies
+export default AllCandies;

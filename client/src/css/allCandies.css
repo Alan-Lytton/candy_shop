@@ -105,6 +105,9 @@ transition: all .14s ease-out;
     justify-content: space-between;
     align-items: center;
   }
+  .css-qr46ko{
+    color: black;
+  }
   .select-container .react-select__value-container {
     padding-top: 0;
     padding-bottom: 0;

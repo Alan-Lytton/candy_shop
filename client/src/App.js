@@ -9,6 +9,7 @@ import UserForm from "./components/UserForm";
 import CreateCandy from './components/CreateCandy';
 import EditCandy from './components/EditCandy';
 import AdminLanding from './components/AdminLanding';
+import Filtered from './components/Filtered'
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
           <Route path='/admin/dashboard' element={<AdminLanding/>}/>
           <Route path='/admin/candy/create' element={<CreateCandy/>}/>
           <Route path='/admin/candy/edit/:id' element={<EditCandy/>}/>
+          <Route path="/filtered/candy/:id" element={<Filtered />} />
+
         </Routes>
       </BrowserRouter>
     </div>

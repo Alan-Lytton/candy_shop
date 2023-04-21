@@ -1,0 +1,162 @@
+.all_candies_container{
+    background-color: #E8C2C2;
+    height: fit-content;
+    }
+    .main__title__allCandies{
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-family: Milligram, sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 100%;
+    
+    }
+    .cadies_container{
+        width: 95%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    
+    }
+    
+    .each_candy{
+        width: 33%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 5rem;
+    }
+    
+    .each_candy_text{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    }
+    
+    
+    .candy__image{
+        width: 50%;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    
+    
+    
+    .candy__title{
+        font-size: 1.4rem;
+    
+    }
+    .candy__price{
+    font-size: 1.2rem;
+    }
+    
+    .each__candy__addToCart{
+        margin-top: 0.5rem;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: 2px solid black;
+    background-color: transparent;
+    
+    transition: all .14s ease-out;
+    }
+    .each__candy__addToCart:hover{
+        transform: translate(-.25rem, -.25rem);
+        box-shadow: .25rem .25rem #000;
+    }
+    .each__candy__addToCart:active{
+        transform: translate(0rem, 0rem);
+        box-shadow: 0rem 0rem #000;
+    }
+    
+    
+    
+      .section-one {
+        transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.5s ease-in-out;
+        opacity: 0;
+      }
+      
+      .section-one.animate {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      
+      .slide-in {
+        transform: translateX(-100%);
+      }
+      .select-container {
+        width: 200px; 
+        margin-left: auto; 
+      }
+      
+      .select-container .react-select__control {
+        min-height: 32px;
+      }
+      .all__candies__h1andfilter{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .css-qr46ko{
+        color: black;
+      }
+      .select-container .react-select__value-container {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      
+      @media(max-width: 900px){
+        .cadies_container{
+            width: 95%;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        
+        }
+        
+        .each_candy{
+            width: 50%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 5rem;
+        }
+        .main__title__allCandies{
+            font-size: 1.8rem;
+        }
+      }
+    
+      @media(max-width: 500px){
+        .cadies_container{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        
+        }
+        
+        .each_candy{
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 5rem;
+        }
+        .main__title__allCandies{
+            font-size: 1.8rem;
+        }
+      }

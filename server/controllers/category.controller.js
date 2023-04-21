@@ -12,4 +12,10 @@ module.exports.getAllCategories = (req,res) =>{
     Category.find()
         .then(categories =>res.json({categories}))
         .catch(err =>res.status(400).json(err))
+}  
+
+module.exports.getOneCategory = (req,res) =>{
+    Category.findOne({_id:req.params.id})
+        .then(aCategory => res.json({oneCategory:aCategory}))
+        .catch((err => res.status(400).json(err)))
 }
