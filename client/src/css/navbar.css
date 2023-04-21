@@ -111,6 +111,9 @@ nav {
     padding-bottom: 24px;
 
 }
+.dropbtn{
+    /* font-size: 1rexm !important; */
+}
 
 .dropdown .dropbtn {
     font-size: 0.875rem;

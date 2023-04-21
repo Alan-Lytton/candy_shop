@@ -50,25 +50,24 @@ const UserLogin= () => {
 
     return (
             <div className={"create__candy__container"}>
-                <br />
+                <button className='admin__logout__button'><Link className='landingPage__route__btn__font' to={"/"}>Client page</Link></button>
                 <h1> ADMIN LOGIN  </h1>
-                <form className="create__candy__form" onSubmit={createUserLogin}>
+                <form className="create__candy__form login_admin_form" onSubmit={createUserLogin}>
                     {/*EMAIL INPUT*/}
+                    {error.email ? <p className='create__candy__error__message errorsofall'>{error.email.message}</p> : null}
                     <div className="form-group">
-                        {error.email ? <p className='create__candy__error__message'>{error.email.message}</p> : null}
-
                         <label className={"create__candy__label"}>Email: </label>
-                        <input className={"create__candy__input"} type="email" name="email" value={userLogin.email} onChange={onChangeHandler} />
+                        <input className="create__candy__input newinput" type="email" name="email" value={userLogin.email} onChange={onChangeHandler} />
                     </div>
                     {/*PASSWORD INPUT*/}
+                    {error.password ? <p className='create__candy__error__message errorsofall'>{error.password.message}</p> : null}
                     <div className="form-group">
-                        {error.password ? <p className='create__candy__error__message'>{error.password.message}</p> : null}
-
                         <label className={"create__candy__label"}>Password: </label>
-                        <input className={"create__candy__input"} type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
+                        <input className={"create__candy__input newinput"} type="password" name="password" value={userLogin.password} onChange={onChangeHandler} />
                     </div>
-
-                    <input className="create__candy__submit__btn" type="submit" value="Submit"/>
+                    <div className="button_container_ls">
+                    <input className="create__candy__submit__btn loginBtnAdmin" type="submit" value="Submit"/>
+                </div>
                 </form>
         </div>
     )

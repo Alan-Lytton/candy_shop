@@ -68,6 +68,9 @@
     box-shadow: .25rem .25rem #000;
     background-color: #ff90e8;
 }
+.total_titel{
+    margin-top: 0 !important;
+}
 
 .button:active {
     transform: translate(0rem, 0rem);
@@ -99,7 +102,7 @@
 
 .section-one {
     height: 100vh;
-    height: fit-content;
+    /* height: fit-content; */
 }
 
 .section-one_title {
@@ -153,7 +156,7 @@ img {
 }
 .landing_page_confident{
     border-top: 2px solid black;
-    height: fit-content;
+    height: 100vh;
     background-color: #ffd6d6;
     display: flex;
     flex-direction: column;

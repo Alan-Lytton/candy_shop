@@ -50,29 +50,32 @@ const UserForm = () => {
         <div className="create__candy__container">
             <br />
             <h1> ADMIN SIGN UP  </h1>
-            <form className={"create__candy__form"} onSubmit={createUser}>
+            <form className="create__candy__form form_signup_user" onSubmit={createUser}>
                 {/*EMAIL INPUT*/}
+                {error.email ? <p className="create__candy__error__message errorsofall">{error.email.message}</p> : null}
                 <div className="form-group">
-                    {error.email ? <p className="create__candy__error__message">{error.email.message}</p> : null}
                     <label className={"create__candy__label"}>Email: </label>
-                    <input className="create__candy__input" type="email" name="email" value={user.email} onChange={onChangeHandler} />
+                    <input className="create__candy__input newinput" type="email" name="email" value={user.email} onChange={onChangeHandler} />
                 </div>
 
                 {/*PASSWORD INPUT*/}
+                {error.password ? <p className="create__candy__error__message errorsofall">{error.password.message}</p> : null}
                 <div className="form-group">
-                    {error.password ? <p className="create__candy__error__message">{error.password.message}</p> : null}
                     <label className={"create__candy__label"}>Password: </label>
-                    <input className="create__candy__input" type="password" name="password" value={user.password} onChange={onChangeHandler} />
+                    <input className="create__candy__input newinput" type="password" name="password" value={user.password} onChange={onChangeHandler} />
                 </div>
 
                 {/* CONFIRM PASSWORD INPUT*/}
+                {error.confirmPassword? <p className="create__candy__error__message errorsofall">{error.confirmPassword.message}</p> : null}
                 <div className="form-group">
-                    {error.confirmPassword? <p className="create__candy__error__message">{error.confirmPassword.message}</p> : null}
                     <label className={"create__candy__label"}>Confirm Password: </label>
-                    <input className="create__candy__input" type="password" name="confirmPassword" value={user.confirmPassword} onChange={onChangeHandler} />
+                    <input className="create__candy__input newinput" type="password" name="confirmPassword" value={user.confirmPassword} onChange={onChangeHandler} />
                 </div>
 
-                <input className={"create__candy__submit__btn"} type="submit" value="Submit"/>
+                <div className="button_container_ls">
+                <input className={"create__candy__submit__btn loginBtnAdmin"} type="submit" value="Submit"/>
+                <a className='linkToAdminLogin' href="/admin/login">Log In</a>
+                </div>
             </form>
         </div>
     )

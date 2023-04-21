@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../css/adminLanding.css'
 
 const AdminLanding = () => {
@@ -18,7 +18,7 @@ const AdminLanding = () => {
     }, [])
 
     const logout = () => {
-        axios.get('http://localhost:8000/api/logout', {withCredentials: true})
+        axios.get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
                 console.log(res);
                 navigate("/admin/login")
@@ -31,30 +31,32 @@ const AdminLanding = () => {
     return (
         <div className="admin__landing__container">
             <h1>Hello you Fools!</h1>
+            <div className="admin__table__wrapper">
             <table className='admin__table'>
-                <thead>
-                    <tr>
-                        <th className="admin__table__th">Name</th>
-                        <th className="admin__table__th">Category</th>
-                        <th className="admin__table__th">Stock</th>
-                        <th className="admin__table__th">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        allCandy.map((candy) => {
-                            return (
-                                <tr key={candy._id}>
-                                    <td className="admin__table__td"><Link className="table__candyName" to={`/admin/candy/edit/${candy._id}`}>{candy.candyName}</Link></td>
-                                    <td className="admin__table__td">{candy.candyCategory}</td>
-                                    <td className="admin__table__td">{candy.candyStock}</td>
-                                    <td className="admin__table__td">{candy.candyPrice}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+            <thead>
+            <tr>
+            <th className="admin__table__th">Name</th>
+            <th className="admin__table__th">Category</th>
+            <th className="admin__table__th">Stock</th>
+            <th className="admin__table__th">Price</th>
+            </tr>
+            </thead>
+                    <tbody>
+                        {
+                            allCandy.map((candy) => {
+                                return (
+                                    <tr key={candy._id}>
+                                        <td className="admin__table__td"><Link className="table__candyName" to={`/admin/candy/edit/${candy._id}`}>{candy.candyName}</Link></td>
+                                        <td className="admin__table__td">{candy.candyCategory}</td>
+                                        <td className="admin__table__td">{candy.candyStock}</td>
+                                        <td className="admin__table__td">${candy.candyPrice}</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                    </table>
+                    </div>
             <div className="admin__landing__buttons">
                 <button className="admin__landing__create"><Link className="admin__landing__create__font" to={'/admin/candy/create'}>Create</Link></button>
                 <button className='admin__logout__button' onClick={logout}>Logout</button>
@@ -63,4 +65,4 @@ const AdminLanding = () => {
     )
 }
 
-export default AdminLanding
+export default AdminLanding;

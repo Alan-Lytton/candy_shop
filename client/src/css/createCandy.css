@@ -4,9 +4,7 @@
 }
 
 .create__candy__container {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+
     background-image: url(../assets/images/Sprinkles-2.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -21,6 +19,9 @@
     color: #FE1B86;
 }
 
+.errorsofall{
+    text-align: right;
+}
 .create__candy__form {
     display: flex;
     flex-direction: column;
@@ -31,7 +32,25 @@
     border-radius: 8px;
     border: 3px dashed yellow;
 }
+.buttonsubmitadmin{
+    margin-top: 40px !important;
+    width: 50% !important;
+    padding: 4px 12px;
+}
+.linkToAdminLogin{
+margin-top: 12px;
+border-bottom: 1px solid black;
+}
+.button_container_ls{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.form_signup_user{
+    height: 500px;
+}
 @media(max-width: 1040px){
     .create__candy__form{
         width: 50%;
@@ -66,14 +85,43 @@
 
 .create__candy__label {
     font-size: 1.5rem;
-    margin-top: 10px;
+    margin-top: 24px;
+}
+.loginBtnAdmin{
+    width: 50% !important;
+    height: 60px !important;
+    border: .5px solid black;
 }
 
+.form-group{
+    display: flex;
+    align-items: center;
+
+}
 .create__candy__input {
+    margin-top: 24px;
     height: 30px;
     width: 60%;
+    font-size: 16px;
+    border-radius: 6px;
+    border: .5px solid gray;
+    text-indent: 12px;
 }
-
+.newinput{
+    margin-top: 24px;
+    height: 60px;
+    width: 60%;
+    font-size: 16px;
+    border-radius: 6px;
+    border: .5px solid gray;
+    text-indent: 12px;
+}
+.loginBtnAdmin{
+    margin-top: 50px !important;
+}
+.login_admin_form{
+    height: 400px;
+}
 .create__candy__error__message {
     color: red;
 }
@@ -103,6 +151,32 @@
 }
 
 .create__candy__submit__btn:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
+
+.loginBtnAdmi_dashboard{
+    font-size: 1.4rem;
+    background-color: #8F7EDE;
+    color: black;
+    border-radius: .25rem;
+    font-family: Mabry Pro;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    text-align: center;
+    padding: 12px 40px;
+    margin-left: 20px;
+    font-weight: normal;
+    border: 1px solid black;
+}
+.loginBtnAdmi_dashboard:hover {
+    transform: translate(.25rem, .25rem);
+    box-shadow: .25rem .25rem #000;
+    background-color: #E9C1C1;
+    
+}
+
+.loginBtnAdmi_dashboard:active {
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }

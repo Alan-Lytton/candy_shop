@@ -15,7 +15,17 @@
     width: 100vw;
     height: 100vh;
 }
-
+.admin__table__wrapper {
+    max-height: 400px; /* Change this value to your desired height */
+    overflow: auto;
+    display: block;
+  }
+  
+  .admin__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
 .admin__landing__container h1 {
     margin: 10px;
     font-size: 3rem;
@@ -25,6 +35,8 @@
 .admin__table {
     margin: 0 auto;
     margin-top: 20px;
+    height: 40px !important;
+    overflow-y: scroll;
     width: 70%;
     background-color: #E9C1C1;
     
@@ -63,6 +75,34 @@
     transition: all .14s ease-out;
     text-align: center;
 }
+.admin__table__wrapper {
+    max-height: 600px;
+    width: 700px;
+    overflow: auto;
+    display: block;
+
+  }
+  
+  .admin__table {
+    width: 100%;
+    border-collapse: collapse;
+   
+
+  }
+  th{
+    padding: 12px;
+    text-align: left;
+    position: static;
+  }
+  td{
+    padding: 12px;
+    text-align: left;
+  }
+  tr{
+    padding: 12px;
+    text-align: left;
+  }
+
 
 .admin__landing__create__font {
     font-weight: normal;
