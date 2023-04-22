@@ -12,7 +12,9 @@ const EditCandy = () => {
         candyDescription: "",
         candyImage: "",
         candyCategory: "",
-        candyStock: 0
+        candyStock: 0,
+        onSale: false,
+        candyDiscount: 0
     })
     const [allCategories, setAllCategories] = useState([])
     const [error, setError] = useState({})
@@ -43,10 +45,11 @@ const EditCandy = () => {
 
     const updateCandy = (e) => {
         e.preventDefault();
-
-        axios.put('http://localhost:8000/api/candy/edit/' + id, candy)
+        let isOnSale = (candy.onSale) ? candy.candyDiscount : 0 
+        axios.put('http://localhost:8000/api/candy/edit/' + id, {...candy, candyDiscount: isOnSale})
             .then(res => {
                 setCandy(res.data.oneCandy);
+                console.log(res.data.oneCandy)
                 navigate('/admin/dashboard')
             })
             .catch(err => {
@@ -125,15 +128,16 @@ const EditCandy = () => {
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy?.candyImage} onChange={onChangeHandler} />
                 </div>
-                {/*On Sale Field */}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
-                    <input className="create__candy__input" type="text "name="onSale" value={candy.onSale} onChange={onChangeHandler} />
-                </div>
-                {/*On Discount*/}
-                <div className="form-group">
-                    <label className="create__candy__label">On Discount: </label>
-                    <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
+                    <input className="create__candy__input" type="checkbox" name="onSale" checked={candy.onSale} onChange={() => setCandy({...candy, onSale: !candy.onSale})} />
+
+                    {candy.onSale ? (
+                        <div className="form-group">
+                        <label className="create__candy__label">Discount: </label>
+                        <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
+                    </div>
+                    ) : null}
                 </div>
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>
