@@ -8,6 +8,7 @@ import ScrollTrigger from 'react-scroll-trigger';
 import { useNavigate } from 'react-router-dom';
 import candy_bowl from '../assets/images/candy_bowl.webp'
 import { CartContext,CartProvider } from '../contexts/CartContext';
+import Footer from './Footer.jsx'
 
 const LandingPage = () => {
   const settings = {
@@ -58,6 +59,7 @@ const LandingPage = () => {
 
   return (
     <div className="main-body">
+      <span id="top__of__landing"></span>
       <div className='body'>
       <Navbar />
         <div className="all_item-container">
@@ -111,6 +113,7 @@ const LandingPage = () => {
       <img className='landing_page_confident__image' src={candy_bowl} alt="" />
       </div>
       </section>
+      <Footer/>
     </div>
   )
   }

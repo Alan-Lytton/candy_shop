@@ -3,6 +3,7 @@ import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/allCandiesFilterd.css';
 import Navbar from '../components/Navbar.jsx'
+import Footer from './Footer';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
@@ -91,6 +92,7 @@ const Filtered = ({onAddToCart, cartCount}) => {
     </div>
     ))}
     </div>
+    <Footer/>
     </div>
   )
 }
