@@ -41,7 +41,8 @@ const CandySchema = new mongoose.Schema({
     },
     candyDiscount:{
         type:Number,
-        min:[0.01, "Product discount must be at least 0.01!"],
+        default:0,
+        min:[0.0, "Product discount must be at least 0!"],
         max:[0.99, "Product discount must be 0.99 or less!"]
     }
 },{timestamps:true});
