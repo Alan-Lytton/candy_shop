@@ -13,8 +13,8 @@ const CreateCandy = () => {
         candyImage: "",
         candyCategory: "",
         candyStock: 0,
-        onSale: "",
-        candyDiscount: ""
+        onSale: false,
+        candyDiscount: 0
     })
     const [error, setError] = useState({});
     const navigate = useNavigate();
@@ -85,7 +85,6 @@ const CreateCandy = () => {
                             })
                         }
                     </select>
-                    {/* <input className="create__candy__input" type="text" name="candyCategory" value={candy.candyCategory} onChange={onChangeHandler} /> */}
                 </div>
                     {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
                 <div className="form-group">
@@ -107,39 +106,17 @@ const CreateCandy = () => {
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy.candyImage} onChange={onChangeHandler} />
                 </div>
-                {/*On Sale Field */}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
-                    <input className="create__candy__input" type="text "name="onSale" value={candy.onSale} onChange={onChangeHandler} />
-                </div>
-                {/*On Discount*/}
-                <div className="form-group">
-                    <label className="create__candy__label">On Discount: </label>
-                    <select
-                        className="create__candy__input"
-                        type="number" name="candyDiscount"
-                        value={candy.candyDiscount}
-                        onChange={onChangeHandler}
-                    >
-                        <option value="" label="Select Percentage">
-                            Select Percentage
-                        </option>
-                        <option value="" label="10 %">
-                            {""}
-                            Ten Percent
-                        </option>
-                        <option value="" label="20 %">
-                            {""}
-                            Twenty Percent
-                        </option>
-                        <option value="" label="30 %">
-                            {""}
-                            Twenty Percent
-                        </option>
-                    </select>
-                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
-                </div>
+                    <input className="create__candy__input" type="checkbox" name="onSale" checked={candy.onSale} onChange={() => setCandy({...candy, onSale: !candy.onSale})} />
 
+                    {candy.onSale ? (
+                        <div className="form-group">
+                        <label className="create__candy__label">Discount: </label>
+                        <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
+                    </div>
+                    ) : null}
+                </div>
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>
         </div>
