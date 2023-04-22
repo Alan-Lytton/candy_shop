@@ -12,6 +12,8 @@ const CandySchema = new mongoose.Schema({
         type:Number,
         required: [true,"Product price is required!"],
         min:[0.01,"Product price must be greater than 0!"],
+        get: v =>Math.floor(v * 100) /100,
+        set: v =>Math.floor(parseFloat(v)*100)/100
     },
     candyDescription:{
         type:String,

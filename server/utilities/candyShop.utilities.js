@@ -1,7 +1,13 @@
 function capitalize(str) {
-    return str.split(' ')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-        .join(' ');
+    const words = str.split(/\s+/);
+    const capitalWords = words.map(word => {
+            if(word.includes('&')){
+                return word;
+            }else{
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            }
+        })
+        return capitalWords.join(' ');
 }
 
 module.exports = { capitalize };
