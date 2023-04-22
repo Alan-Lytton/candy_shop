@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import '../css/cart.css';
 import Footer from '../components/Footer.jsx'
-
+import EmptyCart from '../assets/images/emptyCart.png'
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 console.log("THIS IS THE API KEY ", PAYPAL_API)
 const Cart = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+
   console.log(cartItems)
 
   // const [emtyCart, setEmptyCart] = useState([])
@@ -22,6 +23,12 @@ const Cart = () => {
       subTotal += cartItems[i].totalCost;
     }
     return subTotal
+  };
+  const style1 = {
+    layout: "vertical",
+    color: "gold",
+    shape: "pill",
+    label: "checkout",
   };
 
 
@@ -38,7 +45,8 @@ const Cart = () => {
                 </h6>
                 <h6 className="candy__price__cart">Individual Total: ${candy.totalCost.toFixed(2)}</h6>
                 <input className='number_input' type="number" value={candy.quantity} placeholder='Quantity' min={0} />
-                <i class="fa-solid fa-trash-can trashcan"></i>
+
+                <button onClick={() => removeFromCart(candy._id, candy.quantity)} ><i class="fa-solid fa-trash-can trashcan"></i></button>
               </div>
               <Link to={`/one/candy/${candy._id}`}>
                 <img
@@ -50,7 +58,7 @@ const Cart = () => {
             </div>
           ))}
         </div>
-
+        { cartItems.length != 0 ?
         <div className="checkout_main_section_cart">
           <h3 className='cart_summary_title'>Cart Summary</h3>
           <div className="scrollable_div">
@@ -67,43 +75,53 @@ const Cart = () => {
           <div className="sub_total__container">
             <h4 className='checkout_subtotal'> Subtotal</h4>
             <h4 className='checkout_subtotal'>${getSubTotal().toFixed(2)}</h4>
-            </div>
+          </div>
 
           <div className="paypal_container">
-          
-          <PayPalScriptProvider className="PayaplSection"
-            options={{ "client-id": PAYPAL_API }} >
-            <PayPalButtons className="checkout_btn"
-              createOrder={(data, actions) => {
-                return actions.order.create({
-                  purchase_units: [
-                    {
-                      amount: {
-                        value: getSubTotal().toFixed(2),
-                      },
-                    },
-                  ],
-                });
-              }}
-              onApprove={async (data, actions) => {
-                // On Approval function here
-                const details = await actions.order.capture();
-                const name = details.payer.name;
-                const amount = details.purchase_units[0].amount;
-                const address = details.purchase_units[0].shipping.address;
-                const order_id = details.id;
 
-                console.log(details)
-                alert("🍬🍭Payment successful!🍫🍡" + "\r" +
-                  "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
-                  "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
-              }}
-            />
-          </PayPalScriptProvider>
+            <PayPalScriptProvider className="PayaplSection"
+              options={{ "client-id": PAYPAL_API }} >
+              <PayPalButtons style={style1}
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: getSubTotal().toFixed(2),
+                        },
+                      },
+                    ],
+                  });
+                }}
+                onApprove={async (data, actions) => {
+                  const details = await actions.order.capture();
+                  const name = details.payer.name;
+                  const amount = details.purchase_units[0].amount;
+                  const address = details.purchase_units[0].shipping.address;
+                  const order_id = details.id;
+                  clearCart();
+
+                  console.log(details)
+                  alert("🍬🍭Payment successful!🍫🍡" + "\r" +
+                    "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
+                    "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
+                }}
+              />
+            </PayPalScriptProvider>
           </div>
         </div>
+            : 
+            <div className="empty_container">
+            <div className="wrapping_empty_cart">
+            <img className="EmptyImage" src={EmptyCart} alt="" />
+            </div>
+            <span className="cart_empty_span"></span>
+            </div>
+          
+          
+          }
       </form>
-<Footer/>
+      <Footer />
     </div>
   );
 };

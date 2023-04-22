@@ -17,10 +17,21 @@ h3 {
 h4 {
   -webkit-text-stroke: 0.8px black;
 }
-
+.fa-solid{
+  font-size: 16px;
+}
 .main-title{
   -webkit-text-stroke: 2.5px black;
   font-size: 5rem;
+  margin-top: 1rem;
+
+}
+.LinkToBack{
+  width: 200px;
+  position: sticky;
+  top: 2%;
+  left: 2%;
+  z-index: 999;
 
 }
 
