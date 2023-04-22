@@ -1,0 +1,60 @@
+@font-face {
+    font-family: Mabry Pro;
+    src: url(../assets/fonts/19db990205089207b039.woff2);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Mabry Pro;
+    scroll-behavior: smooth;
+}
+
+.footer__container {
+    margin: 0 auto;
+    width: 100vw;
+    height: 30vh;
+    background-color: #1C2431;
+    padding-top: 20px;
+}
+
+.footer__content {
+    /* padding: 20px; */
+}
+
+.footer__links {
+    display: flex;
+    justify-content: space-around;
+    /* color: #FFA9A6; */
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 30px 0px 0px 0px ;
+}
+
+.footer__links__color {
+    color: #FFA9A6;
+    transition: all 200ms ease-in-out;
+    font-size: 1rem;
+}
+
+.footer__links__color:hover {
+    font-size: 1.3rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #FFA9A6;
+
+}
+
+.footer__logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.footer__bottom__info {
+    display: flex;
+    justify-content: center;
+    background-color: #151B27;
+    color: #FFA9A6;
+    padding: 10px;
+}

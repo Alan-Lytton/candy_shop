@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
 import Select from 'react-select';
 import Navbar from './Navbar';
+import Footer from './Footer';
 import '../css/allCandies.css';
 
 const AllCandies = (props) => {
@@ -66,6 +67,7 @@ const AllCandies = (props) => {
           </div>
         ))}
       </section>
+      <Footer/>
     </section>
   )
 }

@@ -1,4 +1,5 @@
 import Navbar from './Navbar'
+import Footer from './Footer';
 import '../css/oneCandy.css'
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
@@ -101,6 +102,7 @@ const OneCandy = ({onAddToCart, cartCount}) => {
                         ))}
                     </Slider>
                 </div>
+                <Footer/>
         </section>
     )
 }
