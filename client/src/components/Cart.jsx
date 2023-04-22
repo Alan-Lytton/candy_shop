@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import '../css/cart.css';
 
-const Cart = (props) => {
-  const { cartItems } = props;
+const Cart = () => {
+  const {cartItems} = useContext(CartContext);
   console.log(cartItems)
+
+
   return (
     <div>
       <Navbar />
@@ -18,26 +20,22 @@ const Cart = (props) => {
                 <h6 className="candy__title__cart">
                   <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
                 </h6>
-                <h6 className="candy__price__cart">Price: ${candy.candyPrice}</h6>
-
-                <input className='number_input' type="number"  placeholder='Quantity' min={0} />
+                <h6 className="candy__price__cart">Individual Total: ${candy.totalCost.toFixed(2)}</h6>
+                <input className='number_input' type="number" value={candy.quantity} placeholder='Quantity' min={0} />
               </div>
-
-
-
               <Link to={`/one/candy/${candy._id}`}>
-              <img
-                className="candy__image__cart"
-                src={candy.candyImage}
-                alt="Placeholder"
-              />
-            </Link>
+                <img
+                  className="candy__image__cart"
+                  src={candy.candyImage}
+                  alt="Placeholder"
+                />
+              </Link>
             </div>
           ))}
         </div>
 
         <div className="checkout_main_section_cart">
-            
+
         </div>
       </form>
     </div>

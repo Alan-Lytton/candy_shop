@@ -9,17 +9,19 @@ import { Link } from 'react-router-dom';
 
 
 const Filtered = ({onAddToCart, cartCount}) => {
-  const navigate = useNavigate();
-
-  const addToCart = () => {
-    onAddToCart();
-  };
-
   const [candies, setCandies] = useState([]);
   const [filteredCandies, setFilterdCandies] = useState([]);
   const[category, setCategory] = useState([]);
   const { id } = useParams();
   const [categories, setCategories] = useState([]);
+
+  
+  const navigate = useNavigate();
+
+  const addToCart = (candy) => {
+    onAddToCart(candy);
+  };
+
 
   useEffect(() => {
     axios.get("http://localhost:8000/api/category")
@@ -87,7 +89,7 @@ const Filtered = ({onAddToCart, cartCount}) => {
       <div className="each_candy_text">
         <h6 className='candy__title'> <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link></h6>
         <h6 className='candy__price'>${candy.candyPrice}</h6>
-        <button className='each__candy__addToCart' onClick={addToCart}>Add to Cart!</button>
+        <button className='each__candy__addToCart' onClick={()  => {addToCart(candy)}}>Add to Cart!</button>
       </div>
     </div>
     ))}
