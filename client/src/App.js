@@ -51,10 +51,7 @@ function App() {
           <Route path="/admin/register" element={<UserForm />} />
           <Route path="/admin/dashboard" element={<AdminLanding />} />
           <Route path="/admin/candy/create" element={<CreateCandy />} />
-          <Route
-            path="/filtered/candy/:id"
-            element={<Filtered cartCount={cartCount} onAddToCart={handleDuplicates} />}
-          />
+          <Route path="/filtered/candy/:id" element={<Filtered cartCount={cartCount} onAddToCart={handleDuplicates} />} />
           <Route path="/admin/candy/edit/:id" element={<EditCandy />} />
           <Route path="/candy/cart" element={<Cart cartItems={cartItems} />} />
         </Routes>

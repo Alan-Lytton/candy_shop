@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 
 
 const Filtered = ({onAddToCart, cartCount}) => {
+  const navigate = useNavigate();
+
   const [candies, setCandies] = useState([]);
   const [filteredCandies, setFilterdCandies] = useState([]);
   const[category, setCategory] = useState([]);
@@ -16,7 +18,6 @@ const Filtered = ({onAddToCart, cartCount}) => {
   const [categories, setCategories] = useState([]);
 
   
-  const navigate = useNavigate();
 
   const addToCart = (candy) => {
     onAddToCart(candy);
@@ -37,6 +38,7 @@ const Filtered = ({onAddToCart, cartCount}) => {
 
   const handleCategoryChange = (selectedCategory) => {
     if (selectedCategory) {
+      console.log("This is the console.log", selectedCategory )
       navigate(`/filtered/candy/${selectedCategory.value}`);
     }
   };
@@ -50,25 +52,31 @@ const Filtered = ({onAddToCart, cartCount}) => {
 
   useEffect(() => {
     axios
-    .get(`http://localhost:8000/api/category/${id}`)
-    .then(res => setCategory(res.data.oneCategory))
-    .catch(err => console.log(err));
-  }, [candies]);
+      .get("http://localhost:8000/api/candy")
+      .then(res => setCandies(res.data.allCandy))
+      .catch(err => console.log(err));
+  }, [id]);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/category/${id}`)
+      .then(res => setCategory(res.data.oneCategory))
+      .catch(err => console.log(err));
+  }, [id]);
 
   useEffect(() => {
     let tempArr = [];
-    candies.map((candy)=>{
-      if (category.categoryName == candy.candyCategory){
-        tempArr.push(candy)
+    candies.map((candy) => {
+      if (category.categoryName == candy.candyCategory) {
+        tempArr.push(candy);
       }
-    })
-    setFilterdCandies(tempArr)
-  }, [category]);
+    });
+    setFilterdCandies(tempArr);
+  }, [id, candies]);
 
   return (
     <div className="main_body_filterd">
-     <Navbar cartCount={cartCount}/>
+    <Navbar cartCount={cartCount}/>
     <div className="all__candies__h1andfilter">
     <h1 className='title_main_body_filter'>Find all the {category.categoryName} here! </h1>
     <div className="select-container">

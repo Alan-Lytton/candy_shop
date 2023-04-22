@@ -1,10 +1,12 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../css/AboutUs.css'
-
+import Navbar from './Navbar'
 const AboutUs = () => {
     return (
         <div>
             <div class="roadmap">
+            <Link to={"/"}>Home</Link>
                 <h2 className='main-title'>Meet the team</h2>
                     <div class="_w-cloneable">
                             <div class="c-cards-list">
