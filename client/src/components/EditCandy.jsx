@@ -133,7 +133,29 @@ const EditCandy = () => {
                 {/*On Discount*/}
                 <div className="form-group">
                     <label className="create__candy__label">On Discount: </label>
-                    <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
+                    <select
+                        className="create__candy__input"
+                        type="number" name="candyDiscount"
+                        value={candy.candyDiscount}
+                        onChange={onChangeHandler}
+                    >
+                        <option selected="true" disabled="disabled" value="" label="Select Percentage">
+                            Select Percentage
+                        </option>
+                        <option value="" label="10 %">
+                            {""}
+                            Ten Percent
+                        </option>
+                        <option value="" label="20 %">
+                            {""}
+                            Twenty Percent
+                        </option>
+                        <option value="" label="30 %">
+                            {""}
+                            Twenty Percent
+                        </option>
+                    </select>
+                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
                 </div>
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>
