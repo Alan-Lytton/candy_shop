@@ -12,7 +12,9 @@ const CreateCandy = () => {
         candyDescription: "",
         candyImage: "",
         candyCategory: "",
-        candyStock: 0
+        candyStock: 0,
+        onSale: "",
+        candyDiscount: ""
     })
     const [error, setError] = useState({});
     const navigate = useNavigate();
@@ -104,6 +106,16 @@ const CreateCandy = () => {
                 <div className="form-group">
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy.candyImage} onChange={onChangeHandler} />
+                </div>
+                {/*On Sale Field */}
+                <div className="form-group">
+                    <label className="create__candy__label">On Sale: </label>
+                    <input className="create__candy__input" type="text "name="onSale" value={candy.onSale} onChange={onChangeHandler} />
+                </div>
+                {/*On Discount*/}
+                <div className="form-group">
+                    <label className="create__candy__label">On Discount: </label>
+                    <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
                 </div>
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>
