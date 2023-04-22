@@ -14,11 +14,13 @@ const Navbar = () => {
     function closeMenu() {
         document.body.classList.remove('menu--open')
     }
+
+    
     return (
         <nav className="treact__nav">
             <div className="row">
                 <div className="logo__mask">
-                    <Link to={"/"}> <img className='logo_img' require src={CompanyLogo} alt="" /></Link>
+                    <Link  to={"/"}> <img className='logo_img' require src={CompanyLogo} alt="" /></Link>
                 </div>
                 <ul className="nav__links">
                     <div className="dropdown">

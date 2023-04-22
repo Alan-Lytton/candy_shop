@@ -15,7 +15,7 @@ const OneCandy = ({onAddToCart, cartCount}) => {
 
 
     const addToCart = () => {
-        onAddToCart();
+        onAddToCart(candy);
       };
 
     const settings = {
