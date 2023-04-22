@@ -106,6 +106,7 @@ const CreateCandy = () => {
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy.candyImage} onChange={onChangeHandler} />
                 </div>
+                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
                     <input className="create__candy__input" type="checkbox" name="onSale" checked={candy.onSale} onChange={() => setCandy({...candy, onSale: !candy.onSale})} />
