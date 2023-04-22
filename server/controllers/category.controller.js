@@ -9,7 +9,7 @@ module.exports.createCategory = (req,res) =>{
 }
 
 module.exports.getAllCategories = (req,res) =>{
-    Category.find()
+    Category.find().sort({categoryName:1})
         .then(categories =>res.json({categories}))
         .catch(err =>res.status(400).json(err))
 }  
