@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 const Filtered = ({onAddToCart, cartCount}) => {
   const navigate = useNavigate();
+  const [addedMessage, setAddedMessage] = useState({});
 
   const [candies, setCandies] = useState([]);
   const [filteredCandies, setFilterdCandies] = useState([]);
@@ -21,8 +22,11 @@ const Filtered = ({onAddToCart, cartCount}) => {
 
   const addToCart = (candy) => {
     onAddToCart(candy);
+    setAddedMessage({ ...addedMessage, [candy._id]: true });
+    setTimeout(() => {
+      setAddedMessage({ ...addedMessage, [candy._id]: false });
+    }, 1000);
   };
-
 
   useEffect(() => {
     axios.get("http://localhost:8000/api/category")
@@ -98,6 +102,8 @@ const Filtered = ({onAddToCart, cartCount}) => {
         <h6 className='candy__title'> <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link></h6>
         <h6 className='candy__price'>${candy.candyPrice}</h6>
         <button className='each__candy__addToCart' onClick={()  => {addToCart(candy)}}>Add to Cart!</button>
+        <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
+
       </div>
     </div>
     ))}

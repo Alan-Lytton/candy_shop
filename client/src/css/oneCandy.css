@@ -107,6 +107,20 @@ margin-bottom: 24px;
     margin-top: 30px;
     margin-bottom: 24px;
 }
+.added-message {
+    color:#23a094;
+    font-weight: bold;
+    position: relative;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .added-message.show {
+    opacity: 1;
+  }
 
 .add_to_cart_one:hover{
     transform: translate(-.25rem, -.25rem);

@@ -28,6 +28,7 @@ height: fit-content;
 .each_candy{
     width: 33%;
     margin: 0 auto;
+    /* padding: 12px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +36,24 @@ height: fit-content;
     text-align: center;
     margin-top: 5rem;
 }
+.each_candy {
+  position: relative;
+}
 
+.added-message {
+  color:#23a094;
+  font-weight: bold;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.added-message.show {
+  opacity: 1;
+}
 .each_candy_text{
 margin-top: 1rem;
 margin-bottom: 1rem;
@@ -78,7 +96,8 @@ font-size: 1.2rem;
 }
 
 .each__candy__addToCart{
-    margin-top: 0.5rem;
+margin-top: 0.8rem;
+margin-bottom: 0.8rem;
 padding: 12px 30px;
 border-radius: 8px;
 font-size: 0.8rem;

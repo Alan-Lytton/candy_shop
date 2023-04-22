@@ -13,11 +13,16 @@ const OneCandy = ({onAddToCart, cartCount}) => {
 
     const { id } = useParams();
     const [candy, setCandy] = useState({});
+    const [addedMessage, setAddedMessage] = useState({});
 
 
-    const addToCart = () => {
+    const addToCart = (candy) => {
         onAddToCart(candy);
-      };
+        setAddedMessage({ ...addedMessage, [candy._id]: true });
+        setTimeout(() => {
+            setAddedMessage({ ...addedMessage, [candy._id]: false });
+        }, 1000);
+    };
 
     const settings = {
         className: "center",
@@ -78,10 +83,11 @@ const OneCandy = ({onAddToCart, cartCount}) => {
                     <h6 className='candy__category__one'>Category: {candy.candyCategory}</h6>
                     <h6 className="candy__stock__one">In Stock: {candy.candyStock}</h6>
                     <div className="container_button_badges">
-                        <button className='add_to_cart_one' onClick={addToCart}>Add to Cart</button>
-                        <img className="imageBagePayment" src={PaymentBadge} alt="" />
+                    <button className='add_to_cart_one' onClick={() => addToCart(candy)}>Add to Cart</button>
+                    <img className="imageBagePayment" src={PaymentBadge} alt="" />
                     </div>
-                </div>
+                    </div>
+                    <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
                 </section>
                 <div className="category_list_items">
                 <h1 className='title_candy_categorttext'>Find some more {candy.candyCategory}</h1>
@@ -96,7 +102,8 @@ const OneCandy = ({onAddToCart, cartCount}) => {
                                         <Link to={`/one/candy/${candi._id}`}>{candi.candyName}</Link>
                                     </h6>
                                     <h6 className='candy__price'>${candi.candyPrice}</h6>
-                                    <button className='each__candy__addToCart' onClick={addToCart}>Add to Cart!</button>
+                                    <button className='each__candy__addToCart' onClick={() => addToCart(candi)}>Add to Cart!</button>
+                                    <p className={`added-message${addedMessage[candi._id] ? ' show' : ''}`}>Added</p>
                                 </div>
                             </div>
                         ))}

@@ -23,7 +23,8 @@ const Navbar = () => {
                     <Link  to={"/"}> <img className='logo_img' require src={CompanyLogo} alt="" /></Link>
                 </div>
                 <ul className="nav__links">
-                    <div className="dropdown">
+                
+                    <div className="dropdown ">
                         <Link to={'/shop'} className="dropbtn">Shop</Link>
                     </div>
                     <div className="dropdown">
@@ -34,13 +35,14 @@ const Navbar = () => {
                     </div>
                 </ul>
                 <div className="signup">
-                    <li className="signup__primary"><Link className="a__primary" to={"/candy/cart"}><i
-                        className="fa-solid fa-cart-shopping second"></i>
+                <li className="signup__primary" style={{position: 'relative'}}>
+                    <Link className="a__primary" to={"/candy/cart"}>
+                        <i className="fa-solid fa-cart-shopping second"></i>
                     </Link>
-                        {console.log(cartCount)}
-                    </li>
                     {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
-                </div>
+                </li>
+            </div>
+            
                 <button className="btn__menu" onClick={openMenu}>
                     <i className="fas fa-bars"></i>
                 </button>

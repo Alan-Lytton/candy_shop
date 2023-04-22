@@ -11,6 +11,8 @@ const AllCandies = (props) => {
   const navigate = useNavigate();
   const [candies, setCandies] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [addedMessage, setAddedMessage] = useState({});
+
 
   const { onAddToCart } = props;
 
@@ -37,6 +39,13 @@ const AllCandies = (props) => {
     }
   };
 
+  const handleAddToCart = (candy) => {
+    onAddToCart(candy);
+    setAddedMessage({ ...addedMessage, [candy._id]: true });
+    setTimeout(() => {
+      setAddedMessage({ ...addedMessage, [candy._id]: false });
+    }, 1000);
+  };
 
 
   return (
@@ -62,7 +71,8 @@ const AllCandies = (props) => {
             <div className="each_candy_text">
               <h6 className='candy__title'> <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link></h6>
               <h6 className='candy__price'>${candy.candyPrice}</h6>
-              <button className='each__candy__addToCart' onClick={() => onAddToCart(candy)} >Add to Cart!</button>
+              <button className='each__candy__addToCart' onClick={() => handleAddToCart(candy)} >Add to Cart!</button>
+    <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
             </div>
           </div>
         ))}

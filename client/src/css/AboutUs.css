@@ -98,14 +98,11 @@ p {
 .roadmap {
   background-image: linear-gradient(#ffcecd, #ffa9a6);
   border-top: 2px solid #000;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4;
+  padding-bottom: 0.1rem;
   position: relative;
 }
 
-.card-details {
-  margin-bottom: 0;
-}
 
 ._w-cloneable {
   margin-top: 4rem;
@@ -140,7 +137,7 @@ p {
 .c-card._5 {
   position: -webkit-sticky;
   position: sticky;
-  top: 64px !important;
+  top: 84px !important;
 }
 
 .c-card {
@@ -196,3 +193,14 @@ p {
   box-shadow: 4px 4px #000;
 }
 
+.card-details {
+  margin-bottom: 0;
+}
+
+
+.text_about{
+width: 50%;
+}
+.link_tag{
+  border-bottom: 1px solid black;
+}

@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useContext } from 'react';
 import { AboutUs, Filtered, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding } from './components/index';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartContext } from './contexts/CartContext';
+import React, { useContext } from 'react';
 import Cart from './components/Cart'
+
 function App() {
   const { cartCount, setCartCount, cartItems, setCartItems } = useContext(CartContext);
 

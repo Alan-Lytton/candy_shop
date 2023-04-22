@@ -17,7 +17,20 @@ body {
 .title_main_body_filter {
   font-size: 2.5rem !important;
 }
+.added-message {
+  color:#23a094;
+  font-weight: bold;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
+.added-message.show {
+  opacity: 1;
+}
 @media(max-width: 1000px) {
   .title_main_body_filter {
     font-size: 2.5rem !important;
@@ -35,6 +48,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  margin-bottom: 4rem;
 
 }
 

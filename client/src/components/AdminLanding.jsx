@@ -5,7 +5,8 @@ import '../css/adminLanding.css'
 
 const AdminLanding = () => {
 
-    const [allCandy, setAllCandy] = useState([])
+    const [allCandy, setAllCandy] = useState([]);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,22 +29,33 @@ const AdminLanding = () => {
             })
     }
 
+    const filteredCandy = allCandy.filter(candy =>
+        candy.candyName.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className="admin__landing__container">
             <h1>Hello you Fools!</h1>
+            <input
+                type="text"
+                placeholder="Search"
+                className="search-input"
+                value={searchText}
+                onChange={e => setSearchText(e.target.value)}
+            />
             <div className="admin__table__wrapper">
-            <table className='admin__table'>
-            <thead>
-            <tr>
-            <th className="admin__table__th">Name</th>
-            <th className="admin__table__th">Category</th>
-            <th className="admin__table__th">Stock</th>
-            <th className="admin__table__th">Price</th>
-            </tr>
-            </thead>
+                <table className='admin__table'>
+                    <thead>
+                        <tr>
+                            <th className="admin__table__th">Name</th>
+                            <th className="admin__table__th">Category</th>
+                            <th className="admin__table__th">Stock</th>
+                            <th className="admin__table__th">Price</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         {
-                            allCandy.map((candy) => {
+                            filteredCandy.map((candy) => {
                                 return (
                                     <tr key={candy._id}>
                                         <td className="admin__table__td"><Link className="table__candyName" to={`/admin/candy/edit/${candy._id}`}>{candy.candyName}</Link></td>
@@ -55,8 +67,8 @@ const AdminLanding = () => {
                             })
                         }
                     </tbody>
-                    </table>
-                    </div>
+                </table>
+            </div>
             <div className="admin__landing__buttons">
                 <button className="admin__landing__create"><Link className="admin__landing__create__font" to={'/admin/candy/create'}>Create</Link></button>
                 <button className='admin__logout__button' onClick={logout}>Logout</button>
