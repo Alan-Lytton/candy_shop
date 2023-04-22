@@ -34,6 +34,15 @@ const CandySchema = new mongoose.Schema({
             validator:Number.isInteger,
             message:"Product quantity must be a whole number!"
         }
+    },
+    onSale:{
+        type:Boolean,
+        default:false,
+    },
+    candyDiscount:{
+        type:Number,
+        min:[0.01, "Product discount must be at least 0.01!"],
+        max:[0.99, "Product discount must be 0.99 or less!"]
     }
 },{timestamps:true});
 
