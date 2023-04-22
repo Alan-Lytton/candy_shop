@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
 import Select from 'react-select';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../css/allCandies.css';
+import {CartContext} from "../contexts/CartContext";
 
 const AllCandies = (props) => {
 
   const navigate = useNavigate();
   const [candies, setCandies] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [addedMessage, setAddedMessage] = useState({});
+  const {addedMessage, addToCart} = useContext(CartContext);
 
-
-  const { onAddToCart } = props;
 
   const options = categories.map((category) => ({
     value: category._id,
@@ -39,15 +38,6 @@ const AllCandies = (props) => {
     }
   };
 
-  const handleAddToCart = (candy) => {
-    onAddToCart(candy);
-    setAddedMessage({ ...addedMessage, [candy._id]: true });
-    setTimeout(() => {
-      setAddedMessage({ ...addedMessage, [candy._id]: false });
-    }, 1000);
-  };
-
-
   return (
     <section className='all_candies_container'>
       <Navbar />
@@ -71,7 +61,7 @@ const AllCandies = (props) => {
             <div className="each_candy_text">
               <h6 className='candy__title'> <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link></h6>
               <h6 className='candy__price'>${candy.candyPrice}</h6>
-              <button className='each__candy__addToCart' onClick={() => handleAddToCart(candy)} >Add to Cart!</button>
+              <button className='each__candy__addToCart' onClick={() => addToCart(candy)} >Add to Cart!</button>
     <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
             </div>
           </div>

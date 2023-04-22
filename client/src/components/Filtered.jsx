@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/allCandiesFilterd.css';
@@ -6,27 +6,18 @@ import Navbar from '../components/Navbar.jsx'
 import Footer from './Footer';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
+import {CartContext} from "../contexts/CartContext";
 
 
-const Filtered = ({onAddToCart, cartCount}) => {
+const Filtered = () => {
   const navigate = useNavigate();
-  const [addedMessage, setAddedMessage] = useState({});
-
+  const {addedMessage,addToCart,cartCount} = useContext(CartContext);
   const [candies, setCandies] = useState([]);
   const [filteredCandies, setFilterdCandies] = useState([]);
   const[category, setCategory] = useState([]);
   const { id } = useParams();
   const [categories, setCategories] = useState([]);
 
-  
-
-  const addToCart = (candy) => {
-    onAddToCart(candy);
-    setAddedMessage({ ...addedMessage, [candy._id]: true });
-    setTimeout(() => {
-      setAddedMessage({ ...addedMessage, [candy._id]: false });
-    }, 1000);
-  };
 
   useEffect(() => {
     axios.get("http://localhost:8000/api/category")
