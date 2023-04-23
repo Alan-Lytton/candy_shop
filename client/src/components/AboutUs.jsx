@@ -9,6 +9,7 @@ const AboutUs = () => {
     return (
         <div>
             <div class="roadmap">
+            <Link className='LinkToBack' to={"/"}> <i class="fa-solid fa-arrow-left"></i> Home</Link>
 
                 <h2 className='main-title'>Meet the team</h2>
                 <div class="_w-cloneable">
@@ -81,10 +82,8 @@ const AboutUs = () => {
                                         <div class="_2rem-divider"></div>
                                     </div>
                                     <div class="c-card-details">
-                                        <p class="card-details">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                            elit. Quis temporibus error nostrum voluptatum omnis eaque qui voluptatem
-                                            minus illo, voluptate sequi laudantium commodi aperiam reiciendis magnam,
-                                            maiores nulla corrupti nisi!</p>
+                                        <p class="card-details">My name is Pablo, software engineer student from Chicago, IL. 
+                                        My enthusiasm for learning lead me to Coding Dojo and I truly enjoyed going through the bootcamp . KitKats are my favorite candy. One time I ate a whole bag of KitKat minis. Lets connect on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/jose-rodriguez-3968a6134/">LinkedIn.</a> </p>
                                     </div>
                                 </div>
                             </div>

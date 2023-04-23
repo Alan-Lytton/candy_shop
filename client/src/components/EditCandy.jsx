@@ -45,10 +45,11 @@ const EditCandy = () => {
 
     const updateCandy = (e) => {
         e.preventDefault();
-
-        axios.put('http://localhost:8000/api/candy/edit/' + id, candy)
+        let isOnSale = (candy.onSale) ? candy.candyDiscount : 0 
+        axios.put('http://localhost:8000/api/candy/edit/' + id, {...candy, candyDiscount: isOnSale})
             .then(res => {
                 setCandy(res.data.oneCandy);
+                console.log(res.data.oneCandy)
                 navigate('/admin/dashboard')
             })
             .catch(err => {
@@ -127,37 +128,17 @@ const EditCandy = () => {
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy?.candyImage} onChange={onChangeHandler} />
                 </div>
-                {/*On Sale Field */}
+                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
-                    <input className="create__candy__input" type="text "name="onSale" value={candy.onSale} onChange={onChangeHandler} />
-                </div>
-                {/*On Discount*/}
-                <div className="form-group">
-                    <label className="create__candy__label">On Discount: </label>
-                    <select
-                        className="create__candy__input"
-                        type="number" name="candyDiscount"
-                        value={candy.candyDiscount}
-                        onChange={onChangeHandler}
-                    >
-                        <option selected="true" disabled="disabled" value="" label="Select Percentage">
-                            Select Percentage
-                        </option>
-                        <option value="" label="10 %">
-                            {""}
-                            Ten Percent
-                        </option>
-                        <option value="" label="20 %">
-                            {""}
-                            Twenty Percent
-                        </option>
-                        <option value="" label="30 %">
-                            {""}
-                            Twenty Percent
-                        </option>
-                    </select>
-                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
+                    <input className="create__candy__input" type="checkbox" name="onSale" checked={candy.onSale} onChange={() => setCandy({...candy, onSale: !candy.onSale})} />
+
+                    {candy.onSale ? (
+                        <div className="form-group">
+                        <label className="create__candy__label">Discount: </label>
+                        <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
+                    </div>
+                    ) : null}
                 </div>
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>

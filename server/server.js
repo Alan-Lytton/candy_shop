@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 
 
 dotenv.config({path:'.env'});
+
 dotenv.config({path:'mongoVar.env'});
 require("./config/candy.config");
 app.use(cookieParser());

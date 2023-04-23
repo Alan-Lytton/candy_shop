@@ -3,26 +3,18 @@ import Footer from './Footer';
 import '../css/oneCandy.css'
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import PaymentBadge from '../assets/images/paymentBadges.png'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {CartContext} from "../contexts/CartContext";
 
-const OneCandy = ({onAddToCart, cartCount}) => {
+const OneCandy = () => {
 
     const { id } = useParams();
     const [candy, setCandy] = useState({});
-    const [addedMessage, setAddedMessage] = useState({});
-
-
-    const addToCart = (candy) => {
-        onAddToCart(candy);
-        setAddedMessage({ ...addedMessage, [candy._id]: true });
-        setTimeout(() => {
-            setAddedMessage({ ...addedMessage, [candy._id]: false });
-        }, 1000);
-    };
+    const {addedMessage, addToCart,cartCount} = useContext(CartContext);
 
     const settings = {
         className: "center",
