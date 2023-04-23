@@ -6,6 +6,6 @@ module.exports = (app) =>{
     app.get("/api/candy", CandyController.getAllCandy)
     app.get("/api/candy/:id", CandyController.getOneCandy)
     app.post("/api/candy/add", CandyController.createCandy)
-    app.put("/api/candy/edit/:id", CandyController.updateCandy)
+    app.patch("/api/candy/edit/:id", CandyController.updateCandy)
     app.delete("/api/candy/delete/:id",CandyController.deleteCandy)
 }

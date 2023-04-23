@@ -10,8 +10,28 @@
     align-items: start;
     width: 95%;
     height: fit-content;
-    
+
 }
+.quantity-button{
+    background-color: transparent;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.left_btn{
+    margin-left: 0;
+}
+.error-message{
+    position: relative;
+    bottom: -10px;
+    z-index: 50;
+ font-size: 14px;
+ color: red;
+}
+
 
 .cart_items_card {
     width: 70%;
@@ -19,6 +39,32 @@
     margin-bottom: 7%;
 }
 
+.deleteFuncitonality {
+   
+    border: none;
+    cursor: pointer;
+    background: none;
+    margin-left: 40px;
+}
+.trashcan{
+    transition: transform 0.2s;
+    z-index: -1;
+    margin-bottom: 2px;
+}
+.trashcan:hover {
+    animation: rotate-cart 0.6s infinite alternate;
+
+}
+
+@keyframes rotate-cart {
+    from {
+        transform: rotate(-3deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
+}
 
 .candy__image__cart {
     width: 100%;
@@ -61,10 +107,12 @@
     border-radius: 6px;
     text-indent: 12px;
 }
-.trashcan{
+
+.trashcan {
     margin-top: 12px;
     cursor: pointer;
 }
+
 .checkout_main_section_cart {
     display: flex;
     flex-direction: column;
@@ -82,33 +130,39 @@
     box-shadow: .15rem .15rem 4px #000;
 }
 
-.mapped_checkout_cart{
-display: flex;
-justify-content: space-between;
-width: 80%;
-margin: 0 auto;
+.mapped_checkout_cart {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
 }
-.scrollable_div{
+
+.scrollable_div {
     padding-top: 25px;
 }
-.candy_mapped_chcekout{
+
+.candy_mapped_chcekout {
     color: black;
     font-weight: lighter !important;
     font-size: 13px;
 }
-.cart_summary_title{
-color: #ff90e8;
+
+.cart_summary_title {
+    color: #ff90e8;
 
 }
-.seperator{
+
+.seperator {
     display: flex;
     justify-content: space-between;
 }
-.scrollable_div{
+
+.scrollable_div {
     height: 197px;
     overflow-y: scroll;
 }
-.sub_total__container{
+
+.sub_total__container {
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -117,15 +171,14 @@ color: #ff90e8;
     margin-top: 30px;
 
 }
-.checkout_subtotal{
-color: #000;
-font-weight: bold;
-letter-spacing: 1.2px;
+
+.checkout_subtotal {
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 1.2px;
 }
 
-.checkout_btn{
-
-}
+.checkout_btn {}
 
 
 .checkout_btn:active {
