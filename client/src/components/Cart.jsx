@@ -44,22 +44,21 @@ const Cart = () => {
     }
   };
 
-  const [newStock, setNewStock] = useState()
-  const updateCandy = (id, stock) => {
-    axios.put('http://localhost:8000/api/candy/edit/' + id,{...newStock, stock})
-      .then(stock => {
-        setNewStock(stock);
-      })
-      .catch(err => {
-        console.log(err);
-        console.log(err.response.data.errors)
-      })
-  }
+  const updateCandyStock = async (candyId, quantity) => {
+    try {
+      const response = await axios.put(`http://localhost:8000/api/candy/${candyId}/updateStock`, { quantity });
+      console.log("Candy stock updated:", response.data);
+    } catch (error) {
+      console.error("Error updating candy stock:", error);
+    }
+  };
+  
+  
 
 
 
   return (
-    <div>
+    <div className="body_cart">
       <Navbar />
       <form className='main_form_cart'>
         <div className="cart_items_card">
@@ -145,7 +144,7 @@ const Cart = () => {
                     {cartItems.map((aCandy) => (
                       <div key={aCandy._id}>
                       {console.log("THSIHISHIFHIUHIUHUIHUI",aCandy._id, aCandy.candyStock - aCandy.quantity)}
-                              {updateCandy(aCandy._id,aCandy.candyStock - aCandy.quantity)}
+                              {updateCandyStock(aCandy._id,aCandy.candyStock - aCandy.quantity)}
                       </div>
                     ))}
 

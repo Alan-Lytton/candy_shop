@@ -1,4 +1,4 @@
-import { AboutUs, Filtered, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding } from './components/index';
+import { AboutUs, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding } from './components/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Cart from './components/Cart'
@@ -17,7 +17,6 @@ function App() {
           <Route path="/admin/register" element={<UserForm/>}/>
           <Route path="/admin/dashboard" element={<AdminLanding/>}/>
           <Route path="/admin/candy/create" element={<CreateCandy/>}/>
-          <Route path="/filtered/candy/:id" element={<Filtered/>}/>
           <Route path="/admin/candy/edit/:id" element={<EditCandy/>}/>
           <Route path="/candy/cart" element={<Cart/>}/>
         </Routes>
