@@ -13,7 +13,7 @@ const CreateCandy = () => {
         candyImage: "",
         candyCategory: "",
         candyStock: 0,
-        onSale: "",
+        onSale: "false",
         candyDiscount: ""
     })
     const [error, setError] = useState({});
@@ -107,43 +107,44 @@ const CreateCandy = () => {
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy.candyImage} onChange={onChangeHandler} />
                 </div>
+
                 {/*On Sale Field */}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
-                    <input className="create__candy__input" type="text "name="onSale" value={candy.onSale} onChange={onChangeHandler} />
+                    <input className="create__candy__input" type="checkbox" value={candy.onSale} onChange={onChangeHandler} />
                 </div>
                 {/*On Discount*/}
-                <div className="form-group">
-                    <label className="create__candy__label">On Discount: </label>
-                    <select
-                        className="create__candy__input"
-                        type="number" name="candyDiscount"
-                        value={candy.candyDiscount}
-                        onChange={onChangeHandler}
-                    >
-                        <option value="" label="Select Percentage">
-                            Select Percentage
-                        </option>
-                        <option value="" label="10 %">
-                            {""}
-                            Ten Percent
-                        </option>
-                        <option value="" label="20 %">
-                            {""}
-                            Twenty Percent
-                        </option>
-                        <option value="" label="30 %">
-                            {""}
-                            Twenty Percent
-                        </option>
-                    </select>
-                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
-                </div>
-
+                {candy.onSale && (
+                    <div className="form-group">
+                        <label className="create__candy__label">On Discount: </label>
+                        <select
+                            className="create__candy__input"
+                            type="number" name="candyDiscount"
+                            value={candy.candyDiscount}
+                            onChange={onChangeHandler}
+                        >
+                            <option value="" label="Select Percentage">
+                                Select Percentage
+                            </option>
+                            <option value="" label="10 %">
+                                {""}
+                                Ten Percent
+                            </option>
+                            <option value="" label="20 %">
+                                {""}
+                                Twenty Percent
+                            </option>
+                            <option value="" label="30 %">
+                                {""}
+                                Twenty Percent
+                            </option>
+                        </select>
+                        {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
+                    </div>
+                )}
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>
         </div>
     )
 }
-
 export default CreateCandy

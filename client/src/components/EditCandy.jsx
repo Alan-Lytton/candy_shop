@@ -12,7 +12,9 @@ const EditCandy = () => {
         candyDescription: "",
         candyImage: "",
         candyCategory: "",
-        candyStock: 0
+        candyStock: 0,
+        onSale: false,
+        candyDiscount: 0
     })
     const [allCategories, setAllCategories] = useState([])
     const [error, setError] = useState({})
