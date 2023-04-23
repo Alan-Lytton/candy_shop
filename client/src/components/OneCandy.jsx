@@ -3,18 +3,23 @@ import Footer from './Footer';
 import '../css/oneCandy.css'
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PaymentBadge from '../assets/images/paymentBadges.png'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {CartContext} from "../contexts/CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 const OneCandy = () => {
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const { id } = useParams();
     const [candy, setCandy] = useState({});
-    const {addedMessage, addToCart,cartCount} = useContext(CartContext);
+    const { addedMessage, addToCart, cartCount, cartItems, updateCartItemQuantity } = useContext(CartContext);
+    const [candies, setCandies] = useState([]);
 
     const settings = {
         className: "center",
@@ -23,7 +28,6 @@ const OneCandy = () => {
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 1,
-        // autoplay: true,    
         responsive: [
             {
                 breakpoint: 1200,
@@ -41,6 +45,11 @@ const OneCandy = () => {
             },
         ],
     };
+    const isStockReached = (candy) => {
+        if (!cartItems) return false;
+        const candyInCart = cartItems.find((item) => item._id === candy._id);
+        return candyInCart && candyInCart.quantity >= candy.candyStock;
+    };
 
     useEffect(() => {
         axios
@@ -49,7 +58,7 @@ const OneCandy = () => {
             .catch((err) => console.log(err));
     }, [id]);
 
-    const [candies, setCandies] = useState([]);
+
 
     useEffect(() => {
         axios
@@ -58,12 +67,14 @@ const OneCandy = () => {
             .catch(err => console.log(err));
     }, []);
 
-    // Filter candies by category
-    const filteredCandies = candies.filter(candi => candi.candyCategory === candy.candyCategory);
+    const filteredCandies = candies.filter(
+        (candi) =>
+          candi.candyCategory === candy.candyCategory && candi._id !== id
+      );
 
     return (
         <section className='one_candy_container'>
-            <Navbar cartCount={cartCount}/>
+            <Navbar cartCount={cartCount} />
             <section className="main_container_one_candy">
                 <div className="candy_image_container">
                     <img className='one_candy_image' require src={candy.candyImage} alt="this is the iamge" />
@@ -75,33 +86,46 @@ const OneCandy = () => {
                     <h6 className='candy__category__one'>Category: {candy.candyCategory}</h6>
                     <h6 className="candy__stock__one">In Stock: {candy.candyStock}</h6>
                     <div className="container_button_badges">
-                    <button className='add_to_cart_one' onClick={() => addToCart(candy)}>Add to Cart</button>
-                    <img className="imageBagePayment" src={PaymentBadge} alt="" />
+                        <button
+                            className='add_to_cart_one'
+                            onClick={() => addToCart(candy)}
+                            disabled={isStockReached(candy)}
+                        >
+                            {isStockReached(candy) ? "Out of Stock" : "Add to Cart"}
+                        </button>
+                        <img className="imageBagePayment" src={PaymentBadge} alt="" />
                     </div>
-                    </div>
-                    <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
-                </section>
-                <div className="category_list_items">
+                </div>
+                <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
+            </section>
+            <div className="category_list_items">
                 <h1 className='title_candy_categorttext'>Find some more {candy.candyCategory}</h1>
                 <Slider {...settings}>
-                        {filteredCandies.map((candi, i) => (
-                            <div key={candi._id} className="each_candy">
-                                <Link to={`/one/candy/${candy._id}`}>
-                                    <img className='candy__image__solo' src={candi.candyImage} alt="Placeholder" />
-                                </Link>
-                                <div className="each_candy_text">
-                                    <h6 className='candy__title'>
-                                        <Link to={`/one/candy/${candi._id}`}>{candi.candyName}</Link>
-                                    </h6>
-                                    <h6 className='candy__price'>${candi.candyPrice}</h6>
-                                    <button className='each__candy__addToCart' onClick={() => addToCart(candi)}>Add to Cart!</button>
-                                    <p className={`added-message${addedMessage[candi._id] ? ' show' : ''}`}>Added</p>
-                                </div>
+                    {filteredCandies.map((candi, i) => (
+                        <div key={candi._id} className="each_candy">
+                        <Link to={`/one/candy/${candi._id}`} onClick={() => window.scrollTo(0, 0)}>
+                        <img className='candy__image__solo' src={candi.candyImage} alt="Placeholder" />
+                    </Link>
+
+                            <div className="each_candy_text">
+                            <h6 className='candy__title'>
+                            <Link onClick={() => window.scrollTo(0, 0)} to={`/one/candy/${candi._id}`}>{candi.candyName}</Link>
+                        </h6>
+                                <h6 className='candy__price'>${candi.candyPrice}</h6>
+                                <button
+                                    className='each__candy__addToCart'
+                                    onClick={() => addToCart(candi)}
+                                    disabled={isStockReached(candi)}
+                                >
+                                    {isStockReached(candi) ? "Out of Stock" : "Add to Cart!"}
+                                </button>
+                                <p className={`added-message${addedMessage[candi._id] ? ' show' : ''}`}>Added</p>
                             </div>
-                        ))}
-                    </Slider>
-                </div>
-                <Footer/>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+            <Footer />
         </section>
     )
 }

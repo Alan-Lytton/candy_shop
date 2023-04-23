@@ -12,6 +12,9 @@
     height: fit-content;
 
 }
+.body_cart{
+background-color: #E8C2C2;
+}
 .quantity-button{
     background-color: transparent;
     padding: 4px 8px;

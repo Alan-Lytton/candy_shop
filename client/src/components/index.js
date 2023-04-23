@@ -1,6 +1,5 @@
 export{default as  Navbar} from './Navbar';
 export{default as AboutUs} from './AboutUs';
-export{default as Filtered} from './Filtered';
 export{default as EditCandy} from './EditCandy';
 export{default as  OneCandy} from './OneCandy';
 export{default as  UserForm} from './UserForm';

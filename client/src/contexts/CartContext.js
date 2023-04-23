@@ -70,30 +70,30 @@ const CartProvider = ({ children }) => {
 
   };
   
-  const updateCartItemQuantity = (itemId, newQuantity) => {
-    setCartItems((prevCartItems) => {
-      const item = prevCartItems.find((item) => item._id === itemId);
-  
-      if (item) {
-        const newTotalCost = newQuantity * item.candyPrice;
-        const updatedCartItems = prevCartItems.map((item) =>
-          item._id === itemId
-            ? {
-                ...item,
-                quantity: newQuantity,
-                totalCost: newTotalCost,
-              }
-            : item
-        );
-  
-        const newCartCount = updatedCartItems.reduce((count, item) => count + item.quantity, 0);
-        setCartCount(newCartCount);
-        return updatedCartItems;
-      } else {
-        return prevCartItems;
-      }
-    });
-  };
+const updateCartItemQuantity = (itemId, newQuantity) => {
+  setCartItems((prevCartItems) => {
+    const item = prevCartItems.find((item) => item._id === itemId);
+
+    if (item) {
+      const newTotalCost = newQuantity * item.candyPrice;
+      const updatedCartItems = prevCartItems.map((item) =>
+        item._id === itemId
+          ? {
+              ...item,
+              quantity: newQuantity,
+              totalCost: newTotalCost,
+            }
+          : item
+      );
+
+      const newCartCount = updatedCartItems.reduce((count, item) => count + item.quantity, 0);
+      setCartCount(newCartCount); // Update cart count here
+      return updatedCartItems;
+    } else {
+      return prevCartItems;
+    }
+  });
+};
   return (
     <CartContext.Provider 
     value={{cartCount,setCartCount,cartItems,setCartItems,addToCart, removeFromCart, clearCart, addedMessage, setAddedMessage, updateCartItemQuantity,}}>

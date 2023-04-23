@@ -1,6 +1,7 @@
 .all_candies_container {
   background-color: #E8C2C2;
   height: fit-content;
+  overflow-x: hidden;
 }
 
 .main__title__allCandies,
@@ -14,8 +15,31 @@
   line-height: 100%;
 
 }
+.page-number {
+  display: inline-block;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color:transparent;
+  color: #000;
+  border: 1px solid #000000;
+  cursor: pointer;
+}
 
-
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.page-number.active {
+  background-color: #000;
+  color: #fff;
+}
+.page-number:hover{
+  background-color: #1C2431;
+  color: #fff;
+}
 
 .shop_now_cart {
   border-bottom: 1px solid black;
@@ -260,4 +284,46 @@
 
 .cart_empty_span {
 height: 1200px;
+}
+/* .all_candies_container {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin; 
+  scrollbar-color: yellow green; 
+}
+
+.all_candies_container::-webkit-scrollbar {
+  width: 20px;
+}
+
+.all_candies_container::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+}
+
+.all_candies_container::-webkit-scrollbar-thumb {
+  background-image: url("../assets/images/Carousel_Twist_copy.png"); 
+}
+
+.all_candies_container::-webkit-scrollbar-thumb:hover {
+  background-color: orange; 
+} */
+
+::-webkit-scrollbar {
+  width: 24px;
+}
+body{
+  overflow-x: hidden;
+}
+::-webkit-scrollbar-track {
+  background-color: #E8C2C2;
+}
+::-webkit-scrollbar-thumb {
+  /* background-color: #000000; */
+  background-image: url("https://cdn.discordapp.com/attachments/1036375659326480457/1099602654650437682/image.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 50px;
+  /* height: 100%; */
+  border: none;
 }

@@ -8,4 +8,6 @@ module.exports = (app) =>{
     app.post("/api/candy/add", CandyController.createCandy)
     app.patch("/api/candy/edit/:id", CandyController.updateCandy)
     app.delete("/api/candy/delete/:id",CandyController.deleteCandy)
+    app.put("/api/candy/:id/updateStock", CandyController.updateCandyStock);
+
 }
