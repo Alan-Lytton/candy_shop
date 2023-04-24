@@ -66,7 +66,7 @@ const Cart = () => {
             <div key={candy._id} className="each_candy__cart">
               <div className="each_candy_text__cart">
                 <h6 className="candy__title__cart">
-                  <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
+                  <Link className="cart_title_candy" to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
                 </h6>
                 <h6 className="candy__price__cart">Individual Total: ${candy.totalCost.toFixed(2)}</h6>
                 <div className="quantity-control">

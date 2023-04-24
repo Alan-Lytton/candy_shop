@@ -68,10 +68,13 @@ background-color: #E8C2C2;
         transform: rotate(3deg);
     }
 }
-
+.cart_title_candy{
+    width: 200px;
+}
 .candy__image__cart {
     width: 100%;
-    max-width: 200px;
+    /* max-width: 200px; */
+    max-height: 200px
 }
 
 .candy__title__cart {

@@ -294,7 +294,7 @@ img {
 
 }
 
-span::before {
+.chrisSpecial::before {
     content: "Almond joy";
 }
 
