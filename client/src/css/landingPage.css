@@ -25,6 +25,24 @@
     font-weight: 900;
 }
 
+.carousel-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .carousel-original-price {
+    color: #8b8b8b;
+    text-decoration: line-through;
+    margin-right: 5px;
+  }
+  
+  .carousel-discount-price {
+    color: #e91e63;
+    font-weight: bold;
+    padding-left: 6px;
+  }
 .containerLink {
     width: 30%;
     margin-top: 7%;
@@ -108,8 +126,7 @@
   background-color: #f2e8cf;
     /* height: fit-content; */
 }
-.final_title__{
-}
+
 .section-one_title {
     text-align: center;
     padding-top: 5rem;
@@ -266,6 +283,9 @@ span::before {
     .landing_page_confident__text{
         line-height: 150% !important;
         font-size: 1.2rem !important;
+    }
+    .final_title__{
+        padding-top: 30px;
     }
     .containerLink {
         width: 30%;
