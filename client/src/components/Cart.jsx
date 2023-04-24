@@ -24,6 +24,15 @@ const Cart = () => {
     }
   };
 
+  // slice the words so they dont get to big for teh cart total
+  const truncateCandyName = (candyName) => {
+    const words = candyName.split(' ');
+    if (words.length > 3) {
+      return words.slice(0, 3).join(' ') + '...';
+    }
+    return candyName;
+  };
+
 // map thru updated cart items the ones with discount as well
   const updatedCartItems = cartItems.map(candy => ({ ...candy, totalCost: parseFloat(getUpdatedPrice(candy)) * candy.quantity }));
 
@@ -77,7 +86,7 @@ const Cart = () => {
             <div key={candy._id} className="each_candy__cart">
               <div className="each_candy_text__cart">
                 <h6 className="candy__title__cart">
-                  <Link className="cart_title_candy" to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
+                  <Link className="cart_title_candy" to={`/one/candy/${candy._id}`}>{truncateCandyName(candy.candyName)}</Link>
                 </h6>
                 <h6 className="candy__price__cart">Individual Total: ${candy.totalCost.toFixed(2)}</h6>
                 <div className="quantity-control">
@@ -116,7 +125,7 @@ const Cart = () => {
             <div className="scrollable_div">
             {updatedCartItems.map((aCandy) => (
                 <div key={aCandy._id} className='mapped_checkout_cart'>
-                  <h4 className='candy_mapped_chcekout'>{aCandy.candyName}</h4>
+                  <h4 className='candy_mapped_chcekout'>{truncateCandyName(aCandy.candyName)}</h4>
                   <div className="seperator">
                     <h4 className='candy_mapped_chcekout'>${aCandy.totalCost.toFixed(1)}</h4>
                     <h4 className='candy_mapped_chcekout'>{aCandy.quantity}</h4>

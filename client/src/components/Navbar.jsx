@@ -1,20 +1,24 @@
 import '../css/navbar.css';
 import { Link } from 'react-router-dom';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../contexts/CartContext'
 import CompanyLogo from '../assets/images/gplogoshop.jpg';
 
 const Navbar = () => {
     const { cartCount } = useContext(CartContext);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
-
-// navbar responsive burger menu
     function openMenu() {
+        // navbar responsive burger menu
         document.body.classList += "menu--open"
     }
     function closeMenu() {
         document.body.classList.remove('menu--open')
     }
+
+    const handleDarkModeToggle = () => {
+        setIsDarkMode(!isDarkMode);
+    };
 
     return (
         <nav className="treact__nav">

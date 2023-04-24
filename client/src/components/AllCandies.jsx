@@ -64,6 +64,10 @@ const AllCandies = () => {
       return candy.candyPrice.toFixed(2);
     }
   };
+  const changePage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
+  };
 
   // Pagination
   const totalPages = Math.ceil(
@@ -156,7 +160,8 @@ const AllCandies = () => {
               <button
                 key={pageNumber}
                 className={`page-number${pageNumber === currentPage ? ' active' : ''}`}
-                onClick={() => setCurrentPage(pageNumber)}
+                // onClick={() => setCurrentPage(pageNumber)}
+                onClick={() => changePage(pageNumber)}
               >
                 {pageNumber + 1}
               </button>

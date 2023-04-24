@@ -73,12 +73,10 @@
 
 
 nav {
-    width: 90%;
-    margin: 0 auto;
     position: sticky;
     z-index: 100;
     top: 0;
-    padding: 12px 24px;
+    padding: 12px 9%;
     background-color: #E8C3C2;
     box-shadow: 0 12px 20px #E8C3C2;
 }

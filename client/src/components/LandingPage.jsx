@@ -18,7 +18,7 @@ const LandingPage = () => {
   const { addToCart, cartItems } = useContext(CartContext);
 
   // slider carasoul
-  const settings = { dots: true, infinite: true, speed: 500, slidesToScroll: 1,responsive: [ {breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1000, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
+  const settings = { dots: true, infinite: true, speed: 500,slidesToShow: 3,  slidesToScroll: 1 ,responsive: [ {breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1000, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
 
   // checks if item in stock
   const isStockReached = (candy) => {
@@ -54,6 +54,7 @@ const LandingPage = () => {
 
   return (
     <div className="main-body">
+    <span className='empty_body_span'></span>
       <div className='body'>
         <Navbar />
         <div className="all_item-container">
@@ -75,7 +76,7 @@ const LandingPage = () => {
             <Slider {...settings}>
               {discountedCandies.map((candy, index) => (
                 <div className='carasoul_all_togethor' key={index}>
-                  <Link to={`/one/candy/${candy._id}`}>
+                  <Link className='link_image_carasoul' to={`/one/candy/${candy._id}`}>
                     <img className="carousel-pic" src={candy.candyImage} alt={candy.candyName} /></Link>
                   <h6 className='candy__title candy__title__carasoul'>
                     <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
