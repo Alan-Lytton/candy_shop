@@ -48,7 +48,15 @@ const OneCandy = () => {
     const isStockReached = (candy) => {
         if (!cartItems) return false;
         const candyInCart = cartItems.find((item) => item._id === candy._id);
-        return candyInCart && candyInCart.quantity >= candy.candyStock;
+        return candyInCart && candyInCart.quantity >= candy.candyStock -1;
+    };
+
+    const calculatePrice = (candy) => {
+        if (candy.onSale && candy.candyDiscount > 0) {
+            return (candy.candyPrice - candy.candyDiscount);
+        } else {
+            return candy.candyPrice;
+        }
     };
 
     useEffect(() => {
@@ -69,8 +77,8 @@ const OneCandy = () => {
 
     const filteredCandies = candies.filter(
         (candi) =>
-          candi.candyCategory === candy.candyCategory && candi._id !== id
-      );
+            candi.candyCategory === candy.candyCategory && candi._id !== id
+    );
 
     return (
         <section className='one_candy_container'>
@@ -81,8 +89,16 @@ const OneCandy = () => {
                 </div>
                 <div className="candy_description_container">
                     <h6 className='candy__name__one'>{candy.candyName}</h6>
-                    <h6 className='candy__price__one'>Price: ${candy.candyPrice}</h6>
-                    <h6 className='candy__description__one'>{candy.candyDescription}</h6>
+                    {candy.onSale && candy.candyDiscount > 0 ? (
+                        <h6 className='candy__price__one'>
+                            <span className='styled_candy_new_price' style={{ textDecoration: 'line-through' }}>
+                                ${candy.candyPrice}
+                            </span>{' '}
+                            <span>${calculatePrice(candy)}</span>
+                        </h6>
+                    ) : (
+                        <h6 className='candy__price__one'>Price: ${candy.candyPrice}</h6>
+                    )}                    <h6 className='candy__description__one'>{candy.candyDescription}</h6>
                     <h6 className='candy__category__one'>Category: {candy.candyCategory}</h6>
                     <h6 className="candy__stock__one">In Stock: {candy.candyStock}</h6>
                     <div className="container_button_badges">
@@ -103,14 +119,14 @@ const OneCandy = () => {
                 <Slider {...settings}>
                     {filteredCandies.map((candi, i) => (
                         <div key={candi._id} className="each_candy">
-                        <Link to={`/one/candy/${candi._id}`} onClick={() => window.scrollTo(0, 0)}>
-                        <img className='candy__image__solo' src={candi.candyImage} alt="Placeholder" />
-                    </Link>
+                            <Link to={`/one/candy/${candi._id}`} onClick={() => window.scrollTo(0, 0)}>
+                                <img className='candy__image__solo' src={candi.candyImage} alt="Placeholder" />
+                            </Link>
 
                             <div className="each_candy_text">
-                            <h6 className='candy__title'>
-                            <Link onClick={() => window.scrollTo(0, 0)} to={`/one/candy/${candi._id}`}>{candi.candyName}</Link>
-                        </h6>
+                                <h6 className='candy__title'>
+                                    <Link onClick={() => window.scrollTo(0, 0)} to={`/one/candy/${candi._id}`}>{candi.candyName}</Link>
+                                </h6>
                                 <h6 className='candy__price'>${candi.candyPrice}</h6>
                                 <button
                                     className='each__candy__addToCart'

@@ -1,4 +1,4 @@
-import { AboutUs, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding } from './components/index';
+import { AboutUs, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding, Deals } from './components/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Cart from './components/Cart'
@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />}/>
           <Route path="/shop" element={<AllCandies/>}/>
+          <Route path="/deals" element={<Deals/>}/>
           <Route path="/about/us" element={<AboutUs />}/>
           <Route path="/admin/login" element={<UserLogin />}/>
           <Route path="/one/candy/:id" element={<OneCandy />}/>

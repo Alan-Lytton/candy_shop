@@ -6,6 +6,9 @@ display: flex;
 flex-direction: column;
 }
 
+.styled_candy_new_price{
+    color: #23a094;
+}
 
 .main_container_one_candy{
 display: flex;
@@ -13,6 +16,11 @@ justify-content: space-between;
 width: 95%;
 margin: 0 auto;
 margin-top: 20px;
+}
+.on_sale_candy{
+    text-decoration: line-through;
+    color: #23a094;
+
 }
 .title_candy_categorttext{
     text-align: center;

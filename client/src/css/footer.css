@@ -23,9 +23,6 @@
     
 }
 
-.footer__content {
-    /* padding: 20px; */
-}
 
 .footer__links {
     display: flex;
@@ -43,9 +40,8 @@
 
 .footer__links__color:hover {
     font-size: 1.15rem;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
     border-bottom: 2px solid #FFA9A6;
-
 }
 
 .footer__logo {

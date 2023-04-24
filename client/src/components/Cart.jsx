@@ -15,11 +15,21 @@ const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 
 const Cart = () => {
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
+  const getUpdatedPrice = (candy) => {
+    if (candy.onSale && candy.candyDiscount > 0) {
+      return (candy.candyPrice - candy.candyDiscount).toFixed(2);
+    } else {
+      return candy.candyPrice.toFixed(2);
+    }
+  };
+
+  const updatedCartItems = cartItems.map(candy => ({ ...candy, totalCost: parseFloat(getUpdatedPrice(candy)) * candy.quantity }));
+
 
   const getSubTotal = () => {
     let subTotal = 0
     for (let i = 0; i < cartItems.length; i++) {
-      subTotal += cartItems[i].totalCost;
+      subTotal += updatedCartItems[i].totalCost;
     }
     return subTotal
   };
@@ -52,8 +62,8 @@ const Cart = () => {
       console.error("Error updating candy stock:", error);
     }
   };
-  
-  
+
+
 
 
 
@@ -62,7 +72,7 @@ const Cart = () => {
       <Navbar />
       <form className='main_form_cart'>
         <div className="cart_items_card">
-          {cartItems.map((candy) => (
+        {updatedCartItems.map((candy) => (
             <div key={candy._id} className="each_candy__cart">
               <div className="each_candy_text__cart">
                 <h6 className="candy__title__cart">
@@ -99,11 +109,11 @@ const Cart = () => {
             </div>
           ))}
         </div>
-        {cartItems.length != 0 ?
+        {updatedCartItems.length != 0 ?
           <div className="checkout_main_section_cart">
             <h3 className='cart_summary_title'>Cart Summary</h3>
             <div className="scrollable_div">
-              {cartItems.map((aCandy) => (
+            {updatedCartItems.map((aCandy) => (
                 <div key={aCandy._id} className='mapped_checkout_cart'>
                   <h4 className='candy_mapped_chcekout'>{aCandy.candyName}</h4>
                   <div className="seperator">
@@ -141,14 +151,16 @@ const Cart = () => {
                     const address = details.purchase_units[0].shipping.address;
                     const order_id = details.id;
 
-                    {cartItems.map((aCandy) => (
-                      <div key={aCandy._id}>
-                      {console.log("THSIHISHIFHIUHIUHUIHUI",aCandy._id, aCandy.candyStock - aCandy.quantity)}
-                              {updateCandyStock(aCandy._id,aCandy.candyStock - aCandy.quantity)}
-                      </div>
-                    ))}
+                    {
+                      cartItems.map((aCandy) => (
+                        <div key={aCandy._id}>
+                          {console.log("THSIHISHIFHIUHIUHUIHUI", aCandy._id, aCandy.candyStock - aCandy.quantity)}
+                          {updateCandyStock(aCandy._id, aCandy.candyStock - aCandy.quantity)}
+                        </div>
+                      ))
+                    }
 
-                    
+
                     clearCart();
 
                     console.log(details)

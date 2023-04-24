@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
 import "../css/landingPage.css";
 import Navbar from './Navbar.jsx';
+import React, { useState, useEffect, useContext } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ScrollTrigger from 'react-scroll-trigger';
 import { useNavigate } from 'react-router-dom';
 import candy_bowl from '../assets/images/candy_bowl.webp'
-import { CartContext, CartProvider } from '../contexts/CartContext';
 import Footer from './Footer.jsx'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
+import { CartContext } from "../contexts/CartContext";
+
+
 const LandingPage = () => {
+  const { addedMessage, addToCart, cartCount, cartItems, updateCartItemQuantity } = useContext(CartContext);
+
   const settings = {
-    className: "center",
+    // className: "center",
     dots: true,
     infinite: true,
     speed: 500,
@@ -41,6 +46,11 @@ const LandingPage = () => {
   function handleClick() {
     navigate('/shop');
   }
+  const isStockReached = (candy) => {
+    if (!cartItems) return false;
+    const candyInCart = cartItems.find((item) => item._id === candy._id);
+    return candyInCart && candyInCart.quantity >= candy.candyStock -1;
+};
 
   function handleClickToDeals() {
     navigate('/deals');
@@ -92,21 +102,33 @@ const LandingPage = () => {
 
             <Slider {...settings}>
             {discountedCandies.map((candy, index) => (
-              <div key={index}>
-                <img className="carousel-pic" src={candy.candyImage} alt={candy.candyName} />
+              <div className='carasoul_all_togethor' key={index}>
+              <Link to={`/one/candy/${candy._id}`}>
+                <img className="carousel-pic" src={candy.candyImage} alt={candy.candyName} /></Link>
+                <h6 className='candy__title candy__title__carasoul'>
+                  <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
+                </h6>
                 <div className="carousel-price">
-                  <h4 className="carousel-original-price">{`$${candy.candyPrice.toFixed(2)}`} </h4>
+                  <h6 className="carousel-original-price">{`$${candy.candyPrice.toFixed(2)}`} </h6>
                   <i class="fa-solid fa-arrow-right"></i>
-                  <h4 className="carousel-discount-price">{`$${(candy.candyPrice - candy.candyDiscount).toFixed(2)}`}</h4>
+                  <h6 className="carousel-discount-price">{`$${(candy.candyPrice - candy.candyDiscount).toFixed(2)}`}</h6>
                 </div>
+                <button
+                className='each__candy__addToCart landing_carasoul'
+                onClick={() => addToCart(candy)}
+                disabled={isStockReached(candy)}
+            >
+                {isStockReached(candy) ? "Out of Stock" : "Add to Cart!"}
+            </button>
               </div>
             ))}
             </Slider>
 
-            <button className='carasoul-button' onClick={handleClickToDeals}>Find Deals</button>
+            <button className='carasoul-button'> <Link className='link_to_deals' to={"/deals"}>Find Deals</Link> </button>
           </div>
         </section>
       </ScrollTrigger>
+      
       <section className="landing_page_confident">
 
         <h1 className="section-one_title total_titel">What we offer</h1>

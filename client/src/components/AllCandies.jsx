@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../css/allCandies.css";
 import { CartContext } from "../contexts/CartContext";
-import PerfectScrollbar from 'perfect-scrollbar';
+
 
 
 const PAGE_SIZE = 27;
@@ -18,6 +18,7 @@ const AllCandies = () => {
   const [addedMessage, setAddedMessage] = useState({});
   const { addToCart, cartItems } = useContext(CartContext);
   const [currentPage, setCurrentPage] = useState(0);
+  const [showButton, setShowButton] = useState(false);
 
   
 
@@ -31,6 +32,25 @@ const AllCandies = () => {
       .then((res) => setCandies(res.data.allCandy))
       .catch((err) => console.log(err));
   }, []);
+
+
+  const handleScroll = () => {
+    if (window.scrollY > window.innerHeight / 2) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   useEffect(() => {
     axios
@@ -61,7 +81,16 @@ const AllCandies = () => {
   const isStockReached = (candy) => {
     if (!cartItems) return false;
     const candyInCart = cartItems.find((item) => item._id === candy._id);
-    return candyInCart && candyInCart.quantity >= candy.candyStock;
+    return candyInCart && candyInCart.quantity >= candy.candyStock -1;
+  };
+
+
+  const getUpdatedPrice = (candy) => {
+    if (candy.onSale && candy.candyDiscount > 0) {
+      return (candy.candyPrice - candy.candyDiscount).toFixed(2);
+    } else {
+      return candy.candyPrice.toFixed(2);
+    }
   };
 return (
   
@@ -84,6 +113,7 @@ return (
         </select>
       </div>
     </div>
+    
     {filteredCandy.length > 0 ? (
       <div>
         <section className="cadies_container">
@@ -96,7 +126,13 @@ return (
                 <h6 className='candy__title'>
                   <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
                 </h6>
-                <h6 className='candy__price'>${candy.candyPrice}</h6>
+                {candy.onSale && candy.candyDiscount > 0 ? (
+                  <div>
+                    <h6 className='candy__price discounted'> <span className="on_sale_candy">${candy.candyPrice.toFixed(2)}</span> ${getUpdatedPrice(candy)}</h6>
+                  </div>
+                ) : (
+                  <h6 className='candy__price'>${candy.candyPrice.toFixed(2)}</h6>
+                )}
                 <button
                   className="each__candy__addToCart"
                   onClick={() => handleAddToCart(candy)}
@@ -107,7 +143,13 @@ return (
                 <p className={`added-message${addedMessage[candy._id] ? ' show' : ''}`}>Added</p>
               </div>
             </div>
+
           ))}
+          {showButton && (
+            <button className="scroll-top-button" onClick={handleScrollTop}>
+            <i className="fa fa-arrow-up" aria-hidden="true"></i>
+          </button>
+          )}
         </section>
         <div className="pagination">
           {pages.map((pageNumber) => (

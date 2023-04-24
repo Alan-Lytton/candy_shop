@@ -31,21 +31,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    position: relative;
+    top: 10px;
+    font-size: 30px;
 }
-
+.candy__title__carasoul{
+    font-size: 14px;
+}
+.landing_carasoul{
+    align-self: self-end;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    padding: 0  !important;
+}
 .carousel-original-price {
-    color: #8b8b8b;
+    color: #23a094;
     text-decoration: line-through;
     margin-right: 5px;
 }
 
 .carousel-discount-price {
-    color: #e91e63;
+    color: #000000;
     font-weight: bold;
     padding-left: 6px;
-}
 
+}
+.carasoul_all_togethor{
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
 .containerLink {
     width: 30%;
     margin-top: 7%;
@@ -100,8 +115,8 @@
 }
 
 .carasoul-button {
-    width: 150px;
-    height: 40px;
+    width: 200px;
+    height: 50px;
     font-size: 1rem;
     border: solid .0625rem black;
     color: rgb(255, 255, 255);
@@ -110,8 +125,7 @@
     font-family: Mabry Pro;
     cursor: pointer;
     transition: all .14s ease-out;
-    margin-top: 50px;
-    margin-bottom: 24px;
+    margin-top: 100px;
 }
 
 .carasoul-button:hover {
@@ -161,14 +175,31 @@ img {
 }
 
 .carousel-pic {
-    max-width: 250px;
+    width: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
     margin: 0 auto;
     border-radius: 12px;
-    height: auto;
 }
+.carousel-pic:hover {
+    animation: rotate-cart 0.6s infinite alternate;
+  
+  }
+  
+  @keyframes rotate-cart {
+    from {
+      transform: rotate(-3deg);
+    }
+  
+    to {
+      transform: rotate(3deg);
+    }
+  }
 
+  
 .carasoul_container {
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     text-align: center;
     margin-top: 7rem;
@@ -177,14 +208,19 @@ img {
 
 .slick-prev:before {
     color: black !important;
-    font-size: 26px !important;
+    font-size: 24px !important;
     opacity: 100% !important;
 }
-
+.slick-next{
+    margin-right: 3px;
+}
+.slick-prev{
+}
 
 .slick-next::before {
     color: black !important;
-    font-size: 26px !important;
+    font-size: 24px !important;
+    margin-right: 20px !important;
     opacity: 100% !important;
 }
 
@@ -297,7 +333,9 @@ img {
 .chrisSpecial::before {
     content: "Almond joy";
 }
-
+.link_to_deals{
+    color: white;
+}
 @media(max-width: 1000px) {
     .landing_page_confident__text {
         line-height: 150% !important;

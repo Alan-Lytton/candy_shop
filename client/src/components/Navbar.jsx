@@ -24,15 +24,9 @@ const Navbar = () => {
                 </div>
                 <ul className="nav__links">
                 
-                    <div className="dropdown ">
                         <Link to={'/shop'} className="dropbtn">Shop</Link>
-                    </div>
-                    <div className="dropdown">
-                        <Link className="dropbtn" to={"#"}>Deals</Link>
-                    </div>
-                    <div className="dropdown">
+                        <Link className="dropbtn" to={"/deals"}>Deals</Link>
                         <Link className='dropbtn' to={"/about/us"}>About Us</Link>
-                    </div>
                 </ul>
                 <div className="signup">
                 <li className="signup__primary" style={{position: 'relative'}}>
@@ -57,7 +51,7 @@ const Navbar = () => {
                         </li>
                         <li class="menu__list"><Link to={"/shop"} class="menu__link">Shop</Link>
                         </li>
-                        <li class="menu__list"><Link to={"/show/feed"} class="menu__link" >Deals</Link>
+                        <li class="menu__list"><Link to={"/deals"} class="menu__link" >Deals</Link>
                         </li>
                         <li class="menu__list"><Link to={"/about/us"} class="menu__link" >About Us</Link>
                         </li>

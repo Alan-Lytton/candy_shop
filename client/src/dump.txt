@@ -780,3 +780,44 @@ Description
 Savor rich chocolate ROLO® Creamy Caramels with smooth caramel centers, wrapped in classic gold foils. 
 Get a movie box of these chocolate-covered caramels to share with the family, or take this kosher and gluten-free candy on the go.
 The individually wrapped Life Savers inside are perfect for sharing, and you don't have to worry about trying to keep them from falling out of the roll or ending up covered in lint! Ditch the roll and reach for a bag of Life Savers candy today.
+
+
+
+
+
+
+
+
+
+import { AboutUs, Cart, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding, Deals } from './components/index';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute'; // Import PrivateRoute
+
+function App() {
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/shop" element={<AllCandies />} />
+          <Route path="/deals" element={<Deals />} />
+          <Route path="/about/us" element={<AboutUs />} />
+          <Route path="/admin/login" element={<UserLogin />} />
+          <Route path="/one/candy/:id" element={<OneCandy />} />
+          <Route path="/admin/register" element={<UserForm />} />
+          <Route path="/admin" element={<PrivateRoute />}> {/* Wrap the protected routes in a parent route */}
+            <Route index element={<AdminLanding />} />
+            <Route path="dashboard" element={<AdminLanding />} />
+            <Route path="candy/create" element={<CreateCandy />} />
+            <Route path="candy/edit/:id" element={<EditCandy />} />
+          </Route>
+          <Route path="/candy/cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+
+  );
+}
+
+export default App;
