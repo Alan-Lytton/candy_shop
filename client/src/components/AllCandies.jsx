@@ -116,7 +116,7 @@ return (
               className={`page-number${pageNumber === currentPage ? ' active' : ''}`}
               onClick={() => setCurrentPage(pageNumber)}
             >
-              {pageNumber}
+              {pageNumber +1}
             </button>
           ))}
         </div>

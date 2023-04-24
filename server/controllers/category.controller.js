@@ -19,3 +19,10 @@ module.exports.getOneCategory = (req,res) =>{
         .then(aCategory => res.json({oneCategory:aCategory}))
         .catch((err => res.status(400).json(err)))
 }
+
+
+// module.exports.deleteCategory = (req,res) =>{
+//         Category.deleteOne({ _id: req.params.id})
+//             .then(deleteConfirmation => res.json(deleteConfirmation))
+//             .catch(err => res.json({message: "Something went wrong with Delete",err}))
+//     } 
