@@ -103,7 +103,7 @@ const LandingPage = () => {
       </ScrollTrigger>
 
       <section className="landing_page_confident">
-        <h1 className="section-one_title total_titel">What we offer</h1>
+        <h1 className="total_titel">What we offer</h1>
         <div className="breaker_box">
           <h6 className='landing_page_confident__text'>Satisfy your cravings with delicious candy shipped right to your door. Whether you’re in the mood for sugar-free candy classics or bulk gummies, holiday assortments like Easter and Halloween candy, or old-time candy favorites like Necco Wafers and Gobstoppers, we have the sweets for you.</h6>
           <img className='landing_page_confident__image' src={candy_bowl} alt="" />
