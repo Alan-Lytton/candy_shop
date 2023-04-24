@@ -10,7 +10,6 @@ import { CartContext } from "../contexts/CartContext";
 import candy_bowl from '../assets/images/candy_bowl.webp'
 import React, { useState, useEffect, useContext } from 'react';
 
-
 const LandingPage = () => {
   const navigate = useNavigate();
   const [candies, setCandies] = useState([]);
@@ -68,7 +67,9 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+     
       <ScrollTrigger onEnter={onEnterViewport} onExit={onExitViewport}>
+
         <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
           <h1 className='section-one_title final_title__'>Shop now for discounted products!</h1>
           <div className="carasoul_container">
