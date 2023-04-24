@@ -1,8 +1,10 @@
 import React, {createContext, useEffect, useState} from 'react';
-
+import useSound from "use-sound";
+import sound from '../assets/sounds/candySound.mp3'
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
+  const [playSound] = useSound(sound);
   const [cartCount, setCartCount] = useState(()=>{
     const cartCountFromStorage = localStorage.getItem('cartCount');
     return cartCountFromStorage ? JSON.parse(cartCountFromStorage) : 0;
@@ -28,6 +30,7 @@ const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   const addToCart = (candy) => {
+
     setCartItems((prevCartItems) => {
       const existingCartItem = prevCartItems.find((item) => item._id === candy._id);
       if (existingCartItem) {
@@ -51,6 +54,8 @@ const CartProvider = ({ children }) => {
         ];
       }
     });
+    playSound();
+
     setCartCount(cartCount+1);
     setAddedMessage({ ...addedMessage, [candy._id]: true });
     setTimeout(() => {
