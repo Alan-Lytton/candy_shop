@@ -61,11 +61,19 @@
 }
 
 .carasoul_all_togethor {
-    border-left: 1px solid black;
-    border-right: 1px solid black;
     padding: 40px;
+    background-color: #E8C3C2;
+    border-radius: 10%;
+    border: 1px solid black;
+  
 }
 
+.slider{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 40px;
+    z-index: 1;
+}
 .containerLink {
     width: 30%;
     margin-top: 7%;
@@ -268,7 +276,7 @@ img {
 }
 
 .landing_page_confident__text {
-    font-size: 2.1rem;
+    font-size: 1.4rem;
     width: 60%;
     line-height: 240% !important;
 

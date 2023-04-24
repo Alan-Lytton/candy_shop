@@ -74,7 +74,7 @@ const LandingPage = () => {
           <h1 className='section-one_title final_title__'>Shop now for discounted products!</h1>
           <div className="carasoul_container">
 
-            <Slider {...settings}>
+            <Slider className='slider' {...settings}>
               {discountedCandies.map((candy, index) => (
                 <div className='carasoul_all_togethor' key={index}>
                   <Link className='link_image_carasoul' to={`/one/candy/${candy._id}`}>
@@ -97,7 +97,7 @@ const LandingPage = () => {
               ))}
             </Slider>
 
-            <button className='carasoul-button'> <Link className='link_to_deals' to={"/deals"}>Find Deals</Link> </button>
+            <Link className='link_to_deals' to={"/deals"}><button className='carasoul-button'>Find Deals</button> </Link> 
           </div>
         </section>
       </ScrollTrigger>

@@ -6,12 +6,15 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../css/cart.css';
+import useSound from "use-sound";
+import cash from '../assets/sounds/cashSound.mp3';
+
 
 // get paypal API key
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 
-
 const Cart = () => {
+  const [cashSound] = useSound(cash);
   const [errorMessage, setErrorMessage] = useState({})
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
 
@@ -155,6 +158,7 @@ const Cart = () => {
                     });
                   }}
                   onApprove={async (data, actions) => {
+                    
                     const details = await actions.order.capture();
                     const name = details.payer.name;
                     const amount = details.purchase_units[0].amount;
@@ -169,10 +173,7 @@ const Cart = () => {
                         </div>
                       ))
                     }
-
-
                     clearCart();
-
                     console.log(details)
                     alert("🍬🍭Payment successful!🍫🍡" + "\r" +
                       "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +

@@ -1,10 +1,15 @@
 import React, {createContext, useEffect, useState} from 'react';
 import useSound from "use-sound";
-import sound from '../assets/sounds/candySound.mp3'
+import sound from '../assets/sounds/candySound.mp3';
+import DeleteSound from '../assets/sounds/delete.mp3';
+
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [playSound] = useSound(sound);
+  const [playDeleteSound] = useSound(DeleteSound);
+
+  
   const [cartCount, setCartCount] = useState(()=>{
     const cartCountFromStorage = localStorage.getItem('cartCount');
     return cartCountFromStorage ? JSON.parse(cartCountFromStorage) : 0;
@@ -72,6 +77,7 @@ const CartProvider = ({ children }) => {
     const updatedCartItems = cartItems.filter((item) => item._id != itemId);
     setCartCount(cartCount - quantity);
     setCartItems(updatedCartItems);
+    playDeleteSound();
 
   };
   
