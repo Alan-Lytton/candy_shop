@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
 import axios from 'axios'
-import {Link, useNavigate} from 'react-router-dom'
 import '../css/createCandy.css'
+import React, {useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 
 
 const UserLogin= () => {
@@ -9,7 +9,6 @@ const UserLogin= () => {
     const [userLogin, setUserLogin] = useState({
         email: "",
         password: "",
-
     })
     const [error, setError] = useState({});
     const navigate = useNavigate();
@@ -35,18 +34,6 @@ const UserLogin= () => {
                 setError(err.response.data.error.errors);
             })
     }
-
-    // const logout = () => {
-    //     axios.get('http://localhost:8000/api/logout', {withCredentials: true})
-    //         .then(res => {
-    //             console.log(res);
-    //             navigate("/")
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
-
 
     return (
             <div className={"create__candy__container"}>

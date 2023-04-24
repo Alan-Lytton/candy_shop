@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Link, useNavigate} from 'react-router-dom'
 import '../css/createCandy.css'
+import React, {useEffect, useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 
 const CreateCandy = () => {
 
@@ -15,8 +15,6 @@ const CreateCandy = () => {
         candyStock: 0,
         onSale: "",
         candyDiscount: 0
-
-
     })
     const [error, setError] = useState({});
     const navigate = useNavigate();

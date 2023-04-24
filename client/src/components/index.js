@@ -1,5 +1,6 @@
 export{default as Cart} from './Cart';
 export{default as Deals} from './Deals';
+export{default as Footer} from './Footer';
 export{default as  Navbar} from './Navbar';
 export{default as AboutUs} from './AboutUs';
 export{default as  OneCandy} from './OneCandy';

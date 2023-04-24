@@ -1,29 +1,31 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import "../css/allCandies.css";
 import { CartContext } from "../contexts/CartContext";
+import { Navbar, Footer } from '../components/index';
+import { Link } from "react-router-dom";
+import "../css/allCandies.css";
+import axios from "axios";
 
 const Deals = () => {
     const [candies, setCandies] = useState([]);
     const { addToCart, cartItems } = useContext(CartContext);
 
+    // handle add to cart button
     const handleAddToCart = (candy) => {
         addToCart(candy);
     };
-
+    // check if stock is reached if so dont let them add more
     const isStockReached = (candy) => {
         if (!cartItems) return false;
         const candyInCart = cartItems.find((item) => item._id === candy._id);
         return candyInCart && candyInCart.quantity >= candy.candyStock - 1;
     };
 
+    // scroll window to top on load
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    // get all the candies and filter thru the ones on sale
     useEffect(() => {
         axios
             .get("http://localhost:8000/api/candy")

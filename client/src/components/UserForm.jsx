@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
 import '../css/createCandy.css'
+import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 const UserForm = () => {
 
@@ -36,16 +36,7 @@ const UserForm = () => {
             })
     }
 
-    // const logout = () => {
-    //     axios.get('http://localhost:8000/api/logout', {withCredentials: true})
-    //         .then(res => {
-    //             console.log(res);
-    //             navigate("/")
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
-    // }
+
     return (
         <div className="create__candy__container">
             <br />

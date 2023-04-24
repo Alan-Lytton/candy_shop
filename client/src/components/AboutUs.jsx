@@ -1,16 +1,13 @@
-import React from 'react'
+import '../css/AboutUs.css'
 import { Link } from 'react-router-dom'
-import '../css/AboutUs.css'
-import Navbar from './Navbar'
-import Footer from './Footer'
-import '../css/AboutUs.css'
-// <Link to={"/"}> <i class="fa-solid fa-arrow-left"></i> Home</Link>
+import {Footer} from '../components/index'
+
+
 const AboutUs = () => {
     return (
         <div>
             <div class="roadmap">
             <Link className='LinkToBack' to={"/"}> <i class="fa-solid fa-arrow-left"></i> Home</Link>
-
                 <h2 className='main-title'>Meet the team</h2>
                 <div class="_w-cloneable">
                     <div class="c-cards-list">
@@ -23,7 +20,6 @@ const AboutUs = () => {
                                     <h3>MEET JANG</h3>
                                     <div class="c-card-details">
                                         <p class="card-details">
-
                                             I'm Jang, a computer science student and full stack developer. You can explore my projects on my<a className='link_tag' target="_blank" href="https://www.singhcodes.com"> website </a>, connect with me on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/jang-singh-7b1484250/">LinkedIn </a>, or check out my code on <a className='link_tag' target="_blank" href="https://github.com/Jsingh651">Github </a>. In my free time, I love indulging in my favorite candy - Almond Joy.
                                         </p>
                                     </div>

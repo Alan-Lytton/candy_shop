@@ -1,20 +1,21 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import EmptyCart from '../assets/images/emptyCart.png';
 import { CartContext } from '../contexts/CartContext';
-import Footer from '../components/Footer.jsx'
+import { Navbar, Footer } from '../components/index';
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
-import '../css/cart.css';
 import axios from 'axios';
+import '../css/cart.css';
 
-
-
+// get paypal API key
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 
 
 const Cart = () => {
+  const [errorMessage, setErrorMessage] = useState({})
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
+
+  // get discount price
   const getUpdatedPrice = (candy) => {
     if (candy.onSale && candy.candyDiscount > 0) {
       return (candy.candyPrice - candy.candyDiscount).toFixed(2);
@@ -23,9 +24,11 @@ const Cart = () => {
     }
   };
 
+// map thru updated cart items the ones with discount as well
   const updatedCartItems = cartItems.map(candy => ({ ...candy, totalCost: parseFloat(getUpdatedPrice(candy)) * candy.quantity }));
 
 
+  // get subtotal of all the candies in cart
   const getSubTotal = () => {
     let subTotal = 0
     for (let i = 0; i < cartItems.length; i++) {
@@ -33,11 +36,11 @@ const Cart = () => {
     }
     return subTotal
   };
-  const [errorMessage, setErrorMessage] = useState({})
 
+
+// add or decrease the amount of candy in cart
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity < 1) return;
-
     const candy = cartItems.find((item) => item._id === itemId);
     if (newQuantity > candy.candyStock - 1) {
       setErrorMessage((prevErrors) => ({
@@ -54,6 +57,7 @@ const Cart = () => {
     }
   };
 
+  // depending on the purchase decrease the quantity of items in stock
   const updateCandyStock = async (candyId, quantity) => {
     try {
       const response = await axios.put(`http://localhost:8000/api/candy/${candyId}/updateStock`, { quantity });
@@ -62,9 +66,6 @@ const Cart = () => {
       console.error("Error updating candy stock:", error);
     }
   };
-
-
-
 
 
   return (

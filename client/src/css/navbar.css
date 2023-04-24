@@ -83,8 +83,6 @@ nav {
     box-shadow: 0 12px 20px #E8C3C2;
 }
 
-.logo__mask {}
-
 .logo_img {
     width: 240px;
 }
@@ -143,15 +141,6 @@ a {
     font-weight: bold;
 }
 
-/* 
-a:hover {
-    text-decoration: underline;
-    color: rgb(98, 50, 230);
-}
-
-.purple {
-    color: rgb(98, 50, 230);
-} */
 
 /* LINKS */
 
@@ -177,7 +166,6 @@ a {
     padding-right: 24px;
     color: black;
 }
-
 
 .signup {
     display: flex;

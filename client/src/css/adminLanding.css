@@ -16,7 +16,7 @@
     height: 100vh;
 }
 .admin__table__wrapper {
-    max-height: 400px; /* Change this value to your desired height */
+    max-height: 400px; 
     overflow: auto;
     display: block;
   }

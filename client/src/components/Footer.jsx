@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom'
 import '../css/footer.css'
+import {Link} from 'react-router-dom'
 import CompanyLogo from '../assets/images/gplogoshop.jpg';
 
 

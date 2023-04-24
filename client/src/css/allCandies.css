@@ -102,7 +102,6 @@
 .each_candy {
   width: 33%;
   margin: 0 auto;
-  /* padding: 12px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -290,25 +289,18 @@
     font-size: 1.8rem;
   }
 }
-
-
 .empty_container {
   min-height: 52vh;
 }
-
 .wrapping_empty_cart {
   position: absolute;
   left: 39%;
   top: 15%;
 }
-
 .EmptyImage {
   width: 60%;
 
 }
-
-
-
 .cart_empty_span {
 height: 1200px;
 }

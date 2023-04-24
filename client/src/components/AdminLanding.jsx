@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
 import '../css/adminLanding.css'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 
 const AdminLanding = () => {
-
     const [allCandy, setAllCandy] = useState([]);
     const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
+
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/candy")
@@ -29,6 +29,7 @@ const AdminLanding = () => {
             })
     }
 
+    // get all candies
     const filteredCandy = allCandy.filter(candy =>
         candy.candyName.toLowerCase().includes(searchText.toLowerCase())
     );

@@ -1,56 +1,38 @@
-import Navbar from './Navbar'
-import Footer from './Footer';
-import '../css/oneCandy.css'
+
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
-import React, { useState, useEffect, useContext } from 'react';
-import PaymentBadge from '../assets/images/paymentBadges.png'
+import '../css/oneCandy.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useParams, Link } from 'react-router-dom';
+import { Navbar, Footer } from '../components/index';
 import { CartContext } from "../contexts/CartContext";
+import PaymentBadge from '../assets/images/paymentBadges.png'
+import React, { useState, useEffect, useContext } from 'react';
 
 const OneCandy = () => {
+
+    const { id } = useParams();
+    const [candy, setCandy] = useState({});
+    const { addedMessage, addToCart, cartCount, cartItems } = useContext(CartContext);
+    const [candies, setCandies] = useState([]);
+
 
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    const { id } = useParams();
-    const [candy, setCandy] = useState({});
-    const { addedMessage, addToCart, cartCount, cartItems, updateCartItemQuantity } = useContext(CartContext);
-    const [candies, setCandies] = useState([]);
+    //category recomendations
+    const settings = { className: "center", dots: true, infinite: true, speed: 500, slidesToShow: 2, slidesToScroll: 1, responsive: [{ breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1, }, }, { breakpoint: 1000, settings: { slidesToShow: 1, slidesToScroll: 1, }, },], };
 
-    const settings = {
-        className: "center",
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 1000,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
-    };
+    // if stock reached they cant add to cart
     const isStockReached = (candy) => {
         if (!cartItems) return false;
         const candyInCart = cartItems.find((item) => item._id === candy._id);
-        return candyInCart && candyInCart.quantity >= candy.candyStock -1;
+        return candyInCart && candyInCart.quantity >= candy.candyStock - 1;
     };
 
+    // calculate price of item on sale
     const calculatePrice = (candy) => {
         if (candy.onSale && candy.candyDiscount > 0) {
             return (candy.candyPrice - candy.candyDiscount);
@@ -58,6 +40,7 @@ const OneCandy = () => {
             return candy.candyPrice;
         }
     };
+    // get on and all candies
 
     useEffect(() => {
         axios
@@ -66,8 +49,6 @@ const OneCandy = () => {
             .catch((err) => console.log(err));
     }, [id]);
 
-
-
     useEffect(() => {
         axios
             .get("http://localhost:8000/api/candy")
@@ -75,6 +56,7 @@ const OneCandy = () => {
             .catch(err => console.log(err));
     }, []);
 
+    // filter thru the candies by category
     const filteredCandies = candies.filter(
         (candi) =>
             candi.candyCategory === candy.candyCategory && candi._id !== id
