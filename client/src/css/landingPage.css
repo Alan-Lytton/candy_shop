@@ -10,9 +10,11 @@
     padding-bottom: 10%;
     /* position: sticky; */
 }
-.slick-dots{
+
+.slick-dots {
     bottom: -40px !important;
 }
+
 .title-link {
     font-size: 1.5rem;
     color: #000000 !important;
@@ -30,19 +32,20 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-  }
-  
-  .carousel-original-price {
+}
+
+.carousel-original-price {
     color: #8b8b8b;
     text-decoration: line-through;
     margin-right: 5px;
-  }
-  
-  .carousel-discount-price {
+}
+
+.carousel-discount-price {
     color: #e91e63;
     font-weight: bold;
     padding-left: 6px;
-  }
+}
+
 .containerLink {
     width: 30%;
     margin-top: 7%;
@@ -86,7 +89,8 @@
     box-shadow: .25rem .25rem #000;
     background-color: #ff90e8;
 }
-.total_titel{
+
+.total_titel {
     margin-top: 0 !important;
 }
 
@@ -94,7 +98,8 @@
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }
-.carasoul-button{
+
+.carasoul-button {
     width: 150px;
     height: 40px;
     font-size: 1rem;
@@ -108,22 +113,26 @@
     margin-top: 50px;
     margin-bottom: 24px;
 }
-.carasoul-button:hover{
+
+.carasoul-button:hover {
     transform: translate(-.25rem, -.25rem);
     box-shadow: .25rem .25rem #000;
     background-color: #ff90e8;
 }
-.carasoul-button:active{
+
+.carasoul-button:active {
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }
-.top__of__landing{
+
+.top__of__landing {
     content: '';
     display: none;
 }
+
 .section-one {
     height: 100vh;
-  background-color: #f2e8cf;
+    background-color: #f2e8cf;
     /* height: fit-content; */
 }
 
@@ -145,17 +154,19 @@ img {
     width: 100%;
 }
 
-.carousel-pic:last-child {
-}
-.tabindex{
+.carousel-pic:last-child {}
+
+.tabindex {
     text-align: center;
 }
+
 .carousel-pic {
     max-width: 250px;
     margin: 0 auto;
     border-radius: 12px;
     height: auto;
 }
+
 .carasoul_container {
     width: 60%;
     margin: 0 auto;
@@ -164,19 +175,20 @@ img {
 
 }
 
-.slick-prev:before{
+.slick-prev:before {
     color: black !important;
     font-size: 26px !important;
     opacity: 100% !important;
 }
 
 
-.slick-next::before{
+.slick-next::before {
     color: black !important;
     font-size: 26px !important;
     opacity: 100% !important;
 }
-.landing_page_confident{
+
+.landing_page_confident {
     border-top: 2px solid black;
     height: 100%;
     background-color: #ffd6d6;
@@ -186,7 +198,8 @@ img {
     width: 100%;
     padding: 6% 12%;
 }
-.landing_page_confident__title{
+
+.landing_page_confident__title {
     font-size: 3rem;
     text-transform: uppercase;
     color: rgb(0, 0, 0);
@@ -221,20 +234,22 @@ img {
     }
   }
    */
-.breaker_box{
+.breaker_box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 30px 0;
 }
-.landing_page_confident__text{
+
+.landing_page_confident__text {
     font-size: 1.5rem;
-    width:60%;    
+    width: 60%;
     line-height: 240% !important;
 
 }
-.landing_page_confident__image{
+
+.landing_page_confident__image {
     width: 28%;
     border-radius: 12px;
 }
@@ -248,7 +263,8 @@ img {
         height: 100vh;
     }
 }
-@media(max-height: 400px){
+
+@media(max-height: 400px) {
     .containerLink {
         width: 30%;
         margin-left: 10%;
@@ -259,34 +275,39 @@ img {
         font-size: 0.4rem;
         font-weight: 900;
     }
-    .title-link{
+
+    .title-link {
         font-size: 0.6rem;
         margin-top: 1rem;
     }
 
-    .all_item-container{
+    .all_item-container {
         padding-bottom: 10% !important;
         margin-top: 10% !important;
     }
-    .button{
+
+    .button {
         width: 12% !important;
         height: 20px !important;
         font-size: 0.5rem !important;
     }
- 
+
 }
+
 span::before {
     content: "Almond joy";
-  }
+}
 
-@media(max-width: 1000px){
-    .landing_page_confident__text{
+@media(max-width: 1000px) {
+    .landing_page_confident__text {
         line-height: 150% !important;
         font-size: 1.2rem !important;
     }
-    .final_title__{
+
+    .final_title__ {
         padding-top: 30px;
     }
+
     .containerLink {
         width: 30%;
         margin-left: 10%;
@@ -297,115 +318,132 @@ span::before {
         font-size: 0.6rem;
         font-weight: 900;
     }
-    .title-link{
+
+    .title-link {
         font-size: 0.8rem;
         margin-top: 0.4rem;
     }
 
-    .all_item-container{
+    .all_item-container {
         padding-bottom: 10% !important;
     }
-    .button{
+
+    .button {
         width: 20% !important;
         height: 40px !important;
         font-size: 0.8rem !important;
     }
 }
 
-@media(max-width: 800px){
-    .containerLink{
+@media(max-width: 800px) {
+    .containerLink {
         width: 70%;
 
     }
-    .landing_page_confident__text{
+
+    .landing_page_confident__text {
         line-height: 100% !important;
         font-size: 1rem !important;
     }
-.landing_page_confident__title{
-    font-size: 2rem;
-}
-.section-one_title{
-    font-size: 2rem;
-}
-.landing_page_confident__image{
-    width: 25%;
-    height: auto;
-    /* padding-right: 5%; */
-    border-radius: 12px;
-}
-.carasoul_container{
-    margin-top: 5%;
-}
-.carasoul-button{
-    margin-bottom: 24px;
-    margin-top: 50px;
-    width: 150px;
-    height: 40px;
-}
-@media (max-width: 700px) and (max-height: 700px) {
 
-   .all_item-container{
-    margin-top: 25%;
-   }
-  }
-
-  @media(max-width: 540px) {
-    .landing_page_confident{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .breaker_box{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .landing_page_confident__image{
-        display: none;
-    }
-    .landing_page_confident__text{
-        width: 90%;
-        margin: 0 auto;
-        text-align: center;
-        font-size: 0.8rem;
-    }
-  }
-
-  @media (max-width: 550px){
-    .all_item-container{
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 45%;
-    }
-    .button{
-        width: 100% !important;
-        padding: 2px 12px;
-        text-align: center;
-        margin: 0;
-    }
-    .containerLink{
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-left:0;
-    }
-    .title-link{
-        text-align: center;
-    }
-.menu__backdrop{
-        height: 300px;
+    .landing_page_confident__title {
+        font-size: 2rem;
     }
 
-  }
-  .section-one_title{
-    font-size: 1.4rem;
-    padding: 0 12px;
-  }
+    .section-one_title {
+        font-size: 2rem;
+    }
+
+    .landing_page_confident__image {
+        width: 25%;
+        height: auto;
+        /* padding-right: 5%; */
+        border-radius: 12px;
+    }
+
+    .carasoul_container {
+        margin-top: 5%;
+    }
+
+    .carasoul-button {
+        margin-bottom: 24px;
+        margin-top: 50px;
+        width: 150px;
+        height: 40px;
+    }
+
+    @media (max-width: 700px) and (max-height: 700px) {
+
+        .all_item-container {
+            margin-top: 25%;
+        }
+    }
+
+    @media(max-width: 540px) {
+        .landing_page_confident {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .breaker_box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .landing_page_confident__image {
+            display: none;
+        }
+
+        .landing_page_confident__text {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .all_item-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 45%;
+        }
+
+        .button {
+            width: 100% !important;
+            padding: 2px 12px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .containerLink {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0;
+        }
+
+        .title-link {
+            text-align: center;
+        }
+
+        .menu__backdrop {
+            height: 300px;
+        }
+
+    }
+
+    .section-one_title {
+        font-size: 1.4rem;
+        padding: 0 12px;
+    }
 }
