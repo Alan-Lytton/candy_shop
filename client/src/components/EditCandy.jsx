@@ -32,11 +32,11 @@ const EditCandy = () => {
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/category")
-        .then(res => {
-            console.log(res.data.categories)
-            setAllCategories(res.data.categories)
-        })
-        .catch(err => console.log(err))
+            .then(res => {
+                console.log(res.data.categories)
+                setAllCategories(res.data.categories)
+            })
+            .catch(err => console.log(err))
     }, [candy])
 
     const onChangeHandler = (e) => {
@@ -45,8 +45,8 @@ const EditCandy = () => {
 
     const updateCandy = (e) => {
         e.preventDefault();
-        let isOnSale = (candy.onSale) ? candy.candyDiscount : 0 
-        axios.put('http://localhost:8000/api/candy/edit/' + id, {...candy, candyDiscount: isOnSale})
+        let isOnSale = (candy.onSale) ? candy.candyDiscount : 0
+        axios.patch('http://localhost:8000/api/candy/edit/' + id, {...candy, candyDiscount: isOnSale})
             .then(res => {
                 setCandy(res.data.oneCandy);
                 console.log(res.data.oneCandy)
@@ -90,12 +90,12 @@ const EditCandy = () => {
             </div>
             <h1>Edit {candy?.candyName}</h1>
             <form className="create__candy__form" onSubmit={updateCandy}>
-                    {error.candyName ? <p className='create__candy__error__message'>{error.candyName.message}</p> : ""}
+                {error.candyName ? <p className='create__candy__error__message'>{error.candyName.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Name: </label>
                     <input className="create__candy__input" type="text" name="candyName" value={candy?.candyName} onChange={onChangeHandler} />
                 </div>
-                    {error.candyCategory ? <p className='create__candy__error__message'>{error.candyCategory.message}</p> : ""}
+                {error.candyCategory ? <p className='create__candy__error__message'>{error.candyCategory.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Category: </label>
                     <select className="create__candy__input" name="candyCategory" defaultValue={candy.candyCategory} onChange={onChangeHandler}>
@@ -108,36 +108,36 @@ const EditCandy = () => {
                         }
                     </select>
                 </div>
-                    {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
+                {error.candyDescription ? <p className='create__candy__error__message'>{error.candyDescription.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Description: </label>
                     <input className="create__candy__input" type="textarea" name="candyDescription" value={candy?.candyDescription} onChange={onChangeHandler} />
                 </div>
-                    {error.candyPrice ? <p className='create__candy__error__message'>{error.candyPrice.message}</p> : ""}
+                {error.candyPrice ? <p className='create__candy__error__message'>{error.candyPrice.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Price: </label>
                     <input className="create__candy__input" type="number" name="candyPrice" value={candy?.candyPrice} onChange={onChangeHandler} />
                 </div>
-                    {error.candyStock ? <p className='create__candy__error__message'>{error.candyStock.message}</p> : ""}
+                {error.candyStock ? <p className='create__candy__error__message'>{error.candyStock.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Stock: </label>
                     <input className="create__candy__input" type="number" name="candyStock" value={candy?.candyStock} onChange={onChangeHandler} />
                 </div>
-                    {error.candyImage ? <p className='create__candy__error__message'>{error.candyImage.message}</p> : ""}
+                {error.candyImage ? <p className='create__candy__error__message'>{error.candyImage.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy?.candyImage} onChange={onChangeHandler} />
                 </div>
-                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
+                {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
                     <input className="create__candy__input" type="checkbox" name="onSale" checked={candy.onSale} onChange={() => setCandy({...candy, onSale: !candy.onSale})} />
 
                     {candy.onSale ? (
                         <div className="form-group">
-                        <label className="create__candy__label">Discount: </label>
-                        <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
-                    </div>
+                            <label className="create__candy__label">Discount: </label>
+                            <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
+                        </div>
                     ) : null}
                 </div>
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
