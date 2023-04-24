@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import candy_bowl from '../assets/images/candy_bowl.webp'
 import { CartContext,CartProvider } from '../contexts/CartContext';
 import Footer from './Footer.jsx'
+import axios from 'axios';
 
 const LandingPage = () => {
   const settings = {
@@ -36,6 +37,23 @@ const LandingPage = () => {
       },
     ],
   };  
+
+  const [candies, setCandies] = useState([]);
+
+
+useEffect(() => {
+  axios
+    .get("http://localhost:8000/api/candy")
+    .then((res) => setCandies(res.data.allCandy))
+    .catch((err) => console.log(err));
+}, []);
+
+
+const discountedCandies = candies.filter(
+  (candy) => candy.onSale && candy.candyDiscount > 0
+);
+
+
   const navigate = useNavigate();
 
   function handleClick() {
@@ -59,7 +77,6 @@ const LandingPage = () => {
 
   return (
     <div className="main-body">
-      <span id="top__of__landing"></span>
       <div className='body'>
       <Navbar />
         <div className="all_item-container">
@@ -78,28 +95,17 @@ const LandingPage = () => {
         <h1 className='section-one_title final_title__'>Shop now for discounted products!</h1>
         <div className="carasoul_container">
 
-          <Slider {...settings}>
-            <div>
-              <img className="carousel-pic" src="https://plus.unsplash.com/premium_photo-1675033559019-ca61c6e909df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60" alt="" />
-
-            </div>
-            <div>
-              <img className="carousel-pic" src="https://plus.unsplash.com/premium_photo-1675033559019-ca61c6e909df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60" alt="" />
-
-            </div>
-            <div>
-              <img className="carousel-pic" src="https://plus.unsplash.com/premium_photo-1675033559019-ca61c6e909df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60" alt="" />
-
-            </div>
-            <div>
-              <img className="carousel-pic" src="https://plus.unsplash.com/premium_photo-1675033559019-ca61c6e909df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60" alt="" />
-
-            </div>
-            <div>
-              <img className="carousel-pic" src="https://plus.unsplash.com/premium_photo-1675033559019-ca61c6e909df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60" alt="" />
-
-            </div>
-          </Slider>
+        <Slider {...settings}>
+        {discountedCandies.map((candy, index) => (
+          <div key={index}>
+            <img
+              className="carousel-pic"
+              src={candy.candyImage}
+              alt={candy.candyName}
+            />
+          </div>
+        ))}
+      </Slider>
 
           <button className='carasoul-button' onClick={handleClickToDeals}>Find Deals</button>
         </div>

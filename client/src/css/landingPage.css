@@ -99,9 +99,12 @@
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
 }
-
+.top__of__landing{
+    content: '';
+    display: none;
+}
 .section-one {
-    height: 100%;
+    height: 100vh;
   background-color: #f2e8cf;
     /* height: fit-content; */
 }
@@ -255,6 +258,10 @@ img {
     }
  
 }
+span::before {
+    content: "Almond joy";
+  }
+
 @media(max-width: 1000px){
     .landing_page_confident__text{
         line-height: 150% !important;

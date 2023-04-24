@@ -285,32 +285,10 @@
 .cart_empty_span {
 height: 1200px;
 }
-/* .all_candies_container {
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  scrollbar-width: thin; 
-  scrollbar-color: yellow green; 
-}
 
-.all_candies_container::-webkit-scrollbar {
-  width: 20px;
-}
-
-.all_candies_container::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255);
-}
-
-.all_candies_container::-webkit-scrollbar-thumb {
-  background-image: url("../assets/images/Carousel_Twist_copy.png"); 
-}
-
-.all_candies_container::-webkit-scrollbar-thumb:hover {
-  background-color: orange; 
-} */
-
+/* 
 ::-webkit-scrollbar {
-  width: 24px;
+  width: 10px;
 }
 body{
   overflow-x: hidden;
@@ -319,11 +297,9 @@ body{
   background-color: #E8C2C2;
 }
 ::-webkit-scrollbar-thumb {
-  /* background-color: #000000; */
-  background-image: url("https://cdn.discordapp.com/attachments/1036375659326480457/1099602654650437682/image.png");
+  background-image: url("https://media.discordapp.net/attachments/1036375659326480457/1099604871491096656/image.png?width=180&height=1034");
   background-repeat: no-repeat;
   background-size: 100%;
   border-radius: 50px;
-  /* height: 100%; */
   border: none;
-}
+} */

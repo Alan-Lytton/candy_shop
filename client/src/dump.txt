@@ -741,3 +741,42 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+
+
+
+///////////
+
+
+Image
+https://live.staticflickr.com/65535/52838902573_3a038d4ff2_z.jpg
+https://cdn.media.amplience.net/i/marsmmsprod/ct1044_img_01_1000110864_4010001438_4010001439?%24i%24=&w=1984
+https://live.staticflickr.com/65535/52838230332_2ab3c7bacb_n.jpg
+
+Name
+Rolo Caramels
+M&M's Peanut Butter Share Size
+Life Savers Hard Candy 5 Flavors
+
+
+Category
+Caramel Candy
+Candy Peices
+Hard Candy
+
+Price
+1.49
+4.99
+4.25
+
+Stock
+20
+30
+20
+
+
+Description
+Savor rich chocolate ROLO® Creamy Caramels with smooth caramel centers, wrapped in classic gold foils. 
+Get a movie box of these chocolate-covered caramels to share with the family, or take this kosher and gluten-free candy on the go.
+The individually wrapped Life Savers inside are perfect for sharing, and you don't have to worry about trying to keep them from falling out of the roll or ending up covered in lint! Ditch the roll and reach for a bag of Life Savers candy today.

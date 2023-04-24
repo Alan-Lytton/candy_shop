@@ -51,6 +51,7 @@ const AdminLanding = () => {
                             <th className="admin__table__th">Category</th>
                             <th className="admin__table__th">Stock</th>
                             <th className="admin__table__th">Price</th>
+                            <th className="admin__table__th">OnSale & Discount</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,6 +63,7 @@ const AdminLanding = () => {
                                         <td className="admin__table__td">{candy.candyCategory}</td>
                                         <td className="admin__table__td">{candy.candyStock}</td>
                                         <td className="admin__table__td">${candy.candyPrice}</td>
+                                        <td className="admin__table__td">${candy.candyDiscount} {candy.onSale ? 'true' : 'false'}</td>
                                     </tr>
                                 )
                             })

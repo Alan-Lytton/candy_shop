@@ -115,7 +115,9 @@ background-color: #E8C2C2;
     margin-top: 12px;
     cursor: pointer;
 }
-
+.cart_empty_span::before{
+    content: "";
+}
 .checkout_main_section_cart {
     display: flex;
     flex-direction: column;
