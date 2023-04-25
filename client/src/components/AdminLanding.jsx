@@ -3,19 +3,23 @@ import '../css/adminLanding.css'
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 
-const AdminLanding = () => {
+const AdminLanding = props => {
     const [allCandy, setAllCandy] = useState([]);
     const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/candy")
+        axios.get("http://localhost:8000/api/admin/candy", {withCredentials: true})
             .then(res => {
                 console.log(res.data.allCandy)
                 setAllCandy(res.data.allCandy)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                props.setAuthorized("Please Log In!");  // Sends back to main page with this message
+                navigate("/admin/login")
+            })
     }, [])
 
     const logout = () => {
