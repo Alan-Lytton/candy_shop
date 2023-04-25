@@ -1,8 +1,11 @@
 import { AboutUs, Cart, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding, Deals } from './components/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute'; 
+import { useState } from 'react';
+// import PrivateRoute from './components/PrivateRoute'; 
 
 function App() {
+
+  const [authorized, setAuthorized] = useState("");
 
   return (
     <div className="App">
@@ -12,16 +15,16 @@ function App() {
           <Route path="/shop" element={<AllCandies />} />
           <Route path="/deals" element={<Deals />} />
           <Route path="/about/us" element={<AboutUs />} />
-          <Route path="/admin/login" element={<UserLogin />} />
           <Route path="/one/candy/:id" element={<OneCandy />} />
-          <Route path="/admin/register" element={<UserForm />} />
-          <Route path="/admin" element={<PrivateRoute />}> 
-            <Route index element={<AdminLanding />} />
-            <Route path="dashboard" element={<AdminLanding />} />
-            <Route path="candy/create" element={<CreateCandy />} />
-            <Route path="candy/edit/:id" element={<EditCandy />} />
-          </Route>
           <Route path="/candy/cart" element={<Cart />} />
+          <Route path="/admin/login" element={<UserLogin authorized={authorized} setAuthorized={setAuthorized} />} />
+          <Route path="/admin/register" element={<UserForm authorized={authorized} setAuthorized={setAuthorized} />} />
+          <Route path="/admin/dashboard" element={<AdminLanding  authorized={authorized} setAuthorized={setAuthorized}/>} />
+          <Route path="/admin/candy/create" element={<CreateCandy  authorized={authorized} setAuthorized={setAuthorized}/>} />
+          <Route path="/admin/candy/edit/:id" element={<EditCandy  authorized={authorized} setAuthorized={setAuthorized}/>} />
+          {/* <Route path="/admin" element={<PrivateRoute />}>  */}
+            {/* <Route index element={<AdminLanding authorized={authorized} setAuthorized={setAuthorized}/>} /> */}
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </div>
