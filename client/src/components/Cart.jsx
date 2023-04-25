@@ -3,12 +3,14 @@ import EmptyCart from '../assets/images/emptyCart.png';
 import { CartContext } from '../contexts/CartContext';
 import { Navbar, Footer } from '../components/index';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/cart.css';
+<<<<<<< Updated upstream
+=======
 import useSound from "use-sound";
 import cash from '../assets/sounds/cashSound.mp3';
-
+>>>>>>> Stashed changes
 
 // get paypal API key
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
@@ -79,6 +81,20 @@ const Cart = () => {
     }
   };
 
+  // create json formatted list of items for PayPal transaction
+  const items = cartItems.map((aCandy) => (
+    {
+        name: aCandy.candyName,
+        unit_amount: {
+          currency_code: "USD",
+          value: (aCandy.candyPrice - aCandy.candyDiscount).toFixed(2)
+        },
+        quantity: aCandy.quantity,
+    }
+    ));
+
+    //Don't hate, navigate (used to redirect during the Paypal onApprove function)
+    const navigate = useNavigate();
 
   return (
     <div className="body_cart">
@@ -142,20 +158,24 @@ const Cart = () => {
             </div>
 
             <div className="paypal_container">
-
               <PayPalScriptProvider className="PayaplSection"
                 options={{ "client-id": PAYPAL_API }} >
                 <PayPalButtons
                   createOrder={(data, actions) => {
                     return actions.order.create({
-                      purchase_units: [
-                        {
-                          amount: {
+                      purchase_units: [{
+                            amount: {
+                            currency_code: "USD",
                             value: getSubTotal().toFixed(2),
-                          },
+                            breakdown: {
+                                item_total: {
+                                    currency_code: "USD",
+                                    value: getSubTotal().toFixed(2)
+                                },
+                            }
                         },
-                      ],
-                    });
+                        items: items
+                    }]})
                   }}
                   onApprove={async (data, actions) => {
                     
@@ -164,7 +184,6 @@ const Cart = () => {
                     const amount = details.purchase_units[0].amount;
                     const address = details.purchase_units[0].shipping.address;
                     const order_id = details.id;
-
                     {
                       cartItems.map((aCandy) => (
                         <div key={aCandy._id}>
@@ -174,10 +193,11 @@ const Cart = () => {
                       ))
                     }
                     clearCart();
+
                     console.log(details)
                     alert("🍬🍭Payment successful!🍫🍡" + "\r" +
-                      "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
-                      "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
+                    "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
+                    "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
                   }}
                 />
               </PayPalScriptProvider>
@@ -186,7 +206,7 @@ const Cart = () => {
           :
           <div className="empty_container">
             <div className="wrapping_empty_cart">
-              <img className="EmptyImage" src={EmptyCart} alt="" />
+              <img className="EmptyImage" src={EmptyCart} alt="empty" />
             </div>
             <span className="cart_empty_span"></span>
           </div>
