@@ -30,7 +30,7 @@ const UserLogin= props => {
             .catch(err => {
                 // console.log(err);
                 // console.log(userLogin);
-                console.log(err.response.data);
+                // console.log(err.response.data);
                 setError(err.response.data);
             })
     }

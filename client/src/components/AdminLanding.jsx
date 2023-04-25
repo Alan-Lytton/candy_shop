@@ -12,11 +12,11 @@ const AdminLanding = props => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/admin/candy", {withCredentials: true})
             .then(res => {
-                console.log(res.data.allCandy)
+                // console.log(res.data.allCandy)
                 setAllCandy(res.data.allCandy)
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 props.setAuthorized("Please Log In!");  // Sends back to main page with this message
                 navigate("/admin/login")
             })
@@ -25,11 +25,11 @@ const AdminLanding = props => {
     const logout = () => {
         axios.get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 navigate("/admin/login")
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }
 
@@ -40,7 +40,7 @@ const AdminLanding = props => {
 
     return (
         <div className="admin__landing__container">
-            <h1>Hello you Fools!</h1>
+            <h1>Hello Admin!</h1>
             <input
                 type="text"
                 placeholder="Search"

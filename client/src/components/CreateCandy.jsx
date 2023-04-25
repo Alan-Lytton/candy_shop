@@ -26,11 +26,11 @@ const CreateCandy = props => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/admin/category", {withCredentials: true})
         .then(res => {
-            console.log(res.data.categories)
+            // console.log(res.data.categories)
             setAllCategories(res.data.categories)
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
             props.setAuthorized("Please Log In!");  // Sends back to main page with this message
             navigate("/admin/login")
         })
@@ -40,15 +40,15 @@ const CreateCandy = props => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/candy/add", candy)
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                // console.log(res);
+                // console.log(res.data);
                 setCandy(res.data);
                 navigate('/admin/dashboard')
             })
             .catch(err => {
-                console.log(err);
-                console.log(candy);
-                console.log(err.response.data.errors);
+                // console.log(err);
+                // console.log(candy);
+                // console.log(err.response.data.errors);
                 setError(err.response.data.errors);
             })
     }
@@ -56,12 +56,12 @@ const CreateCandy = props => {
     const logout = () => {
         axios.get('http://localhost:8000/api/logout', {withCredentials: true})
             .then(res => {
-                console.log(res);
-                console.log("Logged Out!");
+                // console.log(res);
+                // console.log("Logged Out!");
                 navigate("/admin/login")
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
             })
     }
 

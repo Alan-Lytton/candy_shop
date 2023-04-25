@@ -23,12 +23,12 @@ const EditCandy = props => {
     useEffect(() => {
         axios.get('http://localhost:8000/api/admin/candy/' + id, {withCredentials: true})
             .then(res => {
-                console.log(res.data)
-                console.log("Grabbing one Candy")
+                // console.log(res.data)
+                // console.log("Grabbing one Candy")
                 setCandy(res.data.oneCandy)
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 props.setAuthorized("Please Log In!");  // Sends back to main page with this message
                 navigate("/admin/login")
             })    
@@ -37,7 +37,7 @@ const EditCandy = props => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/admin/category", {withCredentials: true})
             .then(res => {
-                console.log(res.data.categories)
+                // console.log(res.data.categories)
                 setAllCategories(res.data.categories)
             })
             .catch(err => console.log(err))
@@ -53,12 +53,12 @@ const EditCandy = props => {
         axios.patch('http://localhost:8000/api/candy/edit/' + id, {...candy, candyDiscount: isOnSale})
             .then(res => {
                 setCandy(res.data.oneCandy);
-                console.log(res.data.oneCandy)
+                // console.log(res.data.oneCandy)
                 navigate('/admin/dashboard')
             })
             .catch(err => {
-                console.log(err);
-                console.log(err.response.data.errors)
+                // console.log(err);
+                // console.log(err.response.data.errors)
                 setError(err.response.data.errors);
             })
     }
@@ -66,11 +66,11 @@ const EditCandy = props => {
     const deleteCandy = (id) => {
         axios.delete("http://localhost:8000/api/candy/delete/" + id)
             .then(res => {
-                console.log("Successful Delete",res)
+                // console.log("Successful Delete",res)
                 navigate('/admin/dashboard')
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 props.setAuthorized("Please Log In!");  // Sends back to main page with this message
                 navigate("/admin/login")
             }) 
@@ -79,11 +79,11 @@ const EditCandy = props => {
     const logout = () => {
         axios.get('http://localhost:8000/api/logout', {withCredentials: true})
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 navigate("/admin/login")
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 props.setAuthorized("Please Log In!");  // Sends back to main page with this message
                 navigate("/admin/login")
             }) 
