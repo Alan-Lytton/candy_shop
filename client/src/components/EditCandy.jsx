@@ -3,7 +3,7 @@ import '../css/createCandy.css'
 import React, {useState, useEffect} from 'react'
 import {Link, useParams, useNavigate} from 'react-router-dom'
 
-const EditCandy = () => {
+const EditCandy = props => {
 
     const {id} = useParams();
     const [candy, setCandy] = useState({
@@ -21,17 +21,21 @@ const EditCandy = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/candy/' + id)
+        axios.get('http://localhost:8000/api/admin/candy/' + id, {withCredentials: true})
             .then(res => {
                 console.log(res.data)
                 console.log("Grabbing one Candy")
                 setCandy(res.data.oneCandy)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                props.setAuthorized("Please Log In!");  // Sends back to main page with this message
+                navigate("/admin/login")
+            })    
     }, [])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/category")
+        axios.get("http://localhost:8000/api/admin/category", {withCredentials: true})
             .then(res => {
                 console.log(res.data.categories)
                 setAllCategories(res.data.categories)
@@ -65,7 +69,11 @@ const EditCandy = () => {
                 console.log("Successful Delete",res)
                 navigate('/admin/dashboard')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                props.setAuthorized("Please Log In!");  // Sends back to main page with this message
+                navigate("/admin/login")
+            }) 
     }
 
     const logout = () => {
@@ -75,8 +83,10 @@ const EditCandy = () => {
                 navigate("/admin/login")
             })
             .catch(err => {
-                console.log(err);
-            })
+                console.log(err)
+                props.setAuthorized("Please Log In!");  // Sends back to main page with this message
+                navigate("/admin/login")
+            }) 
     }
 
     return (
