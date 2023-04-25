@@ -3,7 +3,7 @@ import '../css/createCandy.css'
 import React, {useEffect, useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
-const CreateCandy = () => {
+const CreateCandy = props => {
 
     const [allCategories, setAllCategories] = useState([])
     const [candy, setCandy] = useState({
@@ -13,8 +13,8 @@ const CreateCandy = () => {
         candyImage: "",
         candyCategory: "",
         candyStock: 0,
-        onSale: "",
-        candyDiscount: 0
+        // onSale: "",
+        // candyDiscount: 0
     })
     const [error, setError] = useState({});
     const navigate = useNavigate();
@@ -24,17 +24,20 @@ const CreateCandy = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/category")
+        axios.get("http://localhost:8000/api/admin/category", {withCredentials: true})
         .then(res => {
             console.log(res.data.categories)
             setAllCategories(res.data.categories)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            props.setAuthorized("Please Log In!");  // Sends back to main page with this message
+            navigate("/admin/login")
+        })
     }, [])
 
     const createCandy = (e) => {
         e.preventDefault();
-
         axios.post("http://localhost:8000/api/candy/add", candy)
             .then(res => {
                 console.log(res);
@@ -54,6 +57,7 @@ const CreateCandy = () => {
         axios.get('http://localhost:8000/api/logout', {withCredentials: true})
             .then(res => {
                 console.log(res);
+                console.log("Logged Out!");
                 navigate("/admin/login")
             })
             .catch(err => {
@@ -106,7 +110,7 @@ const CreateCandy = () => {
                     <label className="create__candy__label">Image: </label>
                     <input className="create__candy__input" type="text" name="candyImage" value={candy.candyImage} onChange={onChangeHandler} />
                 </div>
-                    {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
+                    {/* {error.candyDiscount ? <p className='create__candy__error__message'>{error.candyDiscount.message}</p> : ""}
                 <div className="form-group">
                     <label className="create__candy__label">On Sale: </label>
                     <input className="create__candy__input" type="checkbox" name="onSale" checked={candy.onSale} onChange={() => setCandy({...candy, onSale: !candy.onSale})} />
@@ -117,7 +121,7 @@ const CreateCandy = () => {
                         <input className="create__candy__input" type="number" name="candyDiscount" value={candy.candyDiscount} onChange={onChangeHandler} />
                     </div>
                     ) : null}
-                </div>
+                </div> */}
                 <input className="create__candy__submit__btn" type="submit" value="Submit"/>
             </form>
         </div>
