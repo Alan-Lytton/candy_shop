@@ -9,8 +9,8 @@ const UserForm = () => {
         email: "",
         password: "",
         confirmPassword: "",
-
     })
+    
     const [error, setError] = useState({});
     const navigate = useNavigate();
 
@@ -23,15 +23,15 @@ const UserForm = () => {
 
         axios.post("http://localhost:8000/api/register", user, {withCredentials: true})
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                // console.log(res);
+                // console.log(res.data);
                 setUser(res.data);
                 navigate('/admin/dashboard')
             })
             .catch(err => {
-                console.log(err);
-                console.log(user);
-                console.log(err.response.data.error.errors);
+                // console.log(err);
+                // console.log(user);
+                // console.log(err.response.data.error.errors);
                 setError(err.response.data.error.errors);
             })
     }
