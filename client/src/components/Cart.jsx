@@ -12,8 +12,8 @@ import cash from '../assets/sounds/cashSound.mp3';
 // get paypal API key
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 
-
 const Cart = () => {
+  const [cashSound] = useSound(cash);
   const [errorMessage, setErrorMessage] = useState({})
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
 
@@ -175,6 +175,7 @@ const Cart = () => {
                     }]})
                   }}
                   onApprove={async (data, actions) => {
+                    
                     const details = await actions.order.capture();
                     const name = details.payer.name;
                     const amount = details.purchase_units[0].amount;
@@ -188,8 +189,6 @@ const Cart = () => {
                         </div>
                       ))
                     }
-
-
                     clearCart();
                     navigate("/")
                     console.log(details)

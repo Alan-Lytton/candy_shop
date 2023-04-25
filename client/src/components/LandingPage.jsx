@@ -10,7 +10,6 @@ import { CartContext } from "../contexts/CartContext";
 import candy_bowl from '../assets/images/candy_bowl.webp'
 import React, { useState, useEffect, useContext } from 'react';
 
-
 const LandingPage = () => {
   const navigate = useNavigate();
   const [candies, setCandies] = useState([]);
@@ -68,12 +67,14 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+     
       <ScrollTrigger onEnter={onEnterViewport} onExit={onExitViewport}>
+
         <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
           <h1 className='section-one_title final_title__'>Shop now for discounted products!</h1>
           <div className="carasoul_container">
 
-            <Slider {...settings}>
+            <Slider className='slider' {...settings}>
               {discountedCandies.map((candy, index) => (
                 <div className='carasoul_all_togethor' key={index}>
                   <Link className='link_image_carasoul' to={`/one/candy/${candy._id}`}>
@@ -96,13 +97,13 @@ const LandingPage = () => {
               ))}
             </Slider>
 
-            <button className='carasoul-button'> <Link className='link_to_deals' to={"/deals"}>Find Deals</Link> </button>
+            <Link className='link_to_deals' to={"/deals"}><button className='carasoul-button'>Find Deals</button> </Link> 
           </div>
         </section>
       </ScrollTrigger>
 
       <section className="landing_page_confident">
-        <h1 className="section-one_title total_titel">What we offer</h1>
+        <h1 className="total_titel">What we offer</h1>
         <div className="breaker_box">
           <h6 className='landing_page_confident__text'>Satisfy your cravings with delicious candy shipped right to your door. Whether you’re in the mood for sugar-free candy classics or bulk gummies, holiday assortments like Easter and Halloween candy, or old-time candy favorites like Necco Wafers and Gobstoppers, we have the sweets for you.</h6>
           <img className='landing_page_confident__image' src={candy_bowl} alt="" />
