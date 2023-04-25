@@ -6,11 +6,8 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/cart.css';
-<<<<<<< Updated upstream
-=======
 import useSound from "use-sound";
 import cash from '../assets/sounds/cashSound.mp3';
->>>>>>> Stashed changes
 
 // get paypal API key
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
@@ -193,7 +190,7 @@ const Cart = () => {
                       ))
                     }
                     clearCart();
-
+                    navigate("/")
                     console.log(details)
                     alert("🍬🍭Payment successful!🍫🍡" + "\r" +
                     "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
