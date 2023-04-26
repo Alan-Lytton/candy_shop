@@ -209,7 +209,7 @@ const Cart = () => {
           </div>
         }
       </form>
-      <Footer />
+      <Footer className="Footerclass" />
     </div>
   );
 };

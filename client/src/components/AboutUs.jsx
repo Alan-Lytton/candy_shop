@@ -32,8 +32,9 @@ const AboutUs = () => {
                                     </div>
                                     <h3>MEET CHRIS M</h3>
                                     <div class="c-card-details">
-                                    I am Chris, a full stack developer and coding bootcamp student who loves <span className='chrisSpecial'> </span>. I am passionate about web development and enjoys exploring the latest trends in the industry to keep up-to-date you cn connect with me on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/meehan-chris/"> LinkedIn </a>, and checkout my code on <a className='link_tag' target="_blank" href=" http://github.com/C-Meehan"> Github. </a>
-                                        <p class="card-details"></p>
+                                    <p class="card-details">
+                                    I am Chris, a full stack developer with a passion for all things tech, gaming, and sports. I enjoy challenging myself to step out of my comfort zone, which initially led me to software development.  My favorite candy is Snickers! You can connect with me on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/meehan-chris/"> LinkedIn </a> and check out my code on<a className='link_tag' target="_blank" href=" http://github.com/C-Meehan"> Github. </a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

@@ -7,7 +7,9 @@ import axios from "axios";
 
 const Deals = () => {
     const [candies, setCandies] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const { addToCart, cartItems } = useContext(CartContext);
+
 
     // handle add to cart button
     const handleAddToCart = (candy) => {
@@ -32,10 +34,21 @@ const Deals = () => {
             .then((res) => {
                 const saleCandies = res.data.allCandy.filter((candy) => candy.onSale);
                 setCandies(saleCandies);
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 500);
             })
             .catch((err) => console.log(err));
     }, []);
 
+    if (isLoading) {
+        return (
+            <div id="loading-wrapper">
+                <div id="loading-text">LOADING</div>
+                <div id="loading-content"></div>
+            </div>
+        );
+    }
     return (
         <section className="all_candies_container">
             <Navbar />
@@ -55,13 +68,13 @@ const Deals = () => {
                                 <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
                             </h6>
 
-                                {candy.onSale && candy.candyDiscount > 0 ? (
-                                    <div>
-                                        <h6 className='candy__price discounted'> <span className="on_sale_candy">${candy.candyPrice.toFixed(2)}</span> ${(candy.candyPrice - candy.candyDiscount).toFixed(2)}</h6>
-                                    </div>
-                                ) : (
-                                    <h6 className='candy__price'>${candy.candyPrice.toFixed(2)}</h6>
-                                )}
+                            {candy.onSale && candy.candyDiscount > 0 ? (
+                                <div>
+                                    <h6 className='candy__price discounted'> <span className="on_sale_candy">${candy.candyPrice.toFixed(2)}</span> ${(candy.candyPrice - candy.candyDiscount).toFixed(2)}</h6>
+                                </div>
+                            ) : (
+                                <h6 className='candy__price'>${candy.candyPrice.toFixed(2)}</h6>
+                            )}
                             <button
                                 className="each__candy__addToCart"
                                 onClick={() => handleAddToCart(candy)}
