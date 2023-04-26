@@ -17,6 +17,8 @@ const AllCandies = () => {
   const { addToCart, cartItems } = useContext(CartContext);
   const [currentPage, setCurrentPage] = useState(0);
   const [showButton, setShowButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   // scroll on top auto
   useEffect(() => {
@@ -86,19 +88,38 @@ const AllCandies = () => {
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/candy")
-      .then((res) => setCandies(res.data.allCandy))
+      .then((res) => {
+        setCandies(res.data.allCandy);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/category")
-      .then((res) => setCategories(res.data.categories))
+      .then((res) => {
+        setCategories(res.data.categories);
+        setTimeout(() => {
+          setIsLoading(false);
+        },500);
+      })
       .catch((err) => console.log(err));
   }, []);
 
+  if (isLoading) {
+    return (
+      <div id="loading-wrapper">
+  <div id="loading-text">LOADING</div>
+  <div id="loading-content"></div>
+</div>
+    );
+  }
 
   return (
+    
     <section id="all_candies_scroller" className='all_candies_container'>
       <Navbar />
       <div className="all__candies__h1andfilter">

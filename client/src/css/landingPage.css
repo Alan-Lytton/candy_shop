@@ -41,8 +41,8 @@
 
 .landing_carasoul {
     align-self: self-end;
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     font-size: 12px;
     padding: 0 !important;
 }
@@ -65,15 +65,16 @@
     background-color: #E8C3C2;
     border-radius: 10%;
     border: 1px solid black;
-  
+
 }
 
-.slider{
+.slider {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-radius: 40px;
     z-index: 1;
 }
+
 .containerLink {
     width: 30%;
     margin-top: 7%;
@@ -191,7 +192,7 @@ img {
     max-height: 200px;
     margin: 0 auto;
     border-radius: 12px;
-   background-color: #E8C3C2;
+    background-color: #E8C3C2;
 
 }
 
@@ -250,13 +251,17 @@ img {
 
 .landing_page_confident {
     border-top: 2px solid black;
-    height: 100%o;
-    background-color: #fac7c5;
+
+    background-image: url('../assets/images/xoxo.webp');
+    background-position: center;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 6% 12%;
+    text-align: center;
+    height: 100vh;
 }
 
 .landing_page_confident__title {
@@ -267,26 +272,22 @@ img {
     font-weight: 900;
 }
 
-.breaker_box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 30px 0;
-}
 
 .landing_page_confident__text {
+    background-color: #fac7c5;
+    opacity: 0.89;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 2px 2px 12px rgb(220, 220, 255);
+    padding: 4%;
     font-size: 1.4rem;
     width: 60%;
+    margin-top: 40px;
     line-height: 240% !important;
 
 }
 
-.landing_page_confident__image {
-    width: 30%;
-height: 90%;
-    border-radius: 12px;
-}
+
 
 @media(max-width: 1000px) {
     .body {
@@ -422,17 +423,6 @@ height: 90%;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .breaker_box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .landing_page_confident__image {
-            display: none;
         }
 
         .landing_page_confident__text {
