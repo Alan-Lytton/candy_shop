@@ -20,12 +20,7 @@
     overflow: auto;
     display: block;
   }
-  
-  .admin__table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
+
 .admin__landing__container h1 {
     margin: 10px;
     font-size: 3rem;
@@ -34,10 +29,9 @@
 
 .admin__table {
     margin: 0 auto;
-    margin-top: 20px;
     height: 40px !important;
     overflow-y: scroll;
-    width: 70%;
+    width: 100%;
     background-color: #E9C1C1;
     
 }
@@ -77,29 +71,23 @@
 }
 .admin__table__wrapper {
     max-height: 600px;
-    width: 700px;
+    min-width: 380px;
     overflow: auto;
     display: block;
-
   }
-  
-  .admin__table {
-    width: 100%;
-    border-collapse: collapse;
-   
 
-  }
   th{
-    padding: 12px;
+    padding: 6px;
     text-align: left;
     position: static;
   }
   td{
-    padding: 12px;
+    padding: 6px;
     text-align: left;
+    font-size: .875rem;
   }
   tr{
-    padding: 12px;
+    padding: 6px;
     text-align: left;
   }
 
@@ -117,4 +105,8 @@
 .admin__landing__create:active {
     transform: translate(0rem, 0rem);
     box-shadow: 0rem 0rem #000;
+}
+
+.search-input {
+  margin-bottom: 1rem;
 }

@@ -72,9 +72,9 @@ const Cart = () => {
   const updateCandyStock = async (candyId, quantity) => {
     try {
       const response = await axios.put(`http://localhost:8000/api/candy/${candyId}/updateStock`, { quantity });
-      console.log("Candy stock updated:", response.data);
+      // console.log("Candy stock updated:", response.data);
     } catch (error) {
-      console.error("Error updating candy stock:", error);
+      // console.error("Error updating candy stock:", error);
     }
   };
 
@@ -184,14 +184,14 @@ const Cart = () => {
                     {
                       cartItems.map((aCandy) => (
                         <div key={aCandy._id}>
-                          {console.log("THSIHISHIFHIUHIUHUIHUI", aCandy._id, aCandy.candyStock - aCandy.quantity)}
+                          {/* {console.log("THSIHISHIFHIUHIUHUIHUI", aCandy._id, aCandy.candyStock - aCandy.quantity)} */}
                           {updateCandyStock(aCandy._id, aCandy.candyStock - aCandy.quantity)}
                         </div>
                       ))
                     }
                     clearCart();
                     navigate("/")
-                    console.log(details)
+                    // console.log(details)
                     alert("🍬🍭Payment successful!🍫🍡" + "\r" +
                     "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
                     "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);

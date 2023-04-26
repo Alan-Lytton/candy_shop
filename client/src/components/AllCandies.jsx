@@ -94,8 +94,10 @@ const AllCandies = () => {
           setIsLoading(false);
         }, 500);
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => {
+        // console.log(err);
+      }
+  )}, []);
 
   useEffect(() => {
     axios
@@ -106,8 +108,10 @@ const AllCandies = () => {
           setIsLoading(false);
         },500);
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => {
+        // console.log(err);
+      }
+  )}, []);
 
   if (isLoading) {
     return (

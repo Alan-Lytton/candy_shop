@@ -1,11 +1,7 @@
 import { AboutUs, Cart, EditCandy, OneCandy, UserForm, UserLogin, AllCandies, CreateCandy, LandingPage, AdminLanding, Deals } from './components/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
-// import PrivateRoute from './components/PrivateRoute'; 
-
-
-import { useState } from 'react';
-// import PrivateRoute from './components/PrivateRoute'; 
+// import PrivateRoute from './components/PrivateRoute';  
 
 
 function App() {

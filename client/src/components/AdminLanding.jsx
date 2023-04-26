@@ -22,6 +22,15 @@ const AdminLanding = props => {
             })
     }, [])
 
+    // slice the words so they dont get to big for teh cart total
+    const truncateCandyName = (candyName) => {
+    const words = candyName.split(' ');
+    if (words.length > 3) {
+        return words.slice(0, 3).join(' ') + '...';
+    }
+    return candyName;
+    };
+
     const logout = () => {
         axios.get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
@@ -56,7 +65,7 @@ const AdminLanding = props => {
                             <th className="admin__table__th">Category</th>
                             <th className="admin__table__th">Stock</th>
                             <th className="admin__table__th">Price</th>
-                            <th className="admin__table__th">OnSale & Discount</th>
+                            <th className="admin__table__th">Sale</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,11 +73,11 @@ const AdminLanding = props => {
                             filteredCandy.map((candy) => {
                                 return (
                                     <tr key={candy._id}>
-                                        <td className="admin__table__td"><Link className="table__candyName" to={`/admin/candy/edit/${candy._id}`}>{candy.candyName}</Link></td>
+                                        <td className="admin__table__td"><Link className="table__candyName" to={`/admin/candy/edit/${candy._id}`}>{truncateCandyName(candy.candyName)}</Link></td>
                                         <td className="admin__table__td">{candy.candyCategory}</td>
                                         <td className="admin__table__td">{candy.candyStock}</td>
                                         <td className="admin__table__td">${candy.candyPrice}</td>
-                                        <td className="admin__table__td">${candy.candyDiscount} {candy.onSale ? 'true' : 'false'}</td>
+                                        <td className="admin__table__td">{candy.onSale ? 'true' : 'false'}</td>
                                     </tr>
                                 )
                             })

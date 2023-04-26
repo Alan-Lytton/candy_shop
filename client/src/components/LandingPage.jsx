@@ -26,6 +26,11 @@ const LandingPage = () => {
     return candyInCart && candyInCart.quantity >= candy.candyStock - 1;
   };
 
+  // scroll on top auto
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // animation coming on slider div
   const onEnterViewport = () => {
     setAnimate(true);
@@ -67,7 +72,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-     
+    
       <ScrollTrigger onEnter={onEnterViewport} onExit={onExitViewport}>
 
         <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
