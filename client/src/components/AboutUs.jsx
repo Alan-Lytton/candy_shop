@@ -1,13 +1,19 @@
 import '../css/AboutUs.css'
 import { Link } from 'react-router-dom'
-import {Footer} from '../components/index'
+import { Footer } from '../components/index'
+import { useEffect } from 'react'
 
 
 const AboutUs = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div>
             <div class="roadmap">
-            <Link className='LinkToBack' to={"/"}> <i class="fa-solid fa-arrow-left"></i> Home</Link>
+                <Link className='LinkToBack' to={"/"}> <i class="fa-solid fa-arrow-left"></i> Home</Link>
                 <h2 className='main-title'>Meet the team</h2>
                 <div class="_w-cloneable">
                     <div class="c-cards-list">
@@ -32,8 +38,8 @@ const AboutUs = () => {
                                     </div>
                                     <h3>MEET CHRIS MEEHAN</h3>
                                     <div class="c-card-details">
-                                    <p class="card-details">
-                                    Hi, I'm Chris, a full stack developer with a passion for all things tech, gaming, and sports. I enjoy challenging myself to step out of my comfort zone, which initially led me to software development.  My favorite candy is Snickers! You can connect with me on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/meehan-chris/"> LinkedIn </a> and check out my code on <a className='link_tag' target="_blank" href=" http://github.com/C-Meehan"> Github. </a>
+                                        <p class="card-details">
+                                            Hi, I'm Chris, a full stack developer with a passion for all things tech, gaming, and sports. I enjoy challenging myself to step out of my comfort zone, which initially led me to software development.  My favorite candy is Snickers! You can connect with me on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/meehan-chris/"> LinkedIn </a> and check out my code on <a className='link_tag' target="_blank" href=" http://github.com/C-Meehan"> Github. </a>
                                         </p>
                                     </div>
                                 </div>
@@ -61,7 +67,7 @@ const AboutUs = () => {
                                         <div class="_2rem-divider"></div>
                                     </div>
                                     <div class="c-card-details">
-                                        <p class="card-details"> I am Chris, a software engineer who has a passion for coding and a love for bikes. With a keen eye for detail and a love for problem-solving, I enjoy developing clean, efficient code that delivers results. You can checkout my project on <a className='link_tag' target="_blank" href=" https://github.com/cgbridgewater"> Github</a> and connect with me on <a className='link_tag' target="_blank" href=" www.linkedin.com/in/chris-bridgewater"> LinkedIn.</a> My favorite candy is Swedish Fish.</p>
+                                        <p class="card-details"> I am Chris, a software engineer who has a passion for coding and a love for bikes. With a keen eye for detail and a love for problem-solving, I enjoy developing clean, efficient code that delivers results. You can checkout my project on <a className='link_tag' target="_blank" href=" https://github.com/cgbridgewater"> Github</a> and connect with me on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/chris-bridgewater/"> LinkedIn.</a> My favorite candy is Swedish Fish.</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,8 +81,8 @@ const AboutUs = () => {
                                         <div class="_2rem-divider"></div>
                                     </div>
                                     <div class="c-card-details">
-                                        <p class="card-details">My name is Pablo, software engineer student from Chicago, IL. 
-                                        My enthusiasm for learning lead me to Coding Dojo and I truly enjoyed going through the bootcamp . KitKats are my favorite candy. One time I ate a whole bag of KitKat minis. Lets connect on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/jose-rodriguez-3968a6134/">LinkedIn.</a> </p>
+                                        <p class="card-details">My name is Pablo, software engineer student from Chicago, IL.
+                                            My enthusiasm for learning lead me to Coding Dojo and I truly enjoyed going through the bootcamp . KitKats are my favorite candy. One time I ate a whole bag of KitKat minis. Lets connect on <a className='link_tag' target="_blank" href="https://www.linkedin.com/in/jose-rodriguez-3968a6134/">LinkedIn.</a> </p>
                                     </div>
                                 </div>
                             </div>

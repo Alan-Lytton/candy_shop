@@ -86,7 +86,7 @@ const updateCartItemQuantity = (itemId, newQuantity) => {
     const item = prevCartItems.find((item) => item._id === itemId);
 
     if (item) {
-      const newTotalCost = newQuantity * item.candyPrice;
+      const newTotalCost = Math.floor((newQuantity * item.candyPrice)*100)/100
       const updatedCartItems = prevCartItems.map((item) =>
         item._id === itemId
           ? {

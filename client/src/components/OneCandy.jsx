@@ -32,10 +32,12 @@ const OneCandy = () => {
         return candyInCart && candyInCart.quantity >= candy.candyStock - 1;
     };
 
+
     // calculate price of item on sale
     const calculatePrice = (candy) => {
         if (candy.onSale && candy.candyDiscount > 0) {
-            return (candy.candyPrice - candy.candyDiscount);
+            return Math.floor((candy.candyPrice * candy.candyDiscount)*100)/100;
+            
         } else {
             return candy.candyPrice;
         }
@@ -61,6 +63,7 @@ const OneCandy = () => {
         (candi) =>
             candi.candyCategory === candy.candyCategory && candi._id !== id
     );
+
 
     return (
         <section className='one_candy_container'>
@@ -98,7 +101,7 @@ const OneCandy = () => {
             </section>
             <div className="category_list_items">
                 <h1 className='title_candy_categorttext'>Find some more {candy.candyCategory}</h1>
-                <Slider {...settings}>
+                <Slider className='slider_on_one_candy' {...settings}>
                     {filteredCandies.map((candi, i) => (
                         <div key={candi._id} className="each_candy">
                             <Link to={`/one/candy/${candi._id}`} onClick={() => window.scrollTo(0, 0)}>

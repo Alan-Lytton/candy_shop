@@ -61,11 +61,12 @@ const AllCandies = () => {
   // if item on discount it shows
   const getUpdatedPrice = (candy) => {
     if (candy.onSale && candy.candyDiscount > 0) {
-      return (candy.candyPrice - candy.candyDiscount).toFixed(2);
+      return Math.floor((candy.candyPrice - (candy.candyPrice * candy.candyDiscount)) * 100)/ 100
     } else {
-      return candy.candyPrice.toFixed(2);
+      return candy.candyPrice;
     }
   };
+
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0);
@@ -92,7 +93,7 @@ const AllCandies = () => {
         setCandies(res.data.allCandy);
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
+        }, 300);
       })
       .catch((err) => {
         // console.log(err);
@@ -106,7 +107,7 @@ const AllCandies = () => {
         setCategories(res.data.categories);
         setTimeout(() => {
           setIsLoading(false);
-        },500);
+        },300);
       })
       .catch((err) => {
         // console.log(err);
@@ -125,7 +126,9 @@ const AllCandies = () => {
   return (
     
     <section id="all_candies_scroller" className='all_candies_container'>
-      <Navbar />
+    <div className="navbar_sticky">
+    <Navbar />
+    </div>
       <div className="all__candies__h1andfilter">
         <h1 className='main__title__allCandies'>Find your favorite candies </h1>
         <div className="select-container">
@@ -157,7 +160,7 @@ const AllCandies = () => {
                   </h6>
                   {candy.onSale && candy.candyDiscount > 0 ? (
                     <div>
-                      <h6 className='candy__price discounted'> <span className="on_sale_candy">${candy.candyPrice.toFixed(2)}</span> ${getUpdatedPrice(candy)}</h6>
+                      <h6 className='candy__price discounted'> <span className="on_sale_candy">${candy.candyPrice.toFixed(2)}</span> ${getUpdatedPrice(candy).toFixed(2)}</h6>
                     </div>
                   ) : (
                     <h6 className='candy__price'>${candy.candyPrice.toFixed(2)}</h6>

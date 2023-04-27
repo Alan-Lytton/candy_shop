@@ -36,7 +36,7 @@ const Deals = () => {
                 setCandies(saleCandies);
                 setTimeout(() => {
                     setIsLoading(false);
-                }, 500);
+                }, 200);
             })
             .catch((err) => console.log(err));
     }, []);

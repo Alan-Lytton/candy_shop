@@ -28,6 +28,9 @@
 .left_btn {
     margin-left: 0;
 }
+.disclaimer{
+    font-size: 7px;
+}
 
 .error-message {
     position: relative;

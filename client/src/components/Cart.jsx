@@ -2,7 +2,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import EmptyCart from '../assets/images/emptyCart.png';
 import { CartContext } from '../contexts/CartContext';
 import { Navbar, Footer } from '../components/index';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/cart.css';
@@ -17,12 +17,17 @@ const Cart = () => {
   const [errorMessage, setErrorMessage] = useState({})
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+
   // get discount price
   const getUpdatedPrice = (candy) => {
     if (candy.onSale && candy.candyDiscount > 0) {
-      return (candy.candyPrice - candy.candyDiscount).toFixed(2);
+      return  Math.floor((candy.candyPrice * candy.candyDiscount)*100)/100
     } else {
-      return candy.candyPrice.toFixed(2);
+      return Math.floor(candy.candyPrice*100)/100
     }
   };
 
@@ -36,8 +41,7 @@ const Cart = () => {
   };
 
 // map thru updated cart items the ones with discount as well
-  const updatedCartItems = cartItems.map(candy => ({ ...candy, totalCost: parseFloat(getUpdatedPrice(candy)) * candy.quantity }));
-
+  const updatedCartItems = cartItems.map(candy => ({ ...candy, totalCost:  Math.floor((getUpdatedPrice(candy) * candy.quantity)*100)/100 }));
 
   // get subtotal of all the candies in cart
   const getSubTotal = () => {
@@ -45,7 +49,7 @@ const Cart = () => {
     for (let i = 0; i < cartItems.length; i++) {
       subTotal += updatedCartItems[i].totalCost;
     }
-    return subTotal
+    return Math.floor(subTotal * 100)/ 100
   };
 
 
@@ -84,7 +88,7 @@ const Cart = () => {
         name: aCandy.candyName,
         unit_amount: {
           currency_code: "USD",
-          value: (aCandy.candyPrice - aCandy.candyDiscount).toFixed(2)
+          value: Math.floor((aCandy.candyPrice - aCandy.candyDiscount) * 100)/100
         },
         quantity: aCandy.quantity,
     }
@@ -92,6 +96,10 @@ const Cart = () => {
 
     //Don't hate, navigate (used to redirect during the Paypal onApprove function)
     const navigate = useNavigate();
+
+    const updatePriceRounded = (candy) => (
+      Math.floor(candy.totalCost*100)/100
+    )
 
   return (
     <div className="body_cart">
@@ -104,7 +112,7 @@ const Cart = () => {
                 <h6 className="candy__title__cart">
                   <Link className="cart_title_candy" to={`/one/candy/${candy._id}`}>{truncateCandyName(candy.candyName)}</Link>
                 </h6>
-                <h6 className="candy__price__cart">Individual Total: ${candy.totalCost.toFixed(2)}</h6>
+                <h6 className="candy__price__cart">Individual Total: ${updatePriceRounded(candy).toFixed(2)}</h6>
                 <div className="quantity-control">
                   <button
                     className="quantity-button left_btn"
@@ -139,16 +147,16 @@ const Cart = () => {
           <div className="checkout_main_section_cart">
             <h3 className='cart_summary_title'>Cart Summary</h3>
             <div className="scrollable_div">
-            {updatedCartItems.map((aCandy) => (
-                <div key={aCandy._id} className='mapped_checkout_cart'>
-                  <h4 className='candy_mapped_chcekout'>{truncateCandyName(aCandy.candyName)}</h4>
+            {updatedCartItems.map((candy) => (
+                <div key={candy._id} className='mapped_checkout_cart'>
+                  <h4 className='candy_mapped_chcekout'>{truncateCandyName(candy.candyName)}</h4>
                   <div className="seperator">
-                    <h4 className='candy_mapped_chcekout'>${aCandy.totalCost.toFixed(1)}</h4>
-                    <h4 className='candy_mapped_chcekout'>{aCandy.quantity}</h4>
+                    <h4 className='candy_mapped_chcekout'>${updatePriceRounded(candy).toFixed(2)}</h4>
                   </div>
                 </div>
               ))}
             </div>
+            
             <div className="sub_total__container">
               <h4 className='checkout_subtotal'> Subtotal</h4>
               <h4 className='checkout_subtotal'>${getSubTotal().toFixed(2)}</h4>
@@ -163,11 +171,11 @@ const Cart = () => {
                       purchase_units: [{
                             amount: {
                             currency_code: "USD",
-                            value: getSubTotal().toFixed(2),
+                            value: (Math.floor(getSubTotal() * 100)/100).toFixed(2),
                             breakdown: {
                                 item_total: {
                                     currency_code: "USD",
-                                    value: getSubTotal().toFixed(2)
+                                    value: (Math.floor(getSubTotal() * 100)/100).toFixed(2)
                                 },
                             }
                         },
@@ -192,12 +200,13 @@ const Cart = () => {
                     clearCart();
                     navigate("/")
                     // console.log(details)
-                    alert("🍬🍭Payment successful!🍫🍡" + "\r" +
+                    alert("🍬🍭Payment successful Test!🍫🍡" + "\r" +
                     "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
                     "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
                   }}
                 />
               </PayPalScriptProvider>
+              <h6 className="disclaimer">* We will take your money but you won't get anything! Not a production site. for test purposes only, mock site. fake site. do not buy. stop it. portfolio project</h6>
             </div>
           </div>
           :

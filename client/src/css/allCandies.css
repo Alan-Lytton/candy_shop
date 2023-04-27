@@ -15,6 +15,7 @@
   line-height: 100%;
 
 }
+
 .on_deals{
   padding-top: 60px;
 }
@@ -290,6 +291,8 @@
   }
 }
 .empty_container {
+  padding-right: 470px;
+  padding-top: 100px;
   min-height: 60vh;
 }
 

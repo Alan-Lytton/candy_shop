@@ -1,6 +1,11 @@
+body{
+    width: 100vw !important;
+    overflow-x: hidden;
+}
+
 .one_candy_container {
     height: 100%;
-    width: 100%;
+    width: 100vw;
     background-color: #E8C2C2;
     display: flex;
     flex-direction: column;
@@ -23,7 +28,8 @@
     color: #23a094;
 
 }
-
+/* email - Jang@CandyShop.com
+pw - I&*FjSI2 */
 .title_candy_categorttext {
     text-align: center;
     margin-top: 5rem;
@@ -32,10 +38,16 @@
 }
 
 .category_list_items {
-    width: 80%;
+    max-width: 80% ;
     margin: 0 auto;
     margin-top: 10%;
     margin-bottom: 100px;
+
+
+}
+.slider_on_one_candy{
+    max-width: 80%;
+    transform: translate3d(0,0,0) !important;
 
 }
 
@@ -123,7 +135,9 @@
     margin-top: 30px;
     margin-bottom: 24px;
 }
-
+.slick-track{
+    width: 100vw;
+}
 .added-message {
     color: #23a094;
     font-weight: bold;
