@@ -61,7 +61,7 @@ const AllCandies = () => {
   // if item on discount it shows
   const getUpdatedPrice = (candy) => {
     if (candy.onSale && candy.candyDiscount > 0) {
-      return Math.floor((candy.candyPrice - (candy.candyPrice * candy.candyDiscount)) * 100)/ 100
+      return candy.candyPrice - candy.candyDiscount
     } else {
       return candy.candyPrice;
     }

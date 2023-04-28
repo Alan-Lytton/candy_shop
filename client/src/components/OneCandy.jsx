@@ -36,10 +36,10 @@ const OneCandy = () => {
     // calculate price of item on sale
     const calculatePrice = (candy) => {
         if (candy.onSale && candy.candyDiscount > 0) {
-            return Math.floor((candy.candyPrice * candy.candyDiscount)*100)/100;
+            return (candy.candyPrice - candy.candyDiscount);
             
         } else {
-            return candy.candyPrice;
+            return (candy.candyPrice);
         }
     };
     // get on and all candies
