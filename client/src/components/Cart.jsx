@@ -81,6 +81,10 @@ const Cart = () => {
       // console.error("Error updating candy stock:", error);
     }
   };
+  
+  const updatePriceRounded = (candy) => (
+    Math.floor(candy.totalCost*100)/100
+  )
 
   // create json formatted list of items for PayPal transaction
   const items = cartItems.map((aCandy) => (
@@ -88,7 +92,8 @@ const Cart = () => {
         name: aCandy.candyName,
         unit_amount: {
           currency_code: "USD",
-          value: Math.floor((aCandy.candyPrice - aCandy.candyDiscount) * 100)/100
+          value: updatePriceRounded(aCandy).toFixed(2)
+          // value: Math.floor((aCandy.candyPrice - aCandy.candyDiscount) * 100)/100
         },
         quantity: aCandy.quantity,
     }
@@ -97,9 +102,6 @@ const Cart = () => {
     //Don't hate, navigate (used to redirect during the Paypal onApprove function)
     const navigate = useNavigate();
 
-    const updatePriceRounded = (candy) => (
-      Math.floor(candy.totalCost*100)/100
-    )
 
   return (
     <div className="body_cart">
@@ -171,11 +173,13 @@ const Cart = () => {
                       purchase_units: [{
                             amount: {
                             currency_code: "USD",
-                            value: (Math.floor(getSubTotal() * 100)/100).toFixed(2),
+                            value: getSubTotal().toFixed(2),
+                            // value: (Math.floor(getSubTotal() * 100)/100).toFixed(2),
                             breakdown: {
                                 item_total: {
                                     currency_code: "USD",
-                                    value: (Math.floor(getSubTotal() * 100)/100).toFixed(2)
+                                    value: getSubTotal().toFixed(2)
+                                    // value: (Math.floor(getSubTotal() * 100)/100).toFixed(2)
                                 },
                             }
                         },
