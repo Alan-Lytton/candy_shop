@@ -93,7 +93,6 @@ const Cart = () => {
         unit_amount: {
           currency_code: "USD",
           value: updatePriceRounded(aCandy).toFixed(2)
-          // value: Math.floor((aCandy.candyPrice - aCandy.candyDiscount) * 100)/100
         },
         quantity: aCandy.quantity,
     }
@@ -174,12 +173,10 @@ const Cart = () => {
                             amount: {
                             currency_code: "USD",
                             value: getSubTotal().toFixed(2),
-                            // value: (Math.floor(getSubTotal() * 100)/100).toFixed(2),
                             breakdown: {
                                 item_total: {
                                     currency_code: "USD",
                                     value: getSubTotal().toFixed(2)
-                                    // value: (Math.floor(getSubTotal() * 100)/100).toFixed(2)
                                 },
                             }
                         },
@@ -196,7 +193,6 @@ const Cart = () => {
                     {
                       cartItems.map((aCandy) => (
                         <div key={aCandy._id}>
-                          {/* {console.log("THSIHISHIFHIUHIUHUIHUI", aCandy._id, aCandy.candyStock - aCandy.quantity)} */}
                           {updateCandyStock(aCandy._id, aCandy.candyStock - aCandy.quantity)}
                         </div>
                       ))
@@ -204,13 +200,15 @@ const Cart = () => {
                     clearCart();
                     navigate("/")
                     // console.log(details)
-                    alert("🍬🍭Payment successful Test!🍫🍡" + "\r" +
+                    alert("🍬🍭TEST Payment successful TEST!🍫🍡" + "\r" +
                     "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
                     "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
                   }}
                 />
               </PayPalScriptProvider>
-              <h6 className="disclaimer">* We will take your money but you won't get anything! Not a production site. for test purposes only, mock site. fake site. do not buy. stop it. portfolio project</h6>
+              <h6 className="disclaimer">* We will take your money but you won't get anything! Not a production site.</h6> 
+              <h6 className="disclaimer">This is just a portfolio project!</h6> 
+              <h6 className="disclaimer">For test purposes only, mock site. fake site. Do not buy. Seriously... stop it.</h6>
             </div>
           </div>
           :
