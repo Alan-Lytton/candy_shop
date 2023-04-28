@@ -88,9 +88,9 @@ const LandingPage = () => {
                     <Link to={`/one/candy/${candy._id}`}>{candy.candyName}</Link>
                   </h6>
                   <div className="carousel-price">
-                    <h6 className="carousel-original-price">{`$${Math.floor(candy.candyPrice * 100)/100}`} </h6>
+                    <h6 className="carousel-original-price">{`$${candy.candyPrice}`} </h6>
                     <i class="fa-solid fa-arrow-right"></i>
-                    <h6 className="carousel-discount-price">{`$${Math.floor((candy.candyPrice - candy.candyDiscount) * 100)/100}`}</h6>
+                    <h6 className="carousel-discount-price">{`$${(candy.candyPrice - candy.candyDiscount).toFixed(2)}`}</h6>
                   </div>
                   <button
                     className='each__candy__addToCart landing_carasoul'
