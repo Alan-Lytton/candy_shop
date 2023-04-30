@@ -1,0 +1,61 @@
+
+.receipt_container {
+    width: 50%;
+    margin: 0 auto;
+    border: 13px double goldenrod;
+    border-radius: 10px;
+    background-color: silver;
+    padding: 0 3%;
+  }
+  
+  .flex{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .receipt_table {
+    width: 100%;
+    border: none;
+    margin: 15px auto
+  }
+  
+  .r_table {
+    width: 90%;
+    border: none;
+    border-collapse: collapse;
+  }
+  
+  .receipt_row {
+    border: none;
+  }
+  
+  .receipt_th {
+  background-color: lightslategray;
+  width: 25%;
+  padding: 5px;
+  border: 1px solid black;
+  }
+  
+  .receipt_td {
+  background-color: whitesmoke;
+  border: none;
+  }
+  .receipt_td_ST {
+  background-color: whitesmoke;
+  border-top: 1px solid black;
+  }
+  
+  .push_left {
+    text-align: start ;
+  }
+  
+  .link {
+    text-decoration: none;
+  }
+  
+  .close {
+    padding: 3px 8px;
+    border-radius:5px;
+    background-color: goldenrod;
+    margin:8px
+  }
