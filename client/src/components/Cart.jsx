@@ -2,18 +2,24 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import EmptyCart from '../assets/images/emptyCart.png';
 import { CartContext } from '../contexts/CartContext';
 import { Navbar, Footer } from '../components/index';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/cart.css';
-import useSound from "use-sound";
-import cash from '../assets/sounds/cashSound.mp3';
+
 
 // get paypal API key
 const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 
-const Cart = () => {
-  const [cashSound] = useSound(cash);
+const Cart = props => {
+
+// scroll on top auto
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
+
+  const {setDetails} = props;
   const [errorMessage, setErrorMessage] = useState({})
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
 
@@ -89,7 +95,6 @@ const Cart = () => {
         quantity: aCandy.quantity,
     }
     ));
-
 
     //Don't hate, navigate (used to redirect during the Paypal onApprove function)
     const navigate = useNavigate();
@@ -175,26 +180,25 @@ const Cart = () => {
                     }]})
                   }}
                   onApprove={async (data, actions) => {
-                    
-                    const details = await actions.order.capture();
-                    const name = details.payer.name;
-                    const amount = details.purchase_units[0].amount;
-                    const address = details.purchase_units[0].shipping.address;
-                    const order_id = details.id;
+                    const details = await actions.order.capture()
+                    setDetails(details)   // This needs to lift state to App.js
                     {
                       cartItems.map((aCandy) => (
                         <div key={aCandy._id}>
-                          {/* {console.log("THSIHISHIFHIUHIUHUIHUI", aCandy._id, aCandy.candyStock - aCandy.quantity)} */}
                           {updateCandyStock(aCandy._id, aCandy.candyStock - aCandy.quantity)}
                         </div>
                       ))
                     }
                     clearCart();
-                    navigate("/")
+                    navigate("/candy/receipt")
+                    // const name = details.payer.name;
+                    // const amount = details.purchase_units[0].amount;
+                    // const address = details.purchase_units[0].shipping.address;
+                    // const order_id = details.id;
                     // console.log(details)
-                    alert("🍬🍭Payment successful!🍫🍡" + "\r" +
-                    "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
-                    "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
+                    // alert("🍬🍭Payment successful!🍫🍡" + "\r" +
+                    // "Transaction completed by " + name.given_name + " " + name.surname + " for $" + amount.value + " " + amount.currency_code + "\r" +
+                    // "Order " + order_id + " will be shipped to: " + address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + " " + address.country_code);
                   }}
                 />
               </PayPalScriptProvider>
