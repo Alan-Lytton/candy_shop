@@ -1,69 +1,75 @@
 import React, { useEffect, useState} from "react";
-import '../App.css';
+import '../css/receipt.css';
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import CompanyLogo from '../assets/images/gplogoshop.jpg';
+import useSound from "use-sound";
+import cash from '../assets/sounds/cashSound.mp3';
 
-const Receipt = () => {
+
+const Receipt = (props) => {
+    const [Ka_ching] = useSound(cash);
+    
+    // scroll on top auto
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const { details } = props;
+    const name = details.payer.name;
+    const amount = details.purchase_units[0].amount;
+    const address = details.purchase_units[0].shipping.address;
+    const order_id = details.id;
+    const date = details.create_time;
+    const items = details.purchase_units[0].items;
 
 
     return (
-
-            <div>
-            {/* main content */}
-                <button className="close"><a className="link" href="/">Close Receipt</a></button>
+            <div onLoad={Ka_ching()} className="wrapper">
+                <Navbar/>
+                {/* recepit container */}
                 <div className="receipt_container">
                     <h1>RECEIPT</h1>
-                    <hr />
+                    <hr className="spacer"/>
                     <div className="flex">
+                        {/* left upper section */}
                         <div className="left">
-                            <h2>Candy Shop</h2>
-                            <h5 className="push_left">42 Wallaby Way</h5>
-                            <h5 className="push_left">Sydney, Austrailia </h5>
+                            <img className='logo_img' require src={CompanyLogo} alt="Candy Shop" />
+                            {/* <h4><span>&nbsp;&nbsp;</span></h4> */}
+                            <h5 className="push_left">Invoice#: {order_id}</h5>
                         </div>
+                        {/* right upper section */}
                         <div className="right">
-                            <h4 className="push_left">Ship To:</h4>
-                            <p className="push_left">name.given_name</p>
-                            <p className="push_left">customer address, state, zip</p>
-                            <p className="push_left">customer country</p>
+                            <h4 className="push_left title">Ship To:</h4>
+                            <h5 className="push_left">{name.given_name} {name.surname}</h5>
+                            <h5 className="push_left"> {address.address_line_1}, { address.admin_area_2}, {address.admin_area_1}, {address.postal_code} {address.country_code}</h5>
+                            <h5 className="push_left"></h5>
                         </div>
                     </div>
-                    <div className="flex">
-                        <div className="left">
-                            <h5 className="push_left">Invoice#: CS- 234234</h5>
-                            <h5 className="push_left">Invoice Date: 4/30/23</h5>
-                            <h4><span>&nbsp;&nbsp;</span></h4>
-                        </div>
-                        <div className="right">
-                            {/* spacer */}
-                        </div>
-                    </div>
+                    {/* items table*/}
                     <div className="receipt_table">
                         <table className="r_table">
                             <thead>
                                 <tr className="receipt_row">
-                                    <th className="receipt_th">Item Desc.</th>
-                                    <th className="receipt_th">Qty</th>
-                                    <th className="receipt_th">Each</th>
-                                    <th className="receipt_th">Total</th>
+                                    <th className="receipt_th_1">Item Desc.</th>
+                                    <th className="receipt_th_2">Qty</th>
+                                    <th className="receipt_th_3">Each</th>
+                                    <th className="receipt_th_4">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td className="receipt_td">Almond Joy</td>
-                                    <td className="receipt_td">1.49</td>
-                                    <td className="receipt_td">3</td>
-                                    <td className="receipt_td">4.47</td>
+                            {/* map through items */}
+                            {
+                                items.map((item, index) =>{
+                                    return(
+                                <tr key ={index}>
+                                    <td className="receipt_td">{item.name}</td>
+                                    <td className="receipt_td">{item.unit_amount.value}</td>
+                                    <td className="receipt_td">{item.quantity}</td>
+                                    <td className="receipt_td">{(item.unit_amount.value * item.quantity).toFixed(2)}</td>
                                 </tr>
-                                <tr>
-                                    <td className="receipt_td">Snickers King Size</td>
-                                    <td className="receipt_td">2.99</td>
-                                    <td className="receipt_td">3</td>
-                                    <td className="receipt_td">8.97</td>
-                                </tr>
-                                <tr>
-                                    <td className="receipt_td">Kit Kat Minis</td>
-                                    <td className="receipt_td">5.99</td>
-                                    <td className="receipt_td">3</td>
-                                    <td className="receipt_td">17.97</td>
-                                </tr>
+                            )})}
+                            {/* end map */}
                                 <tr>
                                     <td className="receipt_td"> <span>&nbsp;&nbsp;</span></td>
                                     <td className="receipt_td"> <span>&nbsp;&nbsp;</span></td>
@@ -74,33 +80,39 @@ const Receipt = () => {
                                     <td className="receipt_td"></td>
                                     <td className="receipt_td"></td>
                                     <td className="receipt_td_ST">Sub Total:</td>
-                                    <td className="receipt_td_ST">$ 31.47</td>
+                                    <td className="receipt_td_ST">$ {amount.value} </td>
+                                </tr>
+                                <tr>
+                                    <td className="receipt_td"></td>
+                                    <td className="receipt_td"></td>
+                                    <td className="receipt_td">Shipping:</td>
+                                    <td className="receipt_td">$0.00</td>
                                 </tr>
                                 <tr>
                                     <td className="receipt_td"></td>
                                     <td className="receipt_td"></td>
                                     <td className="receipt_td">Total:</td>
-                                    <td className="receipt_td">$ 31.47</td>
+                                    <td className="receipt_td"><h3>${amount.value}</h3> </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-
+                    {/* notes */}
+                    <h3 className="push_left notes">Notes:</h3>
+                    <p className="push_left">"YOU GET NOTHING"</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Willy Wonka</p>
                     <br />
-                    <br />
-                    <h3 className="push_left">Notes:</h3>
-                    <p className="push_left">"YOU GET NOTHING" - Willy Wonka</p>
-                    <br />
-                    <h3 className="push_left">Terms & Conditions</h3>
-                    <p className="push_left">Seriously, we warned you. All payments are final, there will be no refunds.</p>
-                    <br />
-                    <hr />
-
-                    <h2>Thanks for shopping with The Candy Shop!</h2>
+                    {/* t&c's */}
+                    <h3 className="push_left notes">Terms & Conditions</h3>
+                    <p className="push_left">Seriously, we warned you! All payments are final, there will be no refunds.</p>
+                    <hr className="spacer" />
+                    <h2 className="thanks" >Thanks for shopping with The Candy Shop!</h2>
                 </div>
+                <div className="close_container">
                     <button className="close"><a className="link" href="/">Close Receipt</a></button>
+                </div>
+                <Footer/>
             </div>
-
     );
 }
 
