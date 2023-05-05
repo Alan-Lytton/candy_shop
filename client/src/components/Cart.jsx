@@ -13,13 +13,13 @@ const PAYPAL_API = process.env.REACT_APP_PAYPAL_API;
 
 const Cart = props => {
 
+  const {setDetails} = props;
+
 // scroll on top auto
 useEffect(() => {
   window.scrollTo(0, 0);
 }, []);
 
-
-  const {setDetails} = props;
   const [errorMessage, setErrorMessage] = useState({})
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useContext(CartContext);
 
@@ -158,11 +158,11 @@ useEffect(() => {
               <h4 className='checkout_subtotal'> Subtotal</h4>
               <h4 className='checkout_subtotal'>${getSubTotal().toFixed(2)}</h4>
             </div>
-
             <div className="paypal_container">
               <PayPalScriptProvider className="PayaplSection"
                 options={{ "client-id": PAYPAL_API }} >
                 <PayPalButtons
+                  forceReRender={items}
                   createOrder={(data, actions) => {
                     return actions.order.create({
                       purchase_units: [{
@@ -176,7 +176,7 @@ useEffect(() => {
                                 },
                             }
                         },
-                        items: items 
+                        items: items
                     }]})
                   }}
                   onApprove={async (data, actions) => {
