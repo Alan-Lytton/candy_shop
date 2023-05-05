@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect} from "react";
 import '../css/receipt.css';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -6,23 +6,20 @@ import CompanyLogo from '../assets/images/gplogoshop.jpg';
 import useSound from "use-sound";
 import cash from '../assets/sounds/cashSound.mp3';
 
-
 const Receipt = (props) => {
-    const [Ka_ching] = useSound(cash);
     
     // scroll on top auto
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
+    
+    const [Ka_ching] = useSound(cash);
     const { details } = props;
     const name = details.payer.name;
     const amount = details.purchase_units[0].amount;
     const address = details.purchase_units[0].shipping.address;
     const order_id = details.id;
-    const date = details.create_time;
     const items = details.purchase_units[0].items;
-
 
     return (
             <div onLoad={Ka_ching()} className="wrapper">
