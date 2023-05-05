@@ -24,6 +24,9 @@ const Receipt = (props) => {
     return (
             <div onLoad={Ka_ching()} className="wrapper">
                 <Navbar/>
+                <div className="close_container">
+                    <a className="link" href="/"><button className="close">Close Receipt</button></a>
+                </div>
                 {/* recepit container */}
                 <div className="receipt_container">
                     <h1>RECEIPT</h1>
@@ -106,7 +109,7 @@ const Receipt = (props) => {
                     <h2 className="thanks" >Thanks for shopping with The Candy Shop!</h2>
                 </div>
                 <div className="close_container">
-                    <button className="close"><a className="link" href="/">Close Receipt</a></button>
+                    <a className="link" href="/"><button className="close">Close Receipt</button></a>
                 </div>
                 <Footer/>
             </div>
