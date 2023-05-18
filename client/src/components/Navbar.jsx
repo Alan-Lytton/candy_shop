@@ -49,7 +49,7 @@ const Navbar = () => {
                         <i className="fas fa-times"></i>
                     </button>
                     <ul class="menu__links">
-                        <li className="menu__list"><Link className="menu__link" to={"/register"}><i
+                        <li className="menu__list"><Link className="menu__link" to={"/candy/cart"}><i
                             className="fa-solid fa-cart-shopping closedCart"></i></Link>
                             {cartCount > 0 && <span className="new_cart_count">{cartCount}</span>}
                         </li>
